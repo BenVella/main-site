@@ -6,6 +6,11 @@ layout: home
 title: Moto
 ---
 
-## Sicily 2015
+## What's Up
+
+
+This is a personal and professional site that's still very much under construction.
+
+It will slowly contain more about me and ways to contact me for various activities.
 
 {% include about.markdown %}
