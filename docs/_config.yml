@@ -38,7 +38,7 @@ minima:
   skin: dark
 
 header_pages:
-  - _pages/about.markdown
+  - about.markdown
 #  - content/subfolder/file.md
 
 # Exclude from processing.
