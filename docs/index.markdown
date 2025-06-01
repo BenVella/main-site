@@ -3,10 +3,8 @@
 # To modify the layout, see https://jekyllrb.com/docs/themes/#overriding-theme-defaults
 
 layout: home
-title: Moto
+title: What's Up
 ---
-
-## What's Up
 
 This is a personal and professional site that's still very much under construction.
 
