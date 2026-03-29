@@ -1,0 +1,24 @@
+---
+import { getCollection } from 'astro:content';
+import PostCard from '@/components/PostCard.astro';
+import SectionHeading from '@/components/SectionHeading.astro';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime()
+);
+---
+
+<BaseLayout
+  pageTitle="Blog"
+  pageDescription="Writing on software engineering, backend systems, and delivery."
+>
+  <SectionHeading
+    eyebrow="Blog"
+    title="Engineering notes and case-study context"
+    intro="The original target template included a bilingual blog and extra content sections. For this migration, the blog stays, but the content model is intentionally narrowed to a straightforward English MDX workflow."
+  />
+  <div class="grid gap-5 md:grid-cols-2">
+    {posts.map((post) => <PostCard post={post} />)}
+  </div>
+</BaseLayout>

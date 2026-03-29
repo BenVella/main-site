@@ -1,0 +1,30 @@
+---
+title: Backend foundations for game products
+description: Reusable service boundaries matter when account, session, and content concerns start repeating across projects.
+pubDate: 2026-02-14
+tags:
+  - Backend
+  - Games
+  - Services
+draft: false
+---
+
+Game-facing backend work often begins with something that looks small:
+authentication, session state, progression sync, entitlement checks.
+
+The mistake is to treat each of those as isolated plumbing. They are usually the
+start of a platform shape, whether the team acknowledges it or not.
+
+The reason I find backend service prototypes valuable is not because they are
+finished products. It is because they force the right architectural questions
+early:
+
+- What belongs in identity, and what belongs in player state?
+- What is shared across titles, and what should stay game-specific?
+- How do you keep transport and domain decisions separate enough to evolve?
+
+Even a small prototype can answer those questions better than a loose set of
+helpers spread across a codebase.
+
+That is why I like service-oriented experiments that stay narrow but intentional.
+They create reusable thinking before they create reusable code.
