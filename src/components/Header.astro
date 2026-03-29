@@ -1,0 +1,54 @@
+---
+import { siteConfig } from '@/site.config';
+
+const nav = [
+  { href: '/', label: 'Home' },
+  { href: '/about', label: 'About' },
+  { href: '/projects', label: 'Projects' },
+  { href: '/blog', label: 'Blog' },
+  { href: '/contact', label: 'Contact' },
+];
+
+const currentPath = Astro.url.pathname;
+const baseUrl = import.meta.env.BASE_URL;
+---
+
+<header class="page-shell pt-6">
+  <div class="section-card rounded-[2rem] px-6 py-5">
+    <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+      <a href={baseUrl} class="flex flex-col">
+        <span class="display-face text-2xl font-semibold">{siteConfig.name}</span>
+        <span class="text-sm muted">Software engineer</span>
+      </a>
+      <nav aria-label="Primary navigation">
+        <ul class="flex flex-wrap items-center gap-2 text-sm font-medium">
+          {
+            nav.map((item) => {
+              const href = `${baseUrl}${item.href === '/' ? '' : item.href.replace(/^\//, '')}`;
+              const active =
+                item.href === '/'
+                  ? currentPath === baseUrl || currentPath === `${baseUrl}`.replace(/\/$/, '')
+                  : currentPath === href || currentPath.startsWith(`${href}/`);
+
+              return (
+                <li>
+                  <a
+                    href={href}
+                    class:list={[
+                      'inline-flex rounded-full px-4 py-2 transition',
+                      active
+                        ? 'bg-stone-900 text-stone-50'
+                        : 'bg-transparent text-stone-700 hover:bg-white/80',
+                    ]}
+                  >
+                    {item.label}
+                  </a>
+                </li>
+              );
+            })
+          }
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>

@@ -1,0 +1,28 @@
+---
+title: Portfolio migrations should be opinionated
+description: Replatforming an old personal site is usually a content problem first and a tooling problem second.
+pubDate: 2026-01-10
+tags:
+  - Astro
+  - Portfolio
+  - Static Sites
+draft: false
+---
+
+When an old personal site is weak, a literal migration preserves the weakness.
+
+That is why portfolio rebuilds should be opinionated. You do not need to rescue
+every page, every phrasing choice, or every old structural assumption. In many
+cases the better move is:
+
+1. keep the domain and the useful brand assets
+2. replace thin or outdated copy decisively
+3. choose a simple publishing model
+4. make the hosting constraints explicit in the architecture
+
+For static hosting, that last point matters a lot. If the deployment target is
+GitHub Pages, the site should behave like a static site from the start. No hidden
+API routes. No adapter that implies server hosting later. No form flow that only
+works after a backend is introduced.
+
+The result is less magical, but much more durable.

@@ -1,0 +1,81 @@
+@import 'tailwindcss';
+@plugin "@tailwindcss/typography";
+
+:root {
+  --page: #f3efe5;
+  --page-deep: #e7e0d1;
+  --surface: rgba(255, 255, 255, 0.72);
+  --surface-strong: rgba(255, 255, 255, 0.92);
+  --text: #1c1a17;
+  --muted: #5d564d;
+  --line: rgba(45, 35, 20, 0.12);
+  --accent: #9f512d;
+  --accent-soft: #d7b7a3;
+  --shadow: 0 16px 50px rgba(63, 47, 24, 0.08);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  color: var(--text);
+  background:
+    radial-gradient(circle at top left, rgba(217, 183, 127, 0.22), transparent 35%),
+    radial-gradient(circle at top right, rgba(159, 81, 45, 0.14), transparent 28%),
+    linear-gradient(180deg, var(--page) 0%, #faf7f1 45%, #f4efe7 100%);
+  font-family: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+}
+
+a {
+  color: inherit;
+}
+
+.display-face {
+  font-family: 'Fraunces', Georgia, serif;
+}
+
+.page-shell {
+  @apply mx-auto max-w-6xl px-5;
+}
+
+.section-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(12px);
+}
+
+.eyebrow {
+  @apply text-xs font-semibold uppercase tracking-[0.24em];
+  color: var(--accent);
+}
+
+.muted {
+  color: var(--muted);
+}
+
+.button-primary {
+  @apply inline-flex items-center justify-center rounded-full px-5 py-3 text-sm font-semibold transition;
+  background: var(--accent);
+  color: #fff8f0;
+}
+
+.button-primary:hover {
+  background: #834425;
+}
+
+.button-secondary {
+  @apply inline-flex items-center justify-center rounded-full px-5 py-3 text-sm font-semibold transition;
+  border: 1px solid var(--line);
+  background: var(--surface-strong);
+}
+
+.button-secondary:hover {
+  background: #ffffff;
+}
+
+.rich-prose {
+  @apply prose prose-stone max-w-none prose-headings:display-face prose-headings:text-stone-900 prose-a:text-[color:var(--accent)] prose-a:no-underline hover:prose-a:underline prose-code:text-stone-900 prose-pre:border prose-pre:border-stone-200 prose-pre:bg-stone-950 prose-strong:text-stone-900;
+}

@@ -1,0 +1,137 @@
+---
+import { getCollection } from 'astro:content';
+import PostCard from '@/components/PostCard.astro';
+import ProjectCard from '@/components/ProjectCard.astro';
+import SectionHeading from '@/components/SectionHeading.astro';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { featuredProjects } from '@/features/projects/service';
+import {
+  education,
+  experience,
+  heroStats,
+  siteConfig,
+  strengths,
+} from '@/site.config';
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())
+  .slice(0, 2);
+---
+
+<BaseLayout
+  pageTitle="Software Engineer"
+  pageDescription="Portfolio, project case studies, and writing by Bennet Vella."
+>
+  <section class="grid gap-8 lg:grid-cols-[1.2fr_0.8fr]">
+    <div class="section-card rounded-[2rem] p-8 md:p-10">
+      <p class="eyebrow">Portfolio</p>
+      <h1 class="display-face mt-4 max-w-3xl text-5xl font-semibold tracking-tight md:text-7xl">
+        Engineering work across backend systems, game development, and integration-heavy delivery.
+      </h1>
+      <p class="mt-6 max-w-2xl text-lg leading-8 muted">
+        I build software with a practical delivery mindset: game systems, backend services,
+        data flows, and product-facing engineering that needs to stay understandable over time.
+      </p>
+      <div class="mt-8 flex flex-wrap gap-3">
+        <a class="button-primary" href={`${import.meta.env.BASE_URL}projects`}>
+          Explore projects
+        </a>
+        <a class="button-secondary" href={siteConfig.linkedin} target="_blank" rel="noreferrer">
+          LinkedIn profile
+        </a>
+      </div>
+    </div>
+
+    <aside class="space-y-4">
+      {
+        heroStats.map((item) => (
+          <div class="section-card rounded-[1.75rem] p-6">
+            <p class="text-sm font-semibold uppercase tracking-[0.18em] muted">
+              {item.label}
+            </p>
+            <p class="mt-3 text-xl font-semibold">{item.value}</p>
+          </div>
+        ))
+      }
+    </aside>
+  </section>
+
+  <section class="mt-20">
+    <SectionHeading
+      eyebrow="Strengths"
+      title="A portfolio shaped by shipping work, not just demo code."
+      intro="The baseline for this site is a portfolio-first Astro structure, adapted here into a simpler static build that better suits long-term maintenance and GitHub Pages hosting."
+    />
+    <div class="grid gap-4 md:grid-cols-2">
+      {
+        strengths.map((strength) => (
+          <div class="section-card rounded-[1.5rem] p-6">
+            <p class="leading-7">{strength}</p>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="mt-20">
+    <SectionHeading
+      eyebrow="Projects"
+      title="Selected case studies"
+      intro="These are the projects and work areas that best represent how I approach software engineering."
+    />
+    <div class="grid gap-5 lg:grid-cols-3">
+      {featuredProjects.map((project) => <ProjectCard project={project} />)}
+    </div>
+  </section>
+
+  <section class="mt-20 grid gap-8 lg:grid-cols-2">
+    <div>
+      <SectionHeading
+        eyebrow="Experience"
+        title="Professional path"
+        intro="Work experience drawn from the current public profile and turned into concise portfolio-ready summaries."
+      />
+      <div class="space-y-4">
+        {
+          experience.map((item) => (
+            <div class="section-card rounded-[1.5rem] p-6">
+              <p class="text-sm font-semibold muted">{item.period}</p>
+              <h3 class="mt-2 text-xl font-semibold">{item.title}</h3>
+              <p class="mt-1 text-sm uppercase tracking-[0.16em] muted">{item.company}</p>
+              <p class="mt-4 leading-7 muted">{item.summary}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+    <div>
+      <SectionHeading
+        eyebrow="Education"
+        title="Academic background"
+        intro="Formal training that supports the systems-heavy and engineering-first orientation of the portfolio."
+      />
+      <div class="space-y-4">
+        {
+          education.map((item) => (
+            <div class="section-card rounded-[1.5rem] p-6">
+              <p class="text-sm font-semibold muted">{item.period}</p>
+              <h3 class="mt-2 text-xl font-semibold">{item.title}</h3>
+              <p class="mt-1 leading-7 muted">{item.institution}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="mt-20">
+    <SectionHeading
+      eyebrow="Writing"
+      title="Recent notes"
+      intro="A simple MDX-backed blog for architecture notes, engineering reflections, and future project write-ups."
+    />
+    <div class="grid gap-5 md:grid-cols-2">
+      {posts.map((post) => <PostCard post={post} />)}
+    </div>
+  </section>
+</BaseLayout>

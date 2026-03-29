@@ -1,0 +1,19 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+---
+
+<BaseLayout pageTitle="Not Found" pageDescription="The requested page was not found.">
+  <section class="section-card rounded-[2rem] p-8 md:p-10">
+    <p class="eyebrow">404</p>
+    <h1 class="display-face mt-4 text-4xl font-semibold md:text-6xl">
+      Page not found
+    </h1>
+    <p class="mt-6 max-w-2xl text-lg leading-8 muted">
+      The page you requested does not exist. Use the main navigation to return to the portfolio,
+      projects, blog, or contact pages.
+    </p>
+    <a class="button-primary mt-8" href={import.meta.env.BASE_URL}>
+      Back to home
+    </a>
+  </section>
+</BaseLayout>

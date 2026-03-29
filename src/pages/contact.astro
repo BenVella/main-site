@@ -1,0 +1,48 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { siteConfig } from '@/site.config';
+---
+
+<BaseLayout
+  pageTitle="Contact"
+  pageDescription="Where to reach Bennet Vella online."
+>
+  <section class="section-card rounded-[2rem] p-8 md:p-10">
+    <p class="eyebrow">Contact</p>
+    <h1 class="display-face mt-4 text-4xl font-semibold md:text-6xl">
+      Best reached through public professional channels.
+    </h1>
+    <p class="mt-6 max-w-3xl text-lg leading-8 muted">
+      The upstream template included a contact form backed by an Astro API route.
+      That is not appropriate for a GitHub Pages deployment, so this migration
+      replaces it with static contact links that require no backend runtime.
+    </p>
+    <div class="mt-10 grid gap-4 md:grid-cols-2">
+      <a
+        href={siteConfig.linkedin}
+        target="_blank"
+        rel="noreferrer"
+        class="section-card rounded-[1.5rem] bg-white/80 p-6"
+      >
+        <p class="eyebrow">LinkedIn</p>
+        <p class="mt-3 text-xl font-semibold">Professional profile</p>
+        <p class="mt-2 leading-7 muted">
+          Career history, role progression, and public portfolio context.
+        </p>
+      </a>
+      <a
+        href={siteConfig.github}
+        target="_blank"
+        rel="noreferrer"
+        class="section-card rounded-[1.5rem] bg-white/80 p-6"
+      >
+        <p class="eyebrow">GitHub</p>
+        <p class="mt-3 text-xl font-semibold">Code and experiments</p>
+        <p class="mt-2 leading-7 muted">
+          Repositories, prototypes, and technical artifacts that complement the
+          portfolio case studies.
+        </p>
+      </a>
+    </div>
+  </section>
+</BaseLayout>
