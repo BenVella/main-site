@@ -18,6 +18,7 @@ If the user explicitly requests direct implementation, agents may bypass scan an
   - `.github/workflows/`
   - `docs/plan/`
   - `docs/impl/`
+  - `docs/done/`
   - `docs/wiki/`
 - If supporting documentation does not exist yet for the task, create it in `docs/plan/` during or immediately after the scan.
 - Do not implement changes during the scan phase.
@@ -40,6 +41,7 @@ If the user explicitly requests direct implementation, agents may bypass scan an
 ## Phase 3: Implementation
 
 - When implementation begins, move the task document from `docs/plan/` to `docs/impl/` and update it with implementation progress.
+- When implementation is completed, move the task document from `docs/impl/` to `docs/done/` so completed work is clearly separated from active implementation records.
 - Make the agreed changes only after the user approves the plan, unless the user explicitly requested direct implementation.
 - Keep implementation notes concise and relevant.
 - Update `docs/wiki/` only for durable project knowledge, not temporary task chatter.
@@ -59,7 +61,8 @@ If the user explicitly requests direct implementation, agents may bypass scan an
 ## Documentation Rules
 
 - `docs/plan/` contains proposed work that has not started implementation.
-- `docs/impl/` contains active or completed implementation records.
+- `docs/impl/` contains active implementation records.
+- `docs/done/` contains completed implementation records.
 - `docs/wiki/` contains stable reference material about the site.
 - All docs in those folders must be Markdown and human-readable.
 - Keep documentation current when making meaningful structural changes.
