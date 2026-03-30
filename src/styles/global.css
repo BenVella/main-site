@@ -77,5 +77,9 @@ a {
 }
 
 .rich-prose {
-  @apply prose prose-stone max-w-none prose-headings:display-face prose-headings:text-stone-900 prose-a:text-[color:var(--accent)] prose-a:no-underline hover:prose-a:underline prose-code:text-stone-900 prose-pre:border prose-pre:border-stone-200 prose-pre:bg-stone-950 prose-strong:text-stone-900;
+  @apply prose prose-stone max-w-none prose-headings:text-stone-900 prose-a:text-[color:var(--accent)] prose-a:no-underline hover:prose-a:underline prose-code:text-stone-900 prose-pre:border prose-pre:border-stone-200 prose-pre:bg-stone-950 prose-strong:text-stone-900;
+}
+
+.rich-prose :is(h1, h2, h3, h4, h5, h6) {
+  font-family: 'Fraunces', Georgia, serif;
 }
