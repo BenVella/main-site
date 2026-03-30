@@ -11,7 +11,7 @@ export const siteConfig = {
 export const heroStats = [
   { label: 'Focus areas', value: 'Backend, game tech, integrations' },
   { label: 'Current base', value: 'Malta' },
-  { label: 'Portfolio style', value: 'Static, maintainable, delivery-led' },
+  { label: 'Working style', value: 'Practical, maintainable, delivery-led' },
 ];
 
 export const strengths = [
