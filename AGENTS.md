@@ -3,6 +3,7 @@
 This repository hosts a static Astro portfolio and blog for `www.bennetvella.com`.
 
 Agents working in this repository must follow a strict three-phase workflow with explicit user confirmation between phases.
+If the user explicitly requests direct implementation, agents may bypass scan and plan and proceed straight to implementation.
 
 ## Phase 1: Scan
 
@@ -39,11 +40,12 @@ Agents working in this repository must follow a strict three-phase workflow with
 ## Phase 3: Implementation
 
 - When implementation begins, move the task document from `docs/plan/` to `docs/impl/` and update it with implementation progress.
-- Make the agreed changes only after the user approves the plan.
+- Make the agreed changes only after the user approves the plan, unless the user explicitly requested direct implementation.
 - Keep implementation notes concise and relevant.
 - Update `docs/wiki/` only for durable project knowledge, not temporary task chatter.
 - Validate the result as far as the environment allows.
 - Summarize outcomes, limitations, and follow-up items at the end.
+- Include a suggested git commit message after each implementation summary, but do not create a commit unless explicitly asked.
 
 ## Repository Context
 
