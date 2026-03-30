@@ -39,10 +39,29 @@ The site is intended to serve as a professional portfolio and blog, with:
 
 The GitHub Pages workflow is defined in `.github/workflows/deploy.yml`.
 
+Pull request validation is defined in `.github/workflows/preview.yml`.
+
 The build expects:
 
 - Node.js 20 in CI
 - `npm install`
 - `npm run build`
 
-The site is currently configured for the custom domain `https://www.bennetvella.com`, with `SITE_BASE_PATH=/`.
+The site is currently configured for the custom domain `https://www.bennetvella.com`.
+
+Deployment behavior:
+
+- `main` deploys the production site at `/`
+- `develop` deploys a staging build at `/staging/`
+- production and staging are published together on the `gh-pages` branch
+- staging pages emit `noindex, nofollow` metadata to reduce accidental indexing
+
+Build configuration:
+
+- production uses `SITE_BASE_PATH=/`
+- staging uses `SITE_BASE_PATH=/staging/`
+- `SITE_URL` controls the base site URL used for generated metadata
+
+Operational note:
+
+- GitHub Pages should be configured to publish from the `gh-pages` branch at the repository root for this workflow to take effect.

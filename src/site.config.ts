@@ -3,7 +3,6 @@ export const siteConfig = {
   title: 'Bennet Vella | Software Engineer',
   description:
     'Software engineer focused on backend systems, game development, data integration, and pragmatic product delivery.',
-  siteUrl: 'https://www.bennetvella.com',
   location: 'Malta',
   github: 'https://github.com/benvella',
   linkedin: 'https://mt.linkedin.com/in/bennet-vella',
