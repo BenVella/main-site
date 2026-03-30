@@ -60,7 +60,7 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
     <SectionHeading
       eyebrow="Strengths"
       title="A portfolio shaped by shipping work, not just demo code."
-      intro="The baseline for this site is a portfolio-first Astro structure, adapted here into a simpler static build that better suits long-term maintenance and GitHub Pages hosting."
+      intro="These focus areas reflect the engineering work I have spent the most time shipping across product, platform, and delivery contexts."
     />
     <div class="grid gap-4 md:grid-cols-2">
       {
@@ -89,7 +89,7 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
       <SectionHeading
         eyebrow="Experience"
         title="Professional path"
-        intro="Work experience drawn from the current public profile and turned into concise portfolio-ready summaries."
+        intro="Selected roles and responsibilities presented as concise summaries of the work I have delivered."
       />
       <div class="space-y-4">
         {
@@ -108,7 +108,7 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
       <SectionHeading
         eyebrow="Education"
         title="Academic background"
-        intro="Formal training that supports the systems-heavy and engineering-first orientation of the portfolio."
+        intro="Formal training that supports my work across systems, software engineering, and applied technical problem-solving."
       />
       <div class="space-y-4">
         {
@@ -128,7 +128,7 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
     <SectionHeading
       eyebrow="Writing"
       title="Recent notes"
-      intro="A simple MDX-backed blog for architecture notes, engineering reflections, and future project write-ups."
+      intro="Notes on software engineering, delivery constraints, backend systems, and related technical work."
     />
     <div class="grid gap-5 md:grid-cols-2">
       {posts.map((post) => <PostCard post={post} />)}
