@@ -57,6 +57,90 @@ a {
   backdrop-filter: blur(12px);
 }
 
+.hero-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-card::after {
+  position: absolute;
+  inset: auto -8% -20% auto;
+  width: 18rem;
+  height: 18rem;
+  border-radius: 9999px;
+  background: radial-gradient(circle, rgba(166, 227, 161, 0.18) 0%, transparent 72%);
+  content: '';
+  pointer-events: none;
+}
+
+.hero-note {
+  border: 1px solid var(--line);
+  background: rgba(17, 17, 27, 0.36);
+}
+
+.hero-tech-panel {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-tech-panel::before {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at top right, rgba(137, 180, 250, 0.12), transparent 32%),
+    linear-gradient(180deg, rgba(17, 17, 27, 0.08), transparent);
+  content: '';
+  pointer-events: none;
+}
+
+.tech-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.8rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: 9999px;
+  background: rgba(17, 17, 27, 0.52);
+  animation: badge-float 5.5s ease-in-out infinite;
+  animation-delay: var(--badge-delay, 0ms);
+}
+
+.tech-badge-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 9999px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+.tech-badge-name {
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+@keyframes badge-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tech-badge {
+    animation: none;
+  }
+}
+
 .eyebrow {
   @apply text-xs font-semibold uppercase tracking-[0.24em];
   color: var(--accent);
