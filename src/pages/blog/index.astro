@@ -16,7 +16,7 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
   <SectionHeading
     eyebrow="Blog"
     title="Engineering notes and case-study context"
-    intro="The original target template included a bilingual blog and extra content sections. For this migration, the blog stays, but the content model is intentionally narrowed to a straightforward English MDX workflow."
+    intro="Writing that adds context to my work in software engineering, delivery, and system design."
   />
   <div class="grid gap-5 md:grid-cols-2">
     {posts.map((post) => <PostCard post={post} />)}

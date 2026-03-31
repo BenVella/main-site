@@ -1,0 +1,37 @@
+name: Validate Astro Site
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Type and content checks
+        run: npm run check
+
+      - name: Build production variant
+        env:
+          SITE_BASE_PATH: /
+          SITE_URL: https://www.bennetvella.com
+          PUBLIC_SITE_ENV: production
+        run: npm run build
+
+      - name: Build staging variant
+        env:
+          SITE_BASE_PATH: /staging/
+          SITE_URL: https://www.bennetvella.com
+          PUBLIC_SITE_ENV: staging
+        run: npm run build

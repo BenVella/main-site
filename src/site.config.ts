@@ -3,7 +3,6 @@ export const siteConfig = {
   title: 'Bennet Vella | Software Engineer',
   description:
     'Software engineer focused on backend systems, game development, data integration, and pragmatic product delivery.',
-  siteUrl: 'https://www.bennetvella.com',
   location: 'Malta',
   github: 'https://github.com/benvella',
   linkedin: 'https://mt.linkedin.com/in/bennet-vella',
@@ -12,7 +11,7 @@ export const siteConfig = {
 export const heroStats = [
   { label: 'Focus areas', value: 'Backend, game tech, integrations' },
   { label: 'Current base', value: 'Malta' },
-  { label: 'Portfolio style', value: 'Static, maintainable, delivery-led' },
+  { label: 'Working style', value: 'Practical, maintainable, delivery-led' },
 ];
 
 export const strengths = [

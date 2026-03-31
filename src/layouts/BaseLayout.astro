@@ -10,39 +10,43 @@ type Props = {
 };
 
 const { pageTitle, pageDescription } = Astro.props;
-const title = pageTitle ? `${pageTitle} | ${siteConfig.name}` : siteConfig.title;
-const description = pageDescription || siteConfig.description;
-const canonicalUrl = new URL(Astro.url.pathname, siteConfig.siteUrl).toString();
+const siteUrl = Astro.site ?? new URL('https://www.bennetvella.com');
 const baseUrl = import.meta.env.BASE_URL;
 const favicon = `${baseUrl}assets/favicon.ico`;
 const manifest = `${baseUrl}assets/site.webmanifest`;
 const socialImage = `${baseUrl}og-image.svg`;
+const isStaging = import.meta.env.PUBLIC_SITE_ENV === 'staging';
+const title = pageTitle ? `${pageTitle} | ${siteConfig.name}` : siteConfig.title;
+const documentTitle = isStaging ? `[Staging] ${title}` : title;
+const description = pageDescription || siteConfig.description;
+const canonicalUrl = new URL(Astro.url.pathname, siteUrl).toString();
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" data-site-env={isStaging ? 'staging' : 'production'}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{title}</title>
+    <title>{documentTitle}</title>
     <meta name="description" content={description} />
     <meta name="generator" content={Astro.generator} />
     <link rel="canonical" href={canonicalUrl} />
+    {isStaging && <meta name="robots" content="noindex, nofollow" />}
     <link rel="icon" type="image/svg+xml" href={`${baseUrl}assets/favicon.svg`} />
     <link rel="icon" type="image/png" sizes="96x96" href={`${baseUrl}assets/favicon-96x96.png`} />
     <link rel="shortcut icon" href={favicon} />
     <link rel="apple-touch-icon" sizes="180x180" href={`${baseUrl}assets/apple-touch-icon.png`} />
     <link rel="manifest" href={manifest} />
-    <meta name="theme-color" content="#f3efe5" />
+    <meta name="theme-color" content="#11111b" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalUrl} />
-    <meta property="og:image" content={new URL(socialImage, siteConfig.siteUrl).toString()} />
+    <meta property="og:image" content={new URL(socialImage, siteUrl).toString()} />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={new URL(socialImage, siteConfig.siteUrl).toString()} />
+    <meta name="twitter:image" content={new URL(socialImage, siteUrl).toString()} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
