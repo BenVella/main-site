@@ -18,10 +18,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Setup Node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
           node-version: 20
 
@@ -35,24 +35,34 @@ jobs:
           PUBLIC_SITE_ENV: production
         run: npm run build
 
+      - name: Prepare production publish tree
+        run: |
+          mkdir -p /tmp/publish
+          if git ls-remote --exit-code --heads origin gh-pages; then
+            git fetch origin gh-pages
+            git worktree add /tmp/gh-pages origin/gh-pages
+            rsync -a /tmp/gh-pages/ /tmp/publish/
+          fi
+          rsync -a --delete --exclude staging dist/ /tmp/publish/
+          cp public/CNAME /tmp/publish/CNAME
+          touch /tmp/publish/.nojekyll
+
       - name: Deploy production to gh-pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages
-          folder: dist
+          folder: /tmp/publish
           clean: true
-          clean-exclude: |
-            staging
 
   deploy-staging:
     if: github.ref == 'refs/heads/develop'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Setup Node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
           node-version: 20
 
@@ -66,10 +76,21 @@ jobs:
           PUBLIC_SITE_ENV: staging
         run: npm run build
 
-      - name: Deploy staging to gh-pages/staging
+      - name: Prepare staging publish tree
+        run: |
+          mkdir -p /tmp/publish/staging
+          if git ls-remote --exit-code --heads origin gh-pages; then
+            git fetch origin gh-pages
+            git worktree add /tmp/gh-pages origin/gh-pages
+            rsync -a /tmp/gh-pages/ /tmp/publish/
+          fi
+          rsync -a --delete dist/ /tmp/publish/staging/
+          cp public/CNAME /tmp/publish/CNAME
+          touch /tmp/publish/.nojekyll
+
+      - name: Deploy staging to gh-pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages
-          folder: dist
-          target-folder: staging
+          folder: /tmp/publish
           clean: true
