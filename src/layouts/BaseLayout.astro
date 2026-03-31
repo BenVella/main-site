@@ -10,23 +10,24 @@ type Props = {
 };
 
 const { pageTitle, pageDescription } = Astro.props;
-const title = pageTitle ? `${pageTitle} | ${siteConfig.name}` : siteConfig.title;
-const description = pageDescription || siteConfig.description;
 const siteUrl = Astro.site ?? new URL('https://www.bennetvella.com');
-const canonicalUrl = new URL(Astro.url.pathname, siteUrl).toString();
 const baseUrl = import.meta.env.BASE_URL;
 const favicon = `${baseUrl}assets/favicon.ico`;
 const manifest = `${baseUrl}assets/site.webmanifest`;
 const socialImage = `${baseUrl}og-image.svg`;
 const isStaging = import.meta.env.PUBLIC_SITE_ENV === 'staging';
+const title = pageTitle ? `${pageTitle} | ${siteConfig.name}` : siteConfig.title;
+const documentTitle = isStaging ? `[Staging] ${title}` : title;
+const description = pageDescription || siteConfig.description;
+const canonicalUrl = new URL(Astro.url.pathname, siteUrl).toString();
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" data-site-env={isStaging ? 'staging' : 'production'}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{title}</title>
+    <title>{documentTitle}</title>
     <meta name="description" content={description} />
     <meta name="generator" content={Astro.generator} />
     <link rel="canonical" href={canonicalUrl} />
