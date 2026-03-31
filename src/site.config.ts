@@ -8,12 +8,6 @@ export const siteConfig = {
   linkedin: 'https://mt.linkedin.com/in/bennet-vella',
 };
 
-export const heroStats = [
-  { label: 'Focus areas', value: 'Backend, game tech, integrations' },
-  { label: 'Current base', value: 'Malta' },
-  { label: 'Working style', value: 'Practical, maintainable, delivery-led' },
-];
-
 export const strengths = [
   'Backend services for game and product workflows',
   'Unity and gameplay engineering across mobile and console contexts',
