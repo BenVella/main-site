@@ -55,6 +55,7 @@ Deployment behavior:
 - `develop` deploys a staging build at `/staging/`
 - production and staging are published together on the `gh-pages` branch
 - staging pages emit `noindex, nofollow` metadata to reduce accidental indexing
+- the staging URL is intended for pre-release inspection before promoting changes to `main`
 
 Build configuration:
 
