@@ -119,6 +119,17 @@ a {
   letter-spacing: 0.08em;
 }
 
+.tech-badge-mark-icon {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text);
+}
+
+.tech-badge-icon {
+  width: 1.2rem;
+  height: 1.2rem;
+  object-fit: contain;
+}
+
 .tech-badge-name {
   font-size: 0.95rem;
   font-weight: 600;

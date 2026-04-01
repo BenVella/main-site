@@ -24,11 +24,20 @@ export const heroHighlights = [
   },
 ];
 
-export const heroTechnologies = [
+export type Technology = {
+  shortLabel: string;
+  name: string;
+  iconFile?: string;
+};
+
+export const technologyIconDirectory = 'assets/technology-icons';
+
+export const heroTechnologies: Technology[] = [
   { shortLabel: 'U', name: 'Unity' },
   { shortLabel: 'C#', name: 'C#' },
   { shortLabel: 'G', name: 'Git' },
   { shortLabel: 'D', name: 'Docker' },
   { shortLabel: 'M', name: 'MuleSoft' },
   { shortLabel: '.N', name: '.NET' },
+  { shortLabel: 'W', name: 'Windmill' },
 ];
