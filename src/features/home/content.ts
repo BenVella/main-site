@@ -36,9 +36,13 @@ export const technologyIconDirectory = 'assets/technology-icons';
 export const heroTechnologies: Technology[] = [
   { shortLabel: 'U', name: 'Unity' },
   { shortLabel: 'C#', name: 'C#' },
+  { shortLabel: 'P4', name: 'Perforce' },
+  { shortLabel: 'S', name: 'Steam', iconFile: 'official/steam.png' },
   { shortLabel: 'G', name: 'Git' },
   { shortLabel: 'D', name: 'Docker' },
-  { shortLabel: 'M', name: 'MuleSoft' },
   { shortLabel: '.N', name: '.NET' },
+  { shortLabel: 'Go', name: 'Go' },
+  { shortLabel: 'J', name: 'Java' },
+  { shortLabel: 'M', name: 'MuleSoft' },
   { shortLabel: 'W', name: 'Windmill' },
 ];
