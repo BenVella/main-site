@@ -1,8 +1,8 @@
 export const siteConfig = {
   name: 'Bennet Vella',
-  title: 'Bennet Vella | Software Engineer',
+  title: 'Bennet Vella | Lead Game Programmer',
   description:
-    'Software engineer focused on backend systems, game development, data integration, and pragmatic product delivery.',
+    'Lead game programmer focused on game systems, backend multiplayer, data integration, and pragmatic product delivery.',
   location: 'Malta',
   github: 'https://github.com/benvella',
   linkedin: 'https://mt.linkedin.com/in/bennet-vella',

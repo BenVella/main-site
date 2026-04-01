@@ -1,11 +1,12 @@
 export const homeHero = {
-  eyebrow: 'Lead game programmer',
-  title: 'Unity game development shaped by a backend engineering foundation.',
+  eyebrow: 'Lead Game Programmer',
+  title:
+    'Building production game systems in Unity with strengths in systems programming and backend multiplayer.',
   intro:
-    'I am Bennet Vella, a lead game programmer building production game systems in Unity. My earlier backend and integration work still informs how I structure tools, services, and maintainable delivery.',
+    'I am Bennet Vella, a lead game programmer building production game systems in Unity. My background spans gameplay architecture, systems-level technical work, and backend multiplayer capabilities, with earlier backend and integration experience still shaping how I structure tools and delivery.',
   supportingPoints: [
     'Industry experience across gameplay systems, technical delivery, and cross-discipline collaboration.',
-    'A backend-first foundation spanning APIs, integrations, and operational software before moving deeper into game development.',
+    'A foundation across backend services, integrations, and operational software that carries into multiplayer-aware game development.',
   ],
 };
 
@@ -16,7 +17,7 @@ export const heroHighlights = [
   },
   {
     label: 'Engineering lens',
-    value: 'Gameplay, tools, backend workflows, integrations',
+    value: 'Gameplay, systems programming, backend multiplayer, tools',
   },
   {
     label: 'Based in',
@@ -24,11 +25,24 @@ export const heroHighlights = [
   },
 ];
 
-export const heroTechnologies = [
+export type Technology = {
+  shortLabel: string;
+  name: string;
+  iconFile?: string;
+};
+
+export const technologyIconDirectory = 'assets/technology-icons';
+
+export const heroTechnologies: Technology[] = [
   { shortLabel: 'U', name: 'Unity' },
   { shortLabel: 'C#', name: 'C#' },
+  { shortLabel: 'P4', name: 'Perforce' },
+  { shortLabel: 'S', name: 'Steam', iconFile: 'official/steam.png' },
   { shortLabel: 'G', name: 'Git' },
   { shortLabel: 'D', name: 'Docker' },
-  { shortLabel: 'M', name: 'MuleSoft' },
   { shortLabel: '.N', name: '.NET' },
+  { shortLabel: 'Go', name: 'Go' },
+  { shortLabel: 'J', name: 'Java' },
+  { shortLabel: 'M', name: 'MuleSoft' },
+  { shortLabel: 'W', name: 'Windmill' },
 ];
