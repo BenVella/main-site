@@ -24,9 +24,10 @@ jobs:
         uses: actions/setup-node@v5
         with:
           node-version: 20
+          cache: npm
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
       - name: Build production site
         env:
@@ -65,9 +66,10 @@ jobs:
         uses: actions/setup-node@v5
         with:
           node-version: 20
+          cache: npm
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
       - name: Build staging site
         env:
