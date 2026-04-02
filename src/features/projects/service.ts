@@ -29,7 +29,7 @@ export const projects: Project[] = [
     company: 'Exient',
     featured: true,
     image: {
-      src: '/images/projects/cloud-save-platform.svg',
+      src: 'images/projects/cloud-save-platform.svg',
       alt: 'Framed preview artwork representing cloud save architecture and storage pipelines.',
     },
     details: {
@@ -53,7 +53,7 @@ export const projects: Project[] = [
     company: 'Exient',
     featured: true,
     image: {
-      src: '/images/projects/unity-package-engineering.svg',
+      src: 'images/projects/unity-package-engineering.svg',
       alt: 'Framed preview artwork representing modular Unity package development.',
     },
     details: {
@@ -77,7 +77,7 @@ export const projects: Project[] = [
     company: 'Exient',
     featured: true,
     image: {
-      src: '/images/projects/firebase-ugc-platform.svg',
+      src: 'images/projects/firebase-ugc-platform.svg',
       alt: 'Framed preview artwork representing user-generated content moderation and cloud operations.',
     },
     details: {
@@ -101,7 +101,7 @@ export const projects: Project[] = [
     company: 'Exient',
     featured: true,
     image: {
-      src: '/images/projects/unity-systems-modernization.svg',
+      src: 'images/projects/unity-systems-modernization.svg',
       alt: 'Framed preview artwork representing system refactoring and performance-driven Unity workflows.',
     },
     details: {
@@ -125,7 +125,7 @@ export const projects: Project[] = [
     company: 'Exient',
     featured: true,
     image: {
-      src: '/images/projects/cloud-integrations-data-pipelines.svg',
+      src: 'images/projects/cloud-integrations-data-pipelines.svg',
       alt: 'Framed preview artwork representing cloud integrations and data movement across systems.',
     },
     details: {
