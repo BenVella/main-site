@@ -1,6 +1,7 @@
 ---
 import TechnologyStrip from '@/components/home/TechnologyStrip.astro';
 import { heroHighlights, heroTechnologies, homeHero } from '@/features/home/content';
+import { withBase } from '@/utils/base-path';
 
 type Props = {
   linkedinUrl: string;
@@ -27,7 +28,7 @@ const baseUrl = import.meta.env.BASE_URL;
       }
     </div>
     <div class="mt-8 flex flex-wrap gap-3">
-      <a class="button-primary" href={`${baseUrl}projects`}>
+      <a class="button-primary" href={withBase(baseUrl, 'projects')}>
         Explore projects
       </a>
       <a class="button-secondary" href={linkedinUrl} target="_blank" rel="noreferrer">

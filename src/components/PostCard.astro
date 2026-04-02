@@ -1,5 +1,6 @@
 ---
 import type { CollectionEntry } from 'astro:content';
+import { withBase } from '@/utils/base-path';
 
 type Props = {
   post: CollectionEntry<'blog'>;
@@ -29,7 +30,7 @@ const baseUrl = import.meta.env.BASE_URL;
     }
   </div>
   <a
-    href={`${baseUrl}blog/${post.id}`}
+    href={withBase(baseUrl, `blog/${post.id}`)}
     class="mt-6 inline-flex items-center text-sm font-semibold"
     style="color: var(--accent);"
   >
