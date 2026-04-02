@@ -7,5 +7,14 @@
     "previewPathSegment": "pr-13",
     "url": "/staging/pr-13/",
     "updatedAt": "2026-04-02T14:53:02.759Z"
+  },
+  {
+    "prNumber": 11,
+    "branchName": "codex/list-strengths-section-for-refinement",
+    "title": "Projects: add preview artwork, refactor project model and UI with modal previews",
+    "label": "codex/list-strengths-section-for-refinement · PR #11",
+    "previewPathSegment": "pr-11",
+    "url": "/staging/pr-11/",
+    "updatedAt": "2026-04-02T15:05:58.197Z"
   }
 ]
