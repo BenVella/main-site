@@ -40,11 +40,11 @@ const technologyDetails = technologies.map((technology) => ({
   </div>
 </div>
 
-<dialog class="skill-dialog" id="skill-dialog">
+<dialog class="skill-dialog" id="skill-dialog" aria-labelledby="skill-dialog-title" aria-describedby="skill-dialog-summary skill-dialog-experience">
   <article class="skill-dialog-card">
     <header class="skill-dialog-header">
       <div class="skill-dialog-title-wrap">
-        <span class="skill-dialog-icon-wrap" id="skill-dialog-icon-wrap" aria-hidden="true">
+        <span class="skill-dialog-icon-wrap" id="skill-dialog-icon-wrap" aria-hidden="true" hidden>
           <img class="skill-dialog-icon" id="skill-dialog-icon" alt="" width="28" height="28" decoding="async" />
         </span>
         <h3 class="skill-dialog-title" id="skill-dialog-title"></h3>
@@ -90,6 +90,7 @@ const technologyDetails = technologies.map((technology) => ({
     }
 
     if (typeof skillDialog.showModal === 'function') {
+      if (skillDialog.open) return;
       skillDialog.showModal();
       return;
     }
@@ -115,6 +116,7 @@ const technologyDetails = technologies.map((technology) => ({
 
   closeButton?.addEventListener('click', () => {
     if (!skillDialog) return;
+    if (!skillDialog.open) return;
     skillDialog.close();
   });
 
