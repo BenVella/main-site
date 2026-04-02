@@ -33,6 +33,7 @@ jobs:
           SITE_BASE_PATH: /
           SITE_URL: https://www.bennetvella.com
           PUBLIC_SITE_ENV: production
+          PUBLIC_STAGING_ROOT_PATH: /staging/
         run: npm run build
 
       - name: Prepare production publish tree
@@ -74,6 +75,7 @@ jobs:
           SITE_BASE_PATH: /staging/
           SITE_URL: https://www.bennetvella.com
           PUBLIC_SITE_ENV: staging
+          PUBLIC_STAGING_ROOT_PATH: /staging/
         run: npm run build
 
       - name: Prepare staging publish tree
@@ -84,9 +86,16 @@ jobs:
             git worktree add /tmp/gh-pages origin/gh-pages
             rsync -a /tmp/gh-pages/ /tmp/publish/
           fi
-          rsync -a --delete dist/ /tmp/publish/staging/
+          rsync -a --delete \
+            --exclude 'pr-*' \
+            --exclude '_preview-data' \
+            --exclude 'previews.json' \
+            dist/ /tmp/publish/staging/
           cp public/CNAME /tmp/publish/CNAME
           touch /tmp/publish/.nojekyll
+
+      - name: Rebuild staging previews manifest
+        run: node scripts/build-staging-previews-manifest.mjs /tmp/publish
 
       - name: Deploy staging to gh-pages
         uses: JamesIves/github-pages-deploy-action@v4
