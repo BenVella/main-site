@@ -97,7 +97,12 @@ jobs:
           touch /tmp/publish/.nojekyll
 
       - name: Rebuild staging previews manifest
-        run: node scripts/build-staging-previews-manifest.mjs /tmp/publish
+        env:
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          node scripts/prune-staging-previews.mjs /tmp/publish
+          node scripts/build-staging-previews-manifest.mjs /tmp/publish
 
       - name: Deploy staging to gh-pages
         uses: JamesIves/github-pages-deploy-action@v4
