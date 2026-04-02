@@ -1,93 +1,143 @@
 export type Project = {
   slug: string;
   title: string;
-  summary: string;
-  category: string;
+  caption: string;
   period: string;
-  tags: string[];
+  role: string;
+  company: string;
   featured: boolean;
-  problem: string;
-  work: string[];
-  outcome: string;
+  image: {
+    src: string;
+    alt: string;
+  };
+  details: {
+    summary: string;
+    highlights: string[];
+    stack: string[];
+  };
   links?: Array<{ label: string; href: string }>;
 };
 
 export const projects: Project[] = [
   {
-    slug: 'game-server-platform',
-    title: 'Game Server Platform Prototype',
-    summary:
-      'A game-agnostic backend prototype for authentication, authorization, and session lifecycle management.',
-    category: 'Backend Systems',
-    period: 'Independent project',
-    tags: ['Java', 'Authentication', 'Game Services', 'Architecture'],
+    slug: 'cloud-save-platform-go-aws',
+    title: 'Cloud Save Platform',
+    caption:
+      'Full-stack cloud save delivery in Go with DynamoDB persistence and AWS S3 multipart upload flows using signed URLs.',
+    period: '2023 to present',
+    role: 'Game Programmer',
+    company: 'Exient',
     featured: true,
-    problem:
-      'I wanted a reusable backend foundation for game-facing services instead of rebuilding account and session primitives per project.',
-    work: [
-      'Defined a service shape for sign-in, identity checks, session creation, and access control.',
-      'Focused on clean domain boundaries so the platform could support multiple game contexts.',
-      'Kept the implementation small enough to iterate on architecture decisions before hardening.',
-    ],
-    outcome:
-      'The result is a strong portfolio case study in backend thinking: clear service boundaries, reusable concerns, and an approach grounded in practical game infrastructure needs.',
+    image: {
+      src: '/images/projects/cloud-save-platform.svg',
+      alt: 'Framed preview artwork representing cloud save architecture and storage pipelines.',
+    },
+    details: {
+      summary:
+        'Built a production-minded cloud save capability from the ground up, including service boundaries, data persistence patterns, and secure upload workflows for game content.',
+      highlights: [
+        'Designed Go service flows for account-bound save state lifecycle management.',
+        'Implemented DynamoDB data models for durable player progression storage.',
+        'Shipped S3 multipart upload support with signed URL orchestration for secure client uploads.',
+      ],
+      stack: ['Go', 'DynamoDB', 'AWS S3', 'Signed URLs', 'Backend Architecture'],
+    },
   },
   {
-    slug: 'production-game-engineering',
-    title: 'Production Game Engineering',
-    summary:
-      'Gameplay and systems programming work shaped by shipping constraints, multidisciplinary collaboration, and platform realities.',
-    category: 'Game Development',
-    period: 'Professional work',
-    tags: ['Unity', 'Gameplay', 'Console', 'Mobile'],
+    slug: 'unity-package-engineering',
+    title: 'Unity Package Engineering',
+    caption:
+      'Creation and maintenance of reusable Unity packages to improve delivery speed and implementation consistency across teams.',
+    period: '2023 to present',
+    role: 'Game Programmer',
+    company: 'Exient',
     featured: true,
-    problem:
-      'Production game work demands maintainable systems that survive content changes, platform requirements, and constant iteration.',
-    work: [
-      'Contributed to engineering work that balances gameplay needs with code health and delivery pressure.',
-      'Worked across system behavior, implementation detail, and collaboration with non-engineering disciplines.',
-      'Applied a delivery mindset shaped by both product and technical constraints.',
-    ],
-    outcome:
-      'This area represents the strongest through-line in my portfolio: practical engineering that helps teams ship reliably without overcomplicating the stack.',
+    image: {
+      src: '/images/projects/unity-package-engineering.svg',
+      alt: 'Framed preview artwork representing modular Unity package development.',
+    },
+    details: {
+      summary:
+        'Developed and maintained package-level Unity tooling to reduce repeated implementation effort and improve code quality across project delivery streams.',
+      highlights: [
+        'Defined package structures with explicit ownership and maintainability boundaries.',
+        'Improved package documentation and internal adoption workflows.',
+        'Supported cross-project stability by addressing regressions and compatibility risks early.',
+      ],
+      stack: ['Unity', 'C#', 'Package Architecture', 'Maintainability'],
+    },
   },
   {
-    slug: 'enterprise-integrations-and-data',
-    title: 'Enterprise Integrations and Data Workflows',
-    summary:
-      'Integration-heavy engineering across business systems, operational tooling, and structured data movement.',
-    category: 'Enterprise Delivery',
-    period: 'Professional work',
-    tags: ['Integrations', 'Cloud', 'Data', 'Business Systems'],
+    slug: 'firebase-ugc-platform-hardening',
+    title: 'Firebase UGC Platform Hardening',
+    caption:
+      'Took a UGC backend from prototype to production-grade with stronger security, clearer operations, and sustainable DevOps practices.',
+    period: '2023 to present',
+    role: 'Game Programmer',
+    company: 'Exient',
     featured: true,
-    problem:
-      'Business environments often fail at the seams, where systems, data, and process expectations do not line up cleanly.',
-    work: [
-      'Built and supported software that connects systems and turns fragmented workflows into repeatable operational paths.',
-      'Worked in delivery environments where correctness, maintainability, and stakeholder confidence all mattered.',
-      'Applied backend and integration experience to real operational needs rather than isolated proofs of concept.',
-    ],
-    outcome:
-      'The work sharpened my ability to design practical solutions in environments where software has to fit into existing organizations, not just ideal architectures.',
+    image: {
+      src: '/images/projects/firebase-ugc-platform.svg',
+      alt: 'Framed preview artwork representing user-generated content moderation and cloud operations.',
+    },
+    details: {
+      summary:
+        'Scaled a prototype UGC stack into a stable production setup by tightening authentication paths, improving operability, and documenting lifecycle responsibilities.',
+      highlights: [
+        'Strengthened Firestore data and access boundaries for safer UGC operations.',
+        'Hardened Firebase Functions execution paths and operational visibility.',
+        'Introduced more explicit DevOps and security standards for release reliability.',
+      ],
+      stack: ['Firestore', 'Firebase Functions', 'UGC Systems', 'Security', 'DevOps'],
+    },
   },
   {
-    slug: 'graphics-and-systems-foundations',
-    title: 'Graphics and Systems Foundations',
-    summary:
-      'University and independent work spanning a compiler, a ray tracer, and low-level graphics and physics experimentation.',
-    category: 'Computer Science Foundations',
-    period: 'Academic and exploratory work',
-    tags: ['C', 'Compilers', 'Graphics', 'Physics'],
-    featured: false,
-    problem:
-      'I used smaller technical projects to build fluency in how systems behave underneath higher-level tooling.',
-    work: [
-      'Built a simple compiler with lexer and parser components.',
-      'Implemented ray tracing and scene processing work in C.',
-      'Explored graphics and physics behavior close to the rendering and simulation fundamentals.',
-    ],
-    outcome:
-      'These projects remain useful portfolio evidence because they show engineering curiosity, systems grounding, and a willingness to understand the machinery under the abstractions.',
+    slug: 'unity-systems-modernization',
+    title: 'Unity Systems Modernization',
+    caption:
+      'Refactored brittle legacy gameplay code into more resilient, data-oriented, and parallel-friendly engineering flows.',
+    period: '2023 to present',
+    role: 'Game Programmer',
+    company: 'Exient',
+    featured: true,
+    image: {
+      src: '/images/projects/unity-systems-modernization.svg',
+      alt: 'Framed preview artwork representing system refactoring and performance-driven Unity workflows.',
+    },
+    details: {
+      summary:
+        'Improved delivery confidence by strengthening unstable systems, reducing fragility in legacy code, and introducing better-aligned execution paths for runtime performance.',
+      highlights: [
+        'Stabilized brittle systems through targeted architectural and structural refactoring.',
+        'Applied data-oriented flow design where it improved runtime predictability.',
+        'Parallelized practical workflows to reduce bottlenecks in implementation and iteration.',
+      ],
+      stack: ['Unity', 'Systems Programming', 'Data-Oriented Design', 'Parallel Workflows'],
+    },
+  },
+  {
+    slug: 'cloud-integrations-data-pipelines',
+    title: 'Cloud Integrations & Data Pipelines',
+    caption:
+      'Integrated cloud services and data pipelines to support operational workflows and cross-system reliability at production pace.',
+    period: '2023 to present',
+    role: 'Game Programmer',
+    company: 'Exient',
+    featured: true,
+    image: {
+      src: '/images/projects/cloud-integrations-data-pipelines.svg',
+      alt: 'Framed preview artwork representing cloud integrations and data movement across systems.',
+    },
+    details: {
+      summary:
+        'Delivered integration-heavy systems and pipeline setups that improved operational consistency, data movement clarity, and environment-level maintainability.',
+      highlights: [
+        'Connected platform services with game-facing systems through explicit integration contracts.',
+        'Implemented maintainable data flow patterns for operational visibility and reliability.',
+        'Reduced operational friction through practical architecture choices focused on delivery.',
+      ],
+      stack: ['Cloud Integrations', 'Data Pipelines', 'Operational Systems', 'Delivery Engineering'],
+    },
   },
 ];
 
