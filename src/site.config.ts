@@ -1,24 +1,19 @@
 export const siteConfig = {
   name: 'Bennet Vella',
-  title: 'Bennet Vella | Software Engineer',
+  title: 'Bennet Vella | Lead Game Programmer',
   description:
-    'Software engineer focused on backend systems, game development, data integration, and pragmatic product delivery.',
+    'Lead game programmer focused on game systems, backend multiplayer, data integration, and pragmatic product delivery.',
   location: 'Malta',
   github: 'https://github.com/benvella',
   linkedin: 'https://mt.linkedin.com/in/bennet-vella',
 };
 
-export const heroStats = [
-  { label: 'Focus areas', value: 'Backend, game tech, integrations' },
-  { label: 'Current base', value: 'Malta' },
-  { label: 'Working style', value: 'Practical, maintainable, delivery-led' },
-];
-
 export const strengths = [
-  'Backend services for game and product workflows',
-  'Unity and gameplay engineering across mobile and console contexts',
-  'Cloud integrations, data ingestion, and operational systems',
-  'Pragmatic architecture with a bias toward shipping maintainable software',
+  'Cloud backend and integration engineering',
+  'Unity systems and gameplay engineering',
+  'Unity package development and maintenance',
+  'UGC platform architecture and operations',
+  'Technical leadership and delivery ownership',
 ];
 
 export const experience = [

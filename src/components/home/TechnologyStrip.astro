@@ -1,0 +1,27 @@
+---
+import TechnologyBadge from '@/components/home/TechnologyBadge.astro';
+import type { Technology } from '@/features/home/content';
+
+type Props = {
+  technologies: Technology[];
+};
+
+const { technologies } = Astro.props;
+---
+
+<div class="section-card hero-tech-panel rounded-[1.75rem] p-6">
+  <p class="text-sm font-semibold uppercase tracking-[0.18em] muted">
+    Skills and tooling
+  </p>
+  <p class="mt-3 max-w-md text-lg font-semibold">
+    Core technologies used across gameplay delivery, backend systems, integrations, and
+    workflow automation.
+  </p>
+  <div class="mt-5 flex flex-wrap gap-3">
+    {
+      technologies.map((technology, index) => (
+        <TechnologyBadge technology={technology} delayMs={index * 120} />
+      ))
+    }
+  </div>
+</div>

@@ -18,58 +18,71 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Setup Node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
           node-version: 20
+          cache: npm
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
       - name: Build production site
         env:
           SITE_BASE_PATH: /
           SITE_URL: https://www.bennetvella.com
           PUBLIC_SITE_ENV: production
+          PUBLIC_STAGING_ROOT_PATH: /staging/
         run: npm run build
+
+      - name: Prepare production publish tree
+        uses: ./.github/actions/prepare-pages-publish
+        with:
+          mode: production
 
       - name: Deploy production to gh-pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages
-          folder: dist
+          folder: /tmp/publish
           clean: true
-          clean-exclude: |
-            staging
 
   deploy-staging:
     if: github.ref == 'refs/heads/develop'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Setup Node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
           node-version: 20
+          cache: npm
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
       - name: Build staging site
         env:
           SITE_BASE_PATH: /staging/
           SITE_URL: https://www.bennetvella.com
           PUBLIC_SITE_ENV: staging
+          PUBLIC_STAGING_ROOT_PATH: /staging/
         run: npm run build
 
-      - name: Deploy staging to gh-pages/staging
+      - name: Prepare staging publish tree
+        uses: ./.github/actions/prepare-pages-publish
+        with:
+          mode: staging
+          github_repository: ${{ github.repository }}
+          github_token: ${{ github.token }}
+
+      - name: Deploy staging to gh-pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages
-          folder: dist
-          target-folder: staging
+          folder: /tmp/publish
           clean: true

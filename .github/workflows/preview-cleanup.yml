@@ -1,0 +1,39 @@
+name: Remove Closed Preview
+
+on:
+  pull_request:
+    types: [closed]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  cleanup-preview:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Setup Node
+        uses: actions/setup-node@v5
+        with:
+          node-version: 20
+
+      - name: Prepare publish tree
+        uses: ./.github/actions/prepare-pages-publish
+        with:
+          mode: cleanup
+          pr_number: ${{ github.event.pull_request.number }}
+          github_repository: ${{ github.repository }}
+          github_token: ${{ github.token }}
+
+      - name: Deploy cleanup to gh-pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages
+          folder: /tmp/publish
+          clean: true

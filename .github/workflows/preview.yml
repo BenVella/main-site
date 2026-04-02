@@ -2,22 +2,27 @@ name: Validate Astro Site
 
 on:
   pull_request:
+    types: [opened, synchronize, reopened, ready_for_review, edited]
   workflow_dispatch:
+
+permissions:
+  contents: read
 
 jobs:
   validate:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Setup Node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
           node-version: 20
+          cache: npm
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
       - name: Type and content checks
         run: npm run check
@@ -27,6 +32,7 @@ jobs:
           SITE_BASE_PATH: /
           SITE_URL: https://www.bennetvella.com
           PUBLIC_SITE_ENV: production
+          PUBLIC_STAGING_ROOT_PATH: /staging/
         run: npm run build
 
       - name: Build staging variant
@@ -34,4 +40,51 @@ jobs:
           SITE_BASE_PATH: /staging/
           SITE_URL: https://www.bennetvella.com
           PUBLIC_SITE_ENV: staging
+          PUBLIC_STAGING_ROOT_PATH: /staging/
         run: npm run build
+
+  deploy-preview:
+    if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository
+    needs: validate
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    concurrency:
+      group: pages
+      cancel-in-progress: true
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Setup Node
+        uses: actions/setup-node@v5
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build pull request preview
+        env:
+          SITE_BASE_PATH: /staging/pr-${{ github.event.pull_request.number }}/
+          SITE_URL: https://www.bennetvella.com
+          PUBLIC_SITE_ENV: staging
+          PUBLIC_STAGING_ROOT_PATH: /staging/
+        run: npm run build
+
+      - name: Prepare pull request publish tree
+        uses: ./.github/actions/prepare-pages-publish
+        with:
+          mode: preview
+          pr_number: ${{ github.event.pull_request.number }}
+          pr_branch_name: ${{ github.event.pull_request.head.ref }}
+          pr_title: ${{ github.event.pull_request.title }}
+          github_repository: ${{ github.repository }}
+          github_token: ${{ github.token }}
+
+      - name: Deploy pull request preview to gh-pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages
+          folder: /tmp/publish
+          clean: true

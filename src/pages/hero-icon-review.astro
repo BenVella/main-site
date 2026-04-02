@@ -1,0 +1,186 @@
+---
+import TechnologyBadge from '@/components/home/TechnologyBadge.astro';
+import SectionHeading from '@/components/SectionHeading.astro';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import type { Technology } from '@/features/home/content';
+
+type ReviewedTechnology = Technology & {
+  note: string;
+  sourceLabel?: string;
+  sourceUrl?: string;
+  status: string;
+};
+
+const reviewedTechnologies: ReviewedTechnology[] = [
+  {
+    shortLabel: 'U',
+    name: 'Unity',
+    iconFile: 'official/unity.svg',
+    iconStyle: 'wide',
+    status: 'Official candidate staged with trademark caveat',
+    note:
+      'Using the official Unity logo asset surfaced on Unity\'s branding page. Unity\'s trademark guidance is still restrictive: the logo should not be used merely to beautify materials, should not be the most prominent visual element, and should not imply endorsement. It remains staged because you explicitly chose to retain the icons.',
+    sourceLabel: 'Unity trademark guidance',
+    sourceUrl: 'https://unity.com/legal/branding-trademarks',
+  },
+  {
+    shortLabel: 'C#',
+    name: 'C#',
+    iconFile: 'official/csharp.svg',
+    status: 'Official candidate staged',
+    note:
+      'Pulled from the public dotnet/brand language-icons set. Microsoft\'s README for that folder says these images are provided for usage to represent the .NET languages and should not be altered or given extra adornment.',
+    sourceLabel: 'dotnet/brand language icons',
+    sourceUrl: 'https://github.com/dotnet/brand/tree/main/logo/language-icons',
+  },
+  {
+    shortLabel: 'P4',
+    name: 'Perforce',
+    iconFile: 'official/perforce.svg',
+    iconStyle: 'wide',
+    status: 'Official candidate staged',
+    note:
+      'Using the official Perforce site branding asset. The available public asset is a wordmark-style mark, so the badge uses the wider icon treatment rather than the square symbol slot.',
+    sourceLabel: 'Perforce site asset',
+    sourceUrl: 'https://www.perforce.com/',
+  },
+  {
+    shortLabel: 'S',
+    name: 'Steam',
+    iconFile: 'official/steam.png',
+    iconStyle: 'wide',
+    status: 'Official candidate staged',
+    note:
+      'Using the official small white Steam logo asset from the Steamworks branding documentation. This source appears to expose PNG branding assets rather than a clean standalone SVG, so the staged badge uses the official PNG.',
+    sourceLabel: 'Steamworks branding',
+    sourceUrl: 'https://partner.steamgames.com/documentation/branding',
+  },
+  {
+    shortLabel: 'G',
+    name: 'Git',
+    iconFile: 'official/git.svg',
+    status: 'Official candidate staged',
+    note:
+      'Using the official orange Git logomark SVG from git-scm.com. This is the strongest clean replacement for the current single-letter badge.',
+    sourceLabel: 'Git logo downloads',
+    sourceUrl: 'https://git-scm.com/community/logos',
+  },
+  {
+    shortLabel: 'D',
+    name: 'Docker',
+    iconFile: 'official/docker.svg',
+    status: 'Official candidate staged',
+    note:
+      'Using the official ocean-blue whale mark from Docker\'s downloadable logo kit. It reads well at badge size without needing the wordmark.',
+    sourceLabel: 'Docker brand guidelines',
+    sourceUrl: 'https://www.docker.com/company/newsroom/media-resources/',
+  },
+  {
+    shortLabel: 'M',
+    name: 'MuleSoft',
+    status: 'Fallback only for now',
+    note:
+      'I did not find a clean, current official SVG kit from MuleSoft or Salesforce public brand pages during this pass. The letter badge stays in place until we pick a trusted alternative or locate an approved upstream asset.',
+  },
+  {
+    shortLabel: '.N',
+    name: '.NET',
+    iconFile: 'official/dotnet.svg',
+    iconStyle: 'wide',
+    status: 'Official candidate staged',
+    note:
+      'Using the public .NET brand repository logo SVG. This is the official platform mark and fits the existing badge shape cleanly.',
+    sourceLabel: '.NET brand repo',
+    sourceUrl: 'https://github.com/dotnet/brand',
+  },
+  {
+    shortLabel: 'Go',
+    name: 'Go',
+    iconFile: 'official/go.svg',
+    iconStyle: 'wide',
+    status: 'Official candidate staged',
+    note:
+      'Using the official Go logo from go.dev. The Go brand page makes the logo and guidelines publicly available, and this uses the standard blue wordmark without modification.',
+    sourceLabel: 'Go brand guidelines',
+    sourceUrl: 'https://go.dev/brand',
+  },
+  {
+    shortLabel: 'J',
+    name: 'Java',
+    status: 'Fallback only due usage terms',
+    note:
+      'Oracle\'s public Java affinity logo terms do not fit the current non-clickable skill badge. Their page requires the affinity logo to be an active link to Oracle Java and limits how it may appear on a website, so Java remains on the text fallback here.',
+    sourceLabel: 'Oracle Java affinity logos',
+    sourceUrl: 'https://www.oracle.com/java/java-affinity/logos/',
+  },
+  {
+    shortLabel: 'W',
+    name: 'Windmill',
+    iconFile: 'official/windmill.svg',
+    status: 'Official candidate staged',
+    note:
+      'Using the primary SVG from Windmill\'s own brand guidelines. This is the same logo variant they recommend for light surfaces.',
+    sourceLabel: 'Windmill brand guidelines',
+    sourceUrl: 'https://www.windmill.dev/brand-guidelines/visual_identity/logo',
+  },
+];
+---
+
+<BaseLayout
+  pageTitle="Hero Icon Review"
+  pageDescription="Review page for official and fallback hero technology icons."
+>
+  <section class="mt-6">
+    <SectionHeading
+      eyebrow="Hero Review"
+      title="Technology icon candidates"
+      intro="Official SVGs are staged here where they were cleanly available. The current lettered badge remains the comparison fallback for every technology."
+    />
+
+    <div class="grid gap-5">
+      {
+        reviewedTechnologies.map((technology) => (
+          <article class="section-card rounded-[1.5rem] p-6">
+            <div class="flex flex-wrap gap-5">
+              <div class="space-y-2">
+                <p class="text-xs font-semibold uppercase tracking-[0.18em] muted">
+                  Official candidate
+                </p>
+                {
+                  technology.iconFile ? (
+                    <TechnologyBadge technology={technology} />
+                  ) : (
+                    <div class="chip">Not staged</div>
+                  )
+                }
+              </div>
+
+              <div class="space-y-2">
+                <p class="text-xs font-semibold uppercase tracking-[0.18em] muted">
+                  Current fallback
+                </p>
+                <TechnologyBadge
+                  technology={{ shortLabel: technology.shortLabel, name: technology.name }}
+                />
+              </div>
+            </div>
+
+            <p class="mt-5 text-sm font-semibold uppercase tracking-[0.18em] muted">
+              {technology.status}
+            </p>
+            <p class="mt-2 max-w-3xl leading-7 muted">{technology.note}</p>
+            {
+              technology.sourceUrl ? (
+                <p class="mt-3 text-sm">
+                  <a href={technology.sourceUrl} target="_blank" rel="noreferrer">
+                    {technology.sourceLabel}
+                  </a>
+                </p>
+              ) : null
+            }
+          </article>
+        ))
+      }
+    </div>
+  </section>
+</BaseLayout>
