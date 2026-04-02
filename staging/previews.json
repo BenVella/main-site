@@ -1,14 +1,5 @@
 [
   {
-    "prNumber": 19,
-    "branchName": "codex/update-hero-heading-font-and-text",
-    "title": "Refine home hero heading copy and typography",
-    "label": "codex/update-hero-heading-font-and-text · PR #19",
-    "previewPathSegment": "pr-19",
-    "url": "/staging/pr-19/",
-    "updatedAt": "2026-04-02T22:09:15.130Z"
-  },
-  {
     "prNumber": 18,
     "branchName": "codex/create-popup-dialog-for-hero-icons",
     "title": "Add skill detail dialog to hero technology badges",
