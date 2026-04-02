@@ -1,1 +1,11 @@
-[]
+[
+  {
+    "prNumber": 16,
+    "branchName": "codex/investigate-production-deployment-issue",
+    "title": "Isolate GitHub Pages workflow concurrency to prevent production deploy cancellation",
+    "label": "codex/investigate-production-deployment-issue · PR #16",
+    "previewPathSegment": "pr-16",
+    "url": "/staging/pr-16/",
+    "updatedAt": "2026-04-02T20:55:30.529Z"
+  }
+]
