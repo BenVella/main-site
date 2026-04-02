@@ -9,10 +9,11 @@ export const siteConfig = {
 };
 
 export const strengths = [
-  'Backend services for game and product workflows',
-  'Unity and gameplay engineering across mobile and console contexts',
-  'Cloud integrations, data ingestion, and operational systems',
-  'Pragmatic architecture with a bias toward shipping maintainable software',
+  'Cloud backend and integration engineering',
+  'Unity systems and gameplay engineering',
+  'Unity package development and maintenance',
+  'UGC platform architecture and operations',
+  'Technical leadership and delivery ownership',
 ];
 
 export const experience = [
