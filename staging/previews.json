@@ -1,1 +1,11 @@
-[]
+[
+  {
+    "prNumber": 15,
+    "branchName": "develop",
+    "title": "go live",
+    "label": "develop · PR #15",
+    "previewPathSegment": "pr-15",
+    "url": "/staging/pr-15/",
+    "updatedAt": "2026-04-02T20:12:55.491Z"
+  }
+]
