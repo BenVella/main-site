@@ -6,19 +6,19 @@ Official SVGs for the hero technology strip now live in:
 
 Current staged official candidates:
 
+- `unity.svg`
+- `perforce.svg`
 - `git.svg`
 - `docker.svg`
 - `dotnet.svg`
+- `go.svg`
 - `windmill.svg`
 - `csharp.svg`
 - `steam.png`
 
 Current gaps or review-only cases:
 
-- `unity.svg` is intentionally not staged yet because Unity's current trademark guidance is restrictive for portfolio-style logo use.
-- `perforce.svg` is not staged yet.
-- `go.svg` is not staged yet.
-- `java.svg` is not staged yet.
+- `java.svg` is intentionally not staged because Oracle's public Java affinity logo terms require the logo to be an active link to Oracle Java and are not a clean fit for the current badge UI.
 - `mulesoft.svg` is not staged because a clean current official SVG source did not surface in this pass.
 
 Implementation notes:

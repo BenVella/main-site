@@ -1,0 +1,49 @@
+name: Remove Closed Preview
+
+on:
+  pull_request:
+    types: [closed]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  cleanup-preview:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Setup Node
+        uses: actions/setup-node@v5
+        with:
+          node-version: 20
+
+      - name: Prepare publish tree
+        env:
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: |
+          mkdir -p /tmp/publish
+          if git ls-remote --exit-code --heads origin gh-pages; then
+            git fetch origin gh-pages
+            git worktree add /tmp/gh-pages origin/gh-pages
+            rsync -a /tmp/gh-pages/ /tmp/publish/
+          fi
+          rm -rf /tmp/publish/staging/pr-${PR_NUMBER}
+          rm -f /tmp/publish/staging/_preview-data/pr-${PR_NUMBER}.json
+          cp public/CNAME /tmp/publish/CNAME
+          touch /tmp/publish/.nojekyll
+
+      - name: Rebuild staging previews manifest
+        run: node scripts/build-staging-previews-manifest.mjs /tmp/publish
+
+      - name: Deploy cleanup to gh-pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages
+          folder: /tmp/publish
+          clean: true

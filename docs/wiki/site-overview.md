@@ -53,14 +53,20 @@ Deployment behavior:
 
 - `main` deploys the production site at `/`
 - `develop` deploys a staging build at `/staging/`
+- same-repository pull requests deploy previews at `/staging/pr-<number>/`
 - production and staging are published together on the `gh-pages` branch
+- open PR previews are tracked in `/staging/previews.json`
+- closed or merged PR previews are removed immediately
 - staging pages emit `noindex, nofollow` metadata to reduce accidental indexing
 - the staging URL is intended for pre-release inspection before promoting changes to `main`
+- the staging header exposes a preview selector across all staging pages
+- forked pull requests run validation only and do not publish previews
 
 Build configuration:
 
 - production uses `SITE_BASE_PATH=/`
 - staging uses `SITE_BASE_PATH=/staging/`
+- PR previews use `SITE_BASE_PATH=/staging/pr-<number>/`
 - `SITE_URL` controls the base site URL used for generated metadata
 
 Operational note:
