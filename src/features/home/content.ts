@@ -35,15 +35,15 @@ export type Technology = {
 export const technologyIconDirectory = 'assets/technology-icons';
 
 export const heroTechnologies: Technology[] = [
-  { shortLabel: 'U', name: 'Unity', iconFile: 'official/unity.svg', iconStyle: 'wide' },
+  { shortLabel: 'U', name: 'Unity', iconFile: 'official/unity-symbol.svg' },
   { shortLabel: 'C#', name: 'C#', iconFile: 'official/csharp.svg' },
-  { shortLabel: 'P4', name: 'Perforce', iconFile: 'official/perforce.svg', iconStyle: 'wide' },
-  { shortLabel: 'S', name: 'Steam', iconFile: 'official/steam.png', iconStyle: 'wide' },
+  { shortLabel: 'P4', name: 'Perforce', iconFile: 'official/perforce-symbol.svg' },
+  { shortLabel: 'S', name: 'Steam', iconFile: 'official/steam-symbol.svg' },
   { shortLabel: 'G', name: 'Git', iconFile: 'official/git.svg' },
   { shortLabel: 'D', name: 'Docker', iconFile: 'official/docker.svg' },
   { shortLabel: '.N', name: '.NET', iconFile: 'official/dotnet.svg', iconStyle: 'wide' },
   { shortLabel: 'Go', name: 'Go', iconFile: 'official/go.svg', iconStyle: 'wide' },
-  { shortLabel: 'J', name: 'Java' },
-  { shortLabel: 'M', name: 'MuleSoft' },
+  { shortLabel: 'J', name: 'Java', iconFile: 'official/java.svg' },
+  { shortLabel: 'M', name: 'MuleSoft', iconFile: 'official/mulesoft.svg' },
   { shortLabel: 'W', name: 'Windmill', iconFile: 'official/windmill.svg' },
 ];
