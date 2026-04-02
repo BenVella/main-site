@@ -8,7 +8,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: pages
+  group: pages-preview-cleanup
   cancel-in-progress: true
 
 jobs:
