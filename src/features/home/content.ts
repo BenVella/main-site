@@ -35,7 +35,7 @@ export type Technology = {
 export const technologyIconDirectory = 'assets/technology-icons';
 
 export const heroTechnologies: Technology[] = [
-  { shortLabel: 'U', name: 'Unity', iconFile: 'official/unity.svg', iconStyle: 'wide' },
+  { shortLabel: 'U', name: 'Unity', iconFile: 'official/unity-symbol.svg' },
   { shortLabel: 'C#', name: 'C#', iconFile: 'official/csharp.svg' },
   { shortLabel: 'P4', name: 'Perforce', iconFile: 'official/perforce-symbol.svg' },
   { shortLabel: 'S', name: 'Steam', iconFile: 'official/steam-symbol.svg' },
