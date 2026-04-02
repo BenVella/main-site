@@ -50,7 +50,7 @@ jobs:
     permissions:
       contents: write
     concurrency:
-      group: pages
+      group: pages-preview-pr-${{ github.event.pull_request.number }}
       cancel-in-progress: true
     steps:
       - name: Checkout
