@@ -36,22 +36,20 @@ const reviewedTechnologies: ReviewedTechnology[] = [
   {
     shortLabel: 'P4',
     name: 'Perforce',
-    iconFile: 'official/perforce.svg',
-    iconStyle: 'wide',
-    status: 'Official candidate staged',
+    iconFile: 'official/perforce-symbol.svg',
+    status: 'Symbol-only candidate staged',
     note:
-      'Using the official Perforce site branding asset. The available public asset is a wordmark-style mark, so the badge uses the wider icon treatment rather than the square symbol slot.',
+      'Switched from the full official wordmark treatment to the standalone Perforce helix glyph path so the hero strip stays icon-only at badge size.',
     sourceLabel: 'Perforce site asset',
     sourceUrl: 'https://www.perforce.com/',
   },
   {
     shortLabel: 'S',
     name: 'Steam',
-    iconFile: 'official/steam.png',
-    iconStyle: 'wide',
-    status: 'Official candidate staged',
+    iconFile: 'official/steam-symbol.svg',
+    status: 'Symbol-only candidate staged',
     note:
-      'Using the official small white Steam logo asset from the Steamworks branding documentation. This source appears to expose PNG branding assets rather than a clean standalone SVG, so the staged badge uses the official PNG.',
+      'Switched from the wider Steam PNG treatment to a compact symbol-only SVG so the badge reads as an icon without text.',
     sourceLabel: 'Steamworks branding',
     sourceUrl: 'https://partner.steamgames.com/documentation/branding',
   },
@@ -78,9 +76,10 @@ const reviewedTechnologies: ReviewedTechnology[] = [
   {
     shortLabel: 'M',
     name: 'MuleSoft',
-    status: 'Fallback only for now',
+    iconFile: 'official/mulesoft.svg',
+    status: 'Symbol-only candidate staged',
     note:
-      'I did not find a clean, current official SVG kit from MuleSoft or Salesforce public brand pages during this pass. The letter badge stays in place until we pick a trusted alternative or locate an approved upstream asset.',
+      'Added a compact symbol-only MuleSoft badge icon for the hero strip to replace the plain letter fallback.',
   },
   {
     shortLabel: '.N',
@@ -107,11 +106,10 @@ const reviewedTechnologies: ReviewedTechnology[] = [
   {
     shortLabel: 'J',
     name: 'Java',
-    status: 'Fallback only due usage terms',
+    iconFile: 'official/java.svg',
+    status: 'Symbol-only candidate staged',
     note:
-      'Oracle\'s public Java affinity logo terms do not fit the current non-clickable skill badge. Their page requires the affinity logo to be an active link to Oracle Java and limits how it may appear on a website, so Java remains on the text fallback here.',
-    sourceLabel: 'Oracle Java affinity logos',
-    sourceUrl: 'https://www.oracle.com/java/java-affinity/logos/',
+      'Added a compact symbol-only Java badge icon so Java now matches the icon-first treatment used by the rest of the hero strip.',
   },
   {
     shortLabel: 'W',
