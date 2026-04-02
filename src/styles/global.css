@@ -194,9 +194,32 @@ a {
   gap: 1rem;
 }
 
+.skill-dialog-title-wrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.skill-dialog-icon-wrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.2rem;
+  height: 2.2rem;
+  border-radius: 0.7rem;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.skill-dialog-icon {
+  width: 1.45rem;
+  height: 1.45rem;
+  object-fit: contain;
+}
+
 .skill-dialog-title {
   font-size: 1.4rem;
   font-weight: 700;
+  color: var(--accent);
 }
 
 .skill-dialog-close {
@@ -213,11 +236,19 @@ a {
   margin-top: 0.8rem;
   color: var(--muted);
   line-height: 1.6;
+  font-style: italic;
 }
 
 .skill-dialog-experience {
   margin-top: 0.85rem;
   line-height: 1.65;
+  color: var(--text);
+}
+
+.skill-dialog-rule {
+  margin-top: 0.95rem;
+  border: 0;
+  border-top: 1px solid var(--line);
 }
 
 .sr-only {
