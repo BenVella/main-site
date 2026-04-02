@@ -1,13 +1,8 @@
 export const homeHero = {
   eyebrow: 'Lead Game Programmer',
-  title:
-    'Building production game systems in Unity with strengths in systems programming and backend multiplayer.',
+  title: 'Lead game programmer for production Unity systems and multiplayer backend.',
   intro:
-    'I am Bennet Vella, a lead game programmer building production game systems in Unity. My background spans gameplay architecture, systems-level technical work, and backend multiplayer capabilities, with earlier backend and integration experience still shaping how I structure tools and delivery.',
-  supportingPoints: [
-    'Industry experience across gameplay systems, technical delivery, and cross-discipline collaboration.',
-    'A foundation across backend services, integrations, and operational software that carries into multiplayer-aware game development.',
-  ],
+    'I build production Unity game systems with a focus on gameplay architecture and multiplayer backends. My backend and integration background helps me deliver reliable tools and cross-discipline execution.',
 };
 
 export const heroHighlights = [
