@@ -2,7 +2,11 @@ name: Validate Astro Site
 
 on:
   pull_request:
+    types: [opened, synchronize, reopened, ready_for_review, edited]
   workflow_dispatch:
+
+permissions:
+  contents: read
 
 jobs:
   validate:
@@ -28,6 +32,7 @@ jobs:
           SITE_BASE_PATH: /
           SITE_URL: https://www.bennetvella.com
           PUBLIC_SITE_ENV: production
+          PUBLIC_STAGING_ROOT_PATH: /staging/
         run: npm run build
 
       - name: Build staging variant
@@ -35,4 +40,61 @@ jobs:
           SITE_BASE_PATH: /staging/
           SITE_URL: https://www.bennetvella.com
           PUBLIC_SITE_ENV: staging
+          PUBLIC_STAGING_ROOT_PATH: /staging/
         run: npm run build
+
+  deploy-preview:
+    if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository
+    needs: validate
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    concurrency:
+      group: pages
+      cancel-in-progress: true
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Setup Node
+        uses: actions/setup-node@v5
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build pull request preview
+        env:
+          SITE_BASE_PATH: /staging/pr-${{ github.event.pull_request.number }}/
+          SITE_URL: https://www.bennetvella.com
+          PUBLIC_SITE_ENV: staging
+          PUBLIC_STAGING_ROOT_PATH: /staging/
+        run: npm run build
+
+      - name: Prepare pull request publish tree
+        env:
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          PR_BRANCH_NAME: ${{ github.event.pull_request.head.ref }}
+          PR_TITLE: ${{ github.event.pull_request.title }}
+        run: |
+          mkdir -p /tmp/publish/staging/pr-${PR_NUMBER}
+          if git ls-remote --exit-code --heads origin gh-pages; then
+            git fetch origin gh-pages
+            git worktree add /tmp/gh-pages origin/gh-pages
+            rsync -a /tmp/gh-pages/ /tmp/publish/
+          fi
+          rsync -a --delete dist/ /tmp/publish/staging/pr-${PR_NUMBER}/
+          node scripts/write-staging-preview-entry.mjs /tmp/publish
+          cp public/CNAME /tmp/publish/CNAME
+          touch /tmp/publish/.nojekyll
+
+      - name: Rebuild staging previews manifest
+        run: node scripts/build-staging-previews-manifest.mjs /tmp/publish
+
+      - name: Deploy pull request preview to gh-pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages
+          folder: /tmp/publish
+          clean: true

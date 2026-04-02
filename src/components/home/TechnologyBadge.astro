@@ -10,15 +10,22 @@ type Props = {
 const { technology, delayMs = 0 } = Astro.props;
 const baseUrl = import.meta.env.BASE_URL;
 const getTechnologyIconPath = (iconFile: string) => withBase(baseUrl, `${technologyIconDirectory}/${iconFile}`);
+const hasIcon = Boolean(technology.iconFile);
+const iconStyleClass = technology.iconStyle === 'wide' ? 'tech-badge-mark-wide' : 'tech-badge-mark-symbol';
+const iconImageClass = technology.iconStyle === 'wide' ? 'tech-badge-icon-wide' : '';
 ---
 
-<div class="tech-badge" style={`--badge-delay: ${delayMs}ms;`}>
+<div
+  class:list={['tech-badge', hasIcon && 'tech-badge-icon-only']}
+  style={`--badge-delay: ${delayMs}ms;`}
+  title={hasIcon ? technology.name : undefined}
+>
   {
-    technology.iconFile ? (
-      <span class="tech-badge-mark tech-badge-mark-icon" aria-hidden="true">
+    hasIcon ? (
+      <span class={`tech-badge-mark tech-badge-mark-icon ${iconStyleClass}`} aria-hidden="true">
         <img
-          class="tech-badge-icon"
-          src={getTechnologyIconPath(technology.iconFile)}
+          class={`tech-badge-icon ${iconImageClass}`}
+          src={getTechnologyIconPath(technology.iconFile!)}
           alt=""
           width="20"
           height="20"
@@ -29,5 +36,11 @@ const getTechnologyIconPath = (iconFile: string) => withBase(baseUrl, `${technol
       <span class="tech-badge-mark" aria-hidden="true">{technology.shortLabel}</span>
     )
   }
-  <span class="tech-badge-name">{technology.name}</span>
+  {
+    hasIcon ? (
+      <span class="sr-only">{technology.name}</span>
+    ) : (
+      <span class="tech-badge-name">{technology.name}</span>
+    )
+  }
 </div>
