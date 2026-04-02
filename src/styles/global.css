@@ -103,6 +103,10 @@ a {
   background: rgba(17, 17, 27, 0.52);
   animation: badge-float 5.5s ease-in-out infinite;
   animation-delay: var(--badge-delay, 0ms);
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
+  text-align: left;
 }
 
 .tech-badge-icon-only {
@@ -158,6 +162,62 @@ a {
 .tech-badge-name {
   font-size: 0.95rem;
   font-weight: 600;
+}
+
+.tech-badge:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.skill-dialog {
+  width: min(38rem, calc(100vw - 2rem));
+  border: 1px solid var(--line);
+  border-radius: 1.2rem;
+  background: transparent;
+  padding: 0;
+}
+
+.skill-dialog::backdrop {
+  background: rgba(11, 11, 18, 0.76);
+  backdrop-filter: blur(2px);
+}
+
+.skill-dialog-card {
+  background: var(--surface-strong);
+  padding: 1.25rem;
+}
+
+.skill-dialog-header {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.skill-dialog-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.skill-dialog-close {
+  border: 1px solid var(--line);
+  border-radius: 9999px;
+  background: rgba(17, 17, 27, 0.62);
+  width: 2rem;
+  height: 2rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.skill-dialog-summary {
+  margin-top: 0.8rem;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.skill-dialog-experience {
+  margin-top: 0.85rem;
+  line-height: 1.65;
 }
 
 .sr-only {

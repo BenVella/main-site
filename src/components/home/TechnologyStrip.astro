@@ -7,6 +7,15 @@ type Props = {
 };
 
 const { technologies } = Astro.props;
+const getSkillId = (technology: Technology) =>
+  technology.id ?? technology.name.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+
+const technologyDetails = technologies.map((technology) => ({
+  id: getSkillId(technology),
+  name: technology.name,
+  summary: technology.summary ?? `TODO: Add a short summary for ${technology.name}.`,
+  experience: technology.experience ?? 'TODO: Add work experience details from LinkedIn.',
+}));
 ---
 
 <div class="section-card hero-tech-panel rounded-[1.75rem] p-6">
@@ -20,8 +29,75 @@ const { technologies } = Astro.props;
   <div class="mt-5 flex flex-wrap gap-3">
     {
       technologies.map((technology, index) => (
-        <TechnologyBadge technology={technology} delayMs={index * 120} />
+        <TechnologyBadge technology={technology} skillId={getSkillId(technology)} delayMs={index * 120} />
       ))
     }
   </div>
 </div>
+
+<dialog class="skill-dialog" id="skill-dialog">
+  <article class="skill-dialog-card">
+    <header class="skill-dialog-header">
+      <h3 class="skill-dialog-title" id="skill-dialog-title"></h3>
+      <button class="skill-dialog-close" type="button" data-skill-close aria-label="Close skill details">
+        ×
+      </button>
+    </header>
+    <p class="skill-dialog-summary" id="skill-dialog-summary"></p>
+    <p class="skill-dialog-experience" id="skill-dialog-experience"></p>
+  </article>
+</dialog>
+
+<script is:inline define:vars={{ technologyDetails }}>
+  const detailsMap = new Map(technologyDetails.map((technology) => [technology.id, technology]));
+  const skillDialog = document.getElementById('skill-dialog');
+  const titleElement = document.getElementById('skill-dialog-title');
+  const summaryElement = document.getElementById('skill-dialog-summary');
+  const experienceElement = document.getElementById('skill-dialog-experience');
+  const closeButton = skillDialog?.querySelector('[data-skill-close]');
+  const triggers = document.querySelectorAll('[data-skill-trigger]');
+
+  const openSkillDialog = (skillId) => {
+    if (!skillDialog || !titleElement || !summaryElement || !experienceElement) return;
+    const details = detailsMap.get(skillId);
+    if (!details) return;
+
+    titleElement.textContent = details.name;
+    summaryElement.textContent = details.summary;
+    experienceElement.textContent = details.experience;
+
+    if (typeof skillDialog.showModal === 'function') {
+      skillDialog.showModal();
+      return;
+    }
+
+    skillDialog.setAttribute('open', '');
+  };
+
+  triggers.forEach((trigger) => {
+    trigger.addEventListener('click', () => {
+      const skillId = trigger.getAttribute('data-skill-id');
+      if (!skillId) return;
+      openSkillDialog(skillId);
+    });
+
+    trigger.addEventListener('keydown', (event) => {
+      if (event.key !== 'Enter' && event.key !== ' ') return;
+      event.preventDefault();
+      const skillId = trigger.getAttribute('data-skill-id');
+      if (!skillId) return;
+      openSkillDialog(skillId);
+    });
+  });
+
+  closeButton?.addEventListener('click', () => {
+    if (!skillDialog) return;
+    skillDialog.close();
+  });
+
+  skillDialog?.addEventListener('click', (event) => {
+    if (event.target === skillDialog) {
+      skillDialog.close();
+    }
+  });
+</script>
