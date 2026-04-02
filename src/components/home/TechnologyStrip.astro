@@ -117,12 +117,22 @@ const technologyDetails = technologies.map((technology) => ({
   closeButton?.addEventListener('click', () => {
     if (!skillDialog) return;
     if (!skillDialog.open) return;
-    skillDialog.close();
+    if (typeof skillDialog.close === 'function') {
+      skillDialog.close();
+      return;
+    }
+
+    skillDialog.removeAttribute('open');
   });
 
   skillDialog?.addEventListener('click', (event) => {
     if (event.target === skillDialog) {
-      skillDialog.close();
+      if (typeof skillDialog.close === 'function') {
+        skillDialog.close();
+        return;
+      }
+
+      skillDialog.removeAttribute('open');
     }
   });
 </script>
