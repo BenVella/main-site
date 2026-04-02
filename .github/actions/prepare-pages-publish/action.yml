@@ -1,0 +1,131 @@
+name: Prepare Pages Publish Tree
+description: Populate a gh-pages publish tree for production, staging, preview, or preview cleanup deploys.
+
+inputs:
+  mode:
+    description: "Publish mode: production, staging, preview, or cleanup."
+    required: true
+  publish_dir:
+    description: Destination directory for the assembled publish tree.
+    required: false
+    default: /tmp/publish
+  worktree_dir:
+    description: Temporary git worktree path used to read the current gh-pages branch.
+    required: false
+    default: /tmp/gh-pages
+  branch:
+    description: Existing Pages branch to hydrate into the publish tree.
+    required: false
+    default: gh-pages
+  dist_dir:
+    description: Built site directory to publish from.
+    required: false
+    default: dist
+  pr_number:
+    description: Pull request number for preview or cleanup mode.
+    required: false
+    default: ''
+  pr_branch_name:
+    description: Source branch name for preview metadata.
+    required: false
+    default: ''
+  pr_title:
+    description: Pull request title for preview metadata.
+    required: false
+    default: ''
+  github_repository:
+    description: Repository name used to validate open preview PRs.
+    required: false
+    default: ''
+  github_token:
+    description: GitHub token used to validate open preview PRs.
+    required: false
+    default: ''
+
+runs:
+  using: composite
+  steps:
+    - name: Load current Pages tree
+      shell: bash
+      env:
+        PUBLISH_DIR: ${{ inputs.publish_dir }}
+        WORKTREE_DIR: ${{ inputs.worktree_dir }}
+        PAGES_BRANCH: ${{ inputs.branch }}
+      run: |
+        set -euo pipefail
+
+        rm -rf "$PUBLISH_DIR" "$WORKTREE_DIR"
+        mkdir -p "$PUBLISH_DIR"
+
+        if git ls-remote --exit-code --heads origin "$PAGES_BRANCH"; then
+          git fetch origin "$PAGES_BRANCH"
+          git worktree add --detach "$WORKTREE_DIR" "origin/$PAGES_BRANCH"
+          rsync -a "$WORKTREE_DIR"/ "$PUBLISH_DIR"/
+          git worktree remove --force "$WORKTREE_DIR"
+        fi
+
+    - name: Apply mode-specific publish changes
+      shell: bash
+      env:
+        MODE: ${{ inputs.mode }}
+        PUBLISH_DIR: ${{ inputs.publish_dir }}
+        DIST_DIR: ${{ inputs.dist_dir }}
+        PR_NUMBER: ${{ inputs.pr_number }}
+        PR_BRANCH_NAME: ${{ inputs.pr_branch_name }}
+        PR_TITLE: ${{ inputs.pr_title }}
+      run: |
+        set -euo pipefail
+
+        case "$MODE" in
+          production)
+            rsync -a --delete --exclude staging "$DIST_DIR"/ "$PUBLISH_DIR"/
+            ;;
+          staging)
+            mkdir -p "$PUBLISH_DIR/staging"
+            rsync -a --delete \
+              --exclude 'pr-*' \
+              --exclude '_preview-data' \
+              --exclude 'previews.json' \
+              "$DIST_DIR"/ "$PUBLISH_DIR/staging/"
+            ;;
+          preview)
+            if [[ -z "$PR_NUMBER" || -z "$PR_BRANCH_NAME" ]]; then
+              echo "preview mode requires pr_number and pr_branch_name inputs" >&2
+              exit 1
+            fi
+
+            mkdir -p "$PUBLISH_DIR/staging/pr-$PR_NUMBER"
+            rsync -a --delete "$DIST_DIR"/ "$PUBLISH_DIR/staging/pr-$PR_NUMBER/"
+            PR_NUMBER="$PR_NUMBER" PR_BRANCH_NAME="$PR_BRANCH_NAME" PR_TITLE="$PR_TITLE" \
+              node scripts/write-staging-preview-entry.mjs "$PUBLISH_DIR"
+            ;;
+          cleanup)
+            if [[ -z "$PR_NUMBER" ]]; then
+              echo "cleanup mode requires a pr_number input" >&2
+              exit 1
+            fi
+
+            rm -rf "$PUBLISH_DIR/staging/pr-$PR_NUMBER"
+            rm -f "$PUBLISH_DIR/staging/_preview-data/pr-$PR_NUMBER.json"
+            ;;
+          *)
+            echo "Unsupported mode: $MODE" >&2
+            exit 1
+            ;;
+        esac
+
+        cp public/CNAME "$PUBLISH_DIR/CNAME"
+        touch "$PUBLISH_DIR/.nojekyll"
+
+    - name: Refresh staging preview manifest
+      if: ${{ inputs.mode != 'production' }}
+      shell: bash
+      env:
+        PUBLISH_DIR: ${{ inputs.publish_dir }}
+        GITHUB_REPOSITORY: ${{ inputs.github_repository }}
+        GITHUB_TOKEN: ${{ inputs.github_token }}
+      run: |
+        set -euo pipefail
+
+        node scripts/prune-staging-previews.mjs "$PUBLISH_DIR"
+        node scripts/build-staging-previews-manifest.mjs "$PUBLISH_DIR"

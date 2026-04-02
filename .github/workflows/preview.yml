@@ -73,24 +73,14 @@ jobs:
         run: npm run build
 
       - name: Prepare pull request publish tree
-        env:
-          PR_NUMBER: ${{ github.event.pull_request.number }}
-          PR_BRANCH_NAME: ${{ github.event.pull_request.head.ref }}
-          PR_TITLE: ${{ github.event.pull_request.title }}
-        run: |
-          mkdir -p /tmp/publish/staging/pr-${PR_NUMBER}
-          if git ls-remote --exit-code --heads origin gh-pages; then
-            git fetch origin gh-pages
-            git worktree add /tmp/gh-pages origin/gh-pages
-            rsync -a /tmp/gh-pages/ /tmp/publish/
-          fi
-          rsync -a --delete dist/ /tmp/publish/staging/pr-${PR_NUMBER}/
-          node scripts/write-staging-preview-entry.mjs /tmp/publish
-          cp public/CNAME /tmp/publish/CNAME
-          touch /tmp/publish/.nojekyll
-
-      - name: Rebuild staging previews manifest
-        run: node scripts/build-staging-previews-manifest.mjs /tmp/publish
+        uses: ./.github/actions/prepare-pages-publish
+        with:
+          mode: preview
+          pr_number: ${{ github.event.pull_request.number }}
+          pr_branch_name: ${{ github.event.pull_request.head.ref }}
+          pr_title: ${{ github.event.pull_request.title }}
+          github_repository: ${{ github.repository }}
+          github_token: ${{ github.token }}
 
       - name: Deploy pull request preview to gh-pages
         uses: JamesIves/github-pages-deploy-action@v4
