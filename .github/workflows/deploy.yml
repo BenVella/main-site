@@ -38,16 +38,9 @@ jobs:
         run: npm run build
 
       - name: Prepare production publish tree
-        run: |
-          mkdir -p /tmp/publish
-          if git ls-remote --exit-code --heads origin gh-pages; then
-            git fetch origin gh-pages
-            git worktree add /tmp/gh-pages origin/gh-pages
-            rsync -a /tmp/gh-pages/ /tmp/publish/
-          fi
-          rsync -a --delete --exclude staging dist/ /tmp/publish/
-          cp public/CNAME /tmp/publish/CNAME
-          touch /tmp/publish/.nojekyll
+        uses: ./.github/actions/prepare-pages-publish
+        with:
+          mode: production
 
       - name: Deploy production to gh-pages
         uses: JamesIves/github-pages-deploy-action@v4
@@ -81,28 +74,11 @@ jobs:
         run: npm run build
 
       - name: Prepare staging publish tree
-        run: |
-          mkdir -p /tmp/publish/staging
-          if git ls-remote --exit-code --heads origin gh-pages; then
-            git fetch origin gh-pages
-            git worktree add /tmp/gh-pages origin/gh-pages
-            rsync -a /tmp/gh-pages/ /tmp/publish/
-          fi
-          rsync -a --delete \
-            --exclude 'pr-*' \
-            --exclude '_preview-data' \
-            --exclude 'previews.json' \
-            dist/ /tmp/publish/staging/
-          cp public/CNAME /tmp/publish/CNAME
-          touch /tmp/publish/.nojekyll
-
-      - name: Rebuild staging previews manifest
-        env:
-          GITHUB_REPOSITORY: ${{ github.repository }}
-          GITHUB_TOKEN: ${{ github.token }}
-        run: |
-          node scripts/prune-staging-previews.mjs /tmp/publish
-          node scripts/build-staging-previews-manifest.mjs /tmp/publish
+        uses: ./.github/actions/prepare-pages-publish
+        with:
+          mode: staging
+          github_repository: ${{ github.repository }}
+          github_token: ${{ github.token }}
 
       - name: Deploy staging to gh-pages
         uses: JamesIves/github-pages-deploy-action@v4
