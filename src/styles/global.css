@@ -105,6 +105,12 @@ a {
   animation-delay: var(--badge-delay, 0ms);
 }
 
+.tech-badge-icon-only {
+  justify-content: center;
+  gap: 0;
+  padding: 0.5rem 0.6rem;
+}
+
 .tech-badge-mark {
   display: inline-flex;
   align-items: center;
@@ -124,10 +130,29 @@ a {
   color: var(--text);
 }
 
+.tech-badge-mark-symbol {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 9999px;
+}
+
+.tech-badge-mark-wide {
+  min-width: 3.25rem;
+  width: 3.25rem;
+  height: 2rem;
+  padding: 0 0.35rem;
+  border-radius: 0.85rem;
+}
+
 .tech-badge-icon {
   width: 1.2rem;
   height: 1.2rem;
   object-fit: contain;
+}
+
+.tech-badge-icon-wide {
+  width: 2.4rem;
+  height: 1rem;
 }
 
 .tech-badge-name {

@@ -15,9 +15,11 @@ const reviewedTechnologies: ReviewedTechnology[] = [
   {
     shortLabel: 'U',
     name: 'Unity',
-    status: 'Review-only due trademark guidance',
+    iconFile: 'official/unity.svg',
+    iconStyle: 'wide',
+    status: 'Official candidate staged with trademark caveat',
     note:
-      'Unity publishes official downloadables, but its current branding guidelines explicitly say not to use Unity logos simply to beautify materials and not to make them the most prominent element. I left the current fallback badge as the safer default until you decide you want a review-only candidate staged anyway.',
+      'Using the official Unity logo asset surfaced on Unity\'s branding page. Unity\'s trademark guidance is still restrictive: the logo should not be used merely to beautify materials, should not be the most prominent visual element, and should not imply endorsement. It remains staged because you explicitly chose to retain the icons.',
     sourceLabel: 'Unity trademark guidance',
     sourceUrl: 'https://unity.com/legal/branding-trademarks',
   },
@@ -34,14 +36,19 @@ const reviewedTechnologies: ReviewedTechnology[] = [
   {
     shortLabel: 'P4',
     name: 'Perforce',
-    status: 'Fallback only for now',
+    iconFile: 'official/perforce.svg',
+    iconStyle: 'wide',
+    status: 'Official candidate staged',
     note:
-      'Added by request as a relevant game-development workflow skill. I have not staged an official SVG candidate yet in this pass, so the current fallback badge remains the review baseline.',
+      'Using the official Perforce site branding asset. The available public asset is a wordmark-style mark, so the badge uses the wider icon treatment rather than the square symbol slot.',
+    sourceLabel: 'Perforce site asset',
+    sourceUrl: 'https://www.perforce.com/',
   },
   {
     shortLabel: 'S',
     name: 'Steam',
     iconFile: 'official/steam.png',
+    iconStyle: 'wide',
     status: 'Official candidate staged',
     note:
       'Using the official small white Steam logo asset from the Steamworks branding documentation. This source appears to expose PNG branding assets rather than a clean standalone SVG, so the staged badge uses the official PNG.',
@@ -79,6 +86,7 @@ const reviewedTechnologies: ReviewedTechnology[] = [
     shortLabel: '.N',
     name: '.NET',
     iconFile: 'official/dotnet.svg',
+    iconStyle: 'wide',
     status: 'Official candidate staged',
     note:
       'Using the public .NET brand repository logo SVG. This is the official platform mark and fits the existing badge shape cleanly.',
@@ -88,18 +96,22 @@ const reviewedTechnologies: ReviewedTechnology[] = [
   {
     shortLabel: 'Go',
     name: 'Go',
-    status: 'Fallback only for now',
+    iconFile: 'official/go.svg',
+    iconStyle: 'wide',
+    status: 'Official candidate staged',
     note:
-      'Public profile summaries accessible from search results describe your Exient work as specializing in cloud architecture and game client systems using GoLang, Unity, and AWS. I added Go on that basis, but have not staged an official SVG candidate yet.',
-    sourceLabel: 'Public profile summary',
-    sourceUrl: 'https://theorg.com/org/exient/org-chart/bennet-vella',
+      'Using the official Go logo from go.dev. The Go brand page makes the logo and guidelines publicly available, and this uses the standard blue wordmark without modification.',
+    sourceLabel: 'Go brand guidelines',
+    sourceUrl: 'https://go.dev/brand',
   },
   {
     shortLabel: 'J',
     name: 'Java',
-    status: 'Fallback only for now',
+    status: 'Fallback only due usage terms',
     note:
-      'I could not directly read enough of the public LinkedIn profile to verify Java there, but your own portfolio content already includes a Java-tagged backend game-services case study. I added Java on that basis plus your explicit prompt.',
+      'Oracle\'s public Java affinity logo terms do not fit the current non-clickable skill badge. Their page requires the affinity logo to be an active link to Oracle Java and limits how it may appear on a website, so Java remains on the text fallback here.',
+    sourceLabel: 'Oracle Java affinity logos',
+    sourceUrl: 'https://www.oracle.com/java/java-affinity/logos/',
   },
   {
     shortLabel: 'W',

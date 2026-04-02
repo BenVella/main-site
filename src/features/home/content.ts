@@ -29,20 +29,21 @@ export type Technology = {
   shortLabel: string;
   name: string;
   iconFile?: string;
+  iconStyle?: 'symbol' | 'wide';
 };
 
 export const technologyIconDirectory = 'assets/technology-icons';
 
 export const heroTechnologies: Technology[] = [
-  { shortLabel: 'U', name: 'Unity' },
-  { shortLabel: 'C#', name: 'C#' },
-  { shortLabel: 'P4', name: 'Perforce' },
-  { shortLabel: 'S', name: 'Steam', iconFile: 'official/steam.png' },
-  { shortLabel: 'G', name: 'Git' },
-  { shortLabel: 'D', name: 'Docker' },
-  { shortLabel: '.N', name: '.NET' },
-  { shortLabel: 'Go', name: 'Go' },
+  { shortLabel: 'U', name: 'Unity', iconFile: 'official/unity.svg', iconStyle: 'wide' },
+  { shortLabel: 'C#', name: 'C#', iconFile: 'official/csharp.svg' },
+  { shortLabel: 'P4', name: 'Perforce', iconFile: 'official/perforce.svg', iconStyle: 'wide' },
+  { shortLabel: 'S', name: 'Steam', iconFile: 'official/steam.png', iconStyle: 'wide' },
+  { shortLabel: 'G', name: 'Git', iconFile: 'official/git.svg' },
+  { shortLabel: 'D', name: 'Docker', iconFile: 'official/docker.svg' },
+  { shortLabel: '.N', name: '.NET', iconFile: 'official/dotnet.svg', iconStyle: 'wide' },
+  { shortLabel: 'Go', name: 'Go', iconFile: 'official/go.svg', iconStyle: 'wide' },
   { shortLabel: 'J', name: 'Java' },
   { shortLabel: 'M', name: 'MuleSoft' },
-  { shortLabel: 'W', name: 'Windmill' },
+  { shortLabel: 'W', name: 'Windmill', iconFile: 'official/windmill.svg' },
 ];
