@@ -1,14 +1,5 @@
 [
   {
-    "prNumber": 23,
-    "branchName": "codex/introduce-site-versioning-with-release-tags",
-    "title": "Add flexible production release tagging and initialize site version 0.1.0",
-    "label": "codex/introduce-site-versioning-with-release-tags · PR #23",
-    "previewPathSegment": "pr-23",
-    "url": "/staging/pr-23/",
-    "updatedAt": "2026-04-03T08:46:16.100Z"
-  },
-  {
     "prNumber": 22,
     "branchName": "codex/remove-existing-articles-and-add-new-content",
     "title": "Show home preview snippets on PostCard and add `homeSample` frontmatter",
