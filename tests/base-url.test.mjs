@@ -43,13 +43,13 @@ before(() => {
 });
 
 describe('BASE_URL build output', () => {
-  test('prefixes project links and artwork with the configured base path', () => {
+  test('prefixes homepage title thumbnails and project artwork with the configured base path', () => {
     const homepage = readBuiltFile('index.html');
     const projectsIndex = readBuiltFile('projects', 'index.html');
     const projectDetail = readBuiltFile('projects', 'cloud-save-platform-go-aws', 'index.html');
 
-    assert.match(homepage, /href="\/preview\/projects\/cloud-save-platform-go-aws"/);
-    assert.match(homepage, /src="\/preview\/images\/projects\/cloud-save-platform\.svg"/);
+    assert.match(homepage, /src="\/preview\/images\/titles\/lemmings\.webp"/);
+    assert.match(homepage, /data-title-id="lemmings"/);
 
     assert.match(projectsIndex, /href="\/preview\/projects\/cloud-save-platform-go-aws"/);
     assert.match(projectsIndex, /src="\/preview\/images\/projects\/cloud-save-platform\.svg"/);
