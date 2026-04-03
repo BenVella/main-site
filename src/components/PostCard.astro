@@ -33,7 +33,7 @@ const getInitialContentSample = (body: string) => {
   return normalized.length > 220 ? `${normalized.slice(0, 217).trimEnd()}...` : normalized;
 };
 
-const sample = post.data.homeSample ?? getInitialContentSample(post.body);
+const sample = post.data.homeSample ?? getInitialContentSample(post.body ?? '');
 ---
 
 <article class="section-card rounded-[1.75rem] p-6">
