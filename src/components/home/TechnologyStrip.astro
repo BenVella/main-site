@@ -20,6 +20,7 @@ const technologyDetails = technologies.map((technology) => ({
   iconUrl: technology.iconFile
     ? withBase(baseUrl, `${technologyIconDirectory}/${technology.iconFile}`)
     : null,
+  trademarkDisclaimer: technology.trademarkDisclaimer ?? null,
 }));
 ---
 
@@ -58,6 +59,7 @@ const technologyDetails = technologies.map((technology) => ({
     <p class="skill-dialog-summary" id="skill-dialog-summary"></p>
     <hr class="skill-dialog-rule" />
     <p class="skill-dialog-experience" id="skill-dialog-experience"></p>
+    <p class="skill-dialog-disclaimer" id="skill-dialog-disclaimer" hidden></p>
   </article>
 </dialog>
 
@@ -69,6 +71,7 @@ const technologyDetails = technologies.map((technology) => ({
   const experienceElement = document.getElementById('skill-dialog-experience');
   const iconWrapElement = document.getElementById('skill-dialog-icon-wrap');
   const iconElement = document.getElementById('skill-dialog-icon');
+  const disclaimerElement = document.getElementById('skill-dialog-disclaimer');
   const closeButton = skillDialog?.querySelector('[data-skill-close]');
   const triggers = document.querySelectorAll('[data-skill-trigger]');
 
@@ -87,6 +90,16 @@ const technologyDetails = technologies.map((technology) => ({
       } else {
         iconElement.removeAttribute('src');
         iconWrapElement.setAttribute('hidden', '');
+      }
+    }
+
+    if (disclaimerElement) {
+      if (details.trademarkDisclaimer) {
+        disclaimerElement.textContent = details.trademarkDisclaimer;
+        disclaimerElement.removeAttribute('hidden');
+      } else {
+        disclaimerElement.textContent = '';
+        disclaimerElement.setAttribute('hidden', '');
       }
     }
 

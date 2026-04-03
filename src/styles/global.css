@@ -283,6 +283,14 @@ a {
   border-top: 1px solid var(--line);
 }
 
+.skill-dialog-disclaimer {
+  margin-top: 1rem;
+  color: var(--muted);
+  font-size: 0.72rem;
+  line-height: 1.4;
+  font-style: italic;
+}
+
 .sr-only {
   position: absolute;
   width: 1px;
