@@ -93,26 +93,38 @@ a {
   pointer-events: none;
 }
 
+.tech-badge-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(3.4rem, 1fr));
+  gap: 0.65rem;
+}
+
 .tech-badge {
   display: inline-flex;
   align-items: center;
-  gap: 0.75rem;
-  padding: 0.8rem 1rem;
-  border: 1px solid var(--line);
-  border-radius: 9999px;
-  background: rgba(17, 17, 27, 0.52);
+  justify-content: center;
+  position: relative;
+  gap: 0;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  padding: 0.5rem;
+  border: 1px solid rgba(137, 180, 250, 0.12);
+  border-radius: 0.95rem;
+  background: rgba(17, 17, 27, 0.2);
   animation: badge-float 5.5s ease-in-out infinite;
   animation-delay: var(--badge-delay, 0ms);
   color: inherit;
   cursor: pointer;
   font: inherit;
-  text-align: left;
+  text-align: center;
+  transition:
+    border-color 160ms ease,
+    background-color 160ms ease,
+    transform 160ms ease;
 }
 
 .tech-badge-icon-only {
-  justify-content: center;
-  gap: 0;
-  padding: 0.5rem 0.6rem;
+  padding: 0.5rem;
 }
 
 .tech-badge-mark {
@@ -169,8 +181,26 @@ a {
   outline-offset: 2px;
 }
 
+.tech-badge:hover {
+  border-color: rgba(166, 227, 161, 0.55);
+  background: rgba(166, 227, 161, 0.14);
+  transform: translateY(-1px);
+}
+
+.tech-badge:active {
+  transform: translateY(0);
+}
+
+.tech-badge-hint {
+  letter-spacing: 0.02em;
+}
+
 .skill-dialog {
   width: min(38rem, calc(100vw - 2rem));
+  max-height: calc(100dvh - 2rem);
+  position: fixed;
+  inset: 0;
+  margin: auto;
   border: 1px solid var(--line);
   border-radius: 1.2rem;
   background: transparent;
@@ -185,6 +215,8 @@ a {
 .skill-dialog-card {
   background: var(--surface-strong);
   padding: 1.25rem;
+  max-height: calc(100dvh - 2rem);
+  overflow: auto;
 }
 
 .skill-dialog-header {

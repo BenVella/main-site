@@ -21,6 +21,28 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
 
   <section class="mt-20">
     <SectionHeading
+      eyebrow="Projects"
+      title="Selected case studies"
+      intro="These are the projects and work areas that best represent how I approach software engineering."
+    />
+    <div class="grid gap-5 lg:grid-cols-3">
+      {featuredProjects.map((project) => <ProjectCard project={project} />)}
+    </div>
+  </section>
+
+  <section class="mt-20">
+    <SectionHeading
+      eyebrow="Writing"
+      title="Recent notes"
+      intro="Notes on software engineering, delivery constraints, backend systems, and related technical work."
+    />
+    <div class="grid gap-5 md:grid-cols-2">
+      {posts.map((post) => <PostCard post={post} />)}
+    </div>
+  </section>
+
+  <section class="mt-20">
+    <SectionHeading
       eyebrow="Strengths"
       title="A portfolio shaped by shipping work, not just demo code."
       intro="These focus areas reflect the engineering work I have spent the most time shipping across product, platform, and delivery contexts."
@@ -33,17 +55,6 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
           </div>
         ))
       }
-    </div>
-  </section>
-
-  <section class="mt-20">
-    <SectionHeading
-      eyebrow="Projects"
-      title="Selected case studies"
-      intro="These are the projects and work areas that best represent how I approach software engineering."
-    />
-    <div class="grid gap-5 lg:grid-cols-3">
-      {featuredProjects.map((project) => <ProjectCard project={project} />)}
     </div>
   </section>
 
@@ -84,17 +95,6 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
           ))
         }
       </div>
-    </div>
-  </section>
-
-  <section class="mt-20">
-    <SectionHeading
-      eyebrow="Writing"
-      title="Recent notes"
-      intro="Notes on software engineering, delivery constraints, backend systems, and related technical work."
-    />
-    <div class="grid gap-5 md:grid-cols-2">
-      {posts.map((post) => <PostCard post={post} />)}
     </div>
   </section>
 </BaseLayout>
