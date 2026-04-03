@@ -1,0 +1,155 @@
+---
+import SectionHeading from '@/components/SectionHeading.astro';
+import { workedTitles } from '@/features/home/titles-worked-on';
+import { withBase } from '@/utils/base-path';
+
+const baseUrl = import.meta.env.BASE_URL;
+const titleDetails = workedTitles.map((entry) => ({
+  ...entry,
+  thumbnailUrl: withBase(baseUrl, entry.thumbnail.src),
+}));
+---
+
+<section class="mt-20" id="titles-worked-on">
+  <SectionHeading
+    eyebrow="Titles Worked On"
+    title="Titles Worked On"
+    intro="Selected commercial game work across client, backend, systems, and platform engineering."
+  />
+
+  <div class="titles-grid">
+    {
+      workedTitles.map((entry) => (
+        <button type="button" class="titles-card" data-title-trigger data-title-id={entry.id} aria-haspopup="dialog">
+          <img
+            src={withBase(baseUrl, entry.thumbnail.src)}
+            alt={entry.thumbnail.alt}
+            loading="lazy"
+            class="titles-card-image"
+          />
+          <span class="titles-card-title">{entry.title}</span>
+        </button>
+      ))
+    }
+  </div>
+</section>
+
+<dialog
+  class="titles-dialog"
+  id="titles-dialog"
+  aria-labelledby="titles-dialog-title"
+  aria-describedby="titles-dialog-tagline titles-dialog-contribution"
+>
+  <article class="titles-dialog-card">
+    <header class="titles-dialog-header">
+      <div>
+        <h3 class="titles-dialog-title display-face" id="titles-dialog-title"></h3>
+        <p class="titles-dialog-tagline" id="titles-dialog-tagline"></p>
+      </div>
+      <button class="titles-dialog-close" type="button" data-title-close aria-label="Close title details">
+        ×
+      </button>
+    </header>
+
+    <img id="titles-dialog-image" class="titles-dialog-image" alt="" width="1200" height="675" decoding="async" />
+
+    <div class="titles-dialog-meta-grid">
+      <section class="titles-dialog-meta-block">
+        <p class="titles-dialog-label">Platform</p>
+        <p class="titles-dialog-value" id="titles-dialog-platform"></p>
+      </section>
+      <section class="titles-dialog-meta-block">
+        <p class="titles-dialog-label">Role</p>
+        <p class="titles-dialog-value" id="titles-dialog-role"></p>
+      </section>
+      <section class="titles-dialog-meta-block titles-dialog-meta-block-full">
+        <p class="titles-dialog-label">Contribution</p>
+        <p class="titles-dialog-value" id="titles-dialog-contribution"></p>
+      </section>
+    </div>
+  </article>
+</dialog>
+
+<script is:inline define:vars={{ titleDetails }}>
+  const detailsMap = new Map(titleDetails.map((entry) => [entry.id, entry]));
+  const titlesDialog = document.getElementById('titles-dialog');
+  const titleElement = document.getElementById('titles-dialog-title');
+  const taglineElement = document.getElementById('titles-dialog-tagline');
+  const platformElement = document.getElementById('titles-dialog-platform');
+  const roleElement = document.getElementById('titles-dialog-role');
+  const contributionElement = document.getElementById('titles-dialog-contribution');
+  const imageElement = document.getElementById('titles-dialog-image');
+  const closeButton = titlesDialog?.querySelector('[data-title-close]');
+  const triggers = document.querySelectorAll('[data-title-trigger]');
+  let lastFocusedTrigger = null;
+
+  const closeDialog = () => {
+    if (!titlesDialog || !titlesDialog.open) return;
+
+    if (typeof titlesDialog.close === 'function') {
+      titlesDialog.close();
+    } else {
+      titlesDialog.removeAttribute('open');
+    }
+
+    if (lastFocusedTrigger instanceof HTMLElement) {
+      lastFocusedTrigger.focus();
+    }
+  };
+
+  const openDialog = (titleId, triggerElement) => {
+    if (
+      !titlesDialog ||
+      !titleElement ||
+      !taglineElement ||
+      !platformElement ||
+      !roleElement ||
+      !contributionElement ||
+      !imageElement
+    ) {
+      return;
+    }
+
+    const details = detailsMap.get(titleId);
+    if (!details) return;
+
+    titleElement.textContent = details.title;
+    taglineElement.textContent = details.tagline;
+    platformElement.textContent = details.platform;
+    roleElement.textContent = details.role;
+    contributionElement.textContent = details.contribution;
+    imageElement.setAttribute('src', details.thumbnailUrl);
+    imageElement.setAttribute('alt', details.thumbnail.alt);
+
+    lastFocusedTrigger = triggerElement instanceof HTMLElement ? triggerElement : null;
+
+    if (typeof titlesDialog.showModal === 'function') {
+      if (titlesDialog.open) return;
+      titlesDialog.showModal();
+      return;
+    }
+
+    titlesDialog.setAttribute('open', '');
+  };
+
+  triggers.forEach((trigger) => {
+    trigger.addEventListener('click', () => {
+      const titleId = trigger.getAttribute('data-title-id');
+      if (!titleId) return;
+      openDialog(titleId, trigger);
+    });
+  });
+
+  closeButton?.addEventListener('click', closeDialog);
+
+  titlesDialog?.addEventListener('click', (event) => {
+    if (event.target === titlesDialog) {
+      closeDialog();
+    }
+  });
+
+  titlesDialog?.addEventListener('cancel', (event) => {
+    event.preventDefault();
+    closeDialog();
+  });
+</script>
