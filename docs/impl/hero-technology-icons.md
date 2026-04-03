@@ -14,12 +14,12 @@ Current staged official candidates:
 - `go.svg`
 - `windmill.svg`
 - `csharp.svg`
-- `steam.png`
+- `steam.png` (active for Steam badge)
 
 Current gaps or review-only cases:
 
-- `java.svg` is intentionally not staged because Oracle's public Java affinity logo terms require the logo to be an active link to Oracle Java and are not a clean fit for the current badge UI.
-- `mulesoft.svg` is not staged because a clean current official SVG source did not surface in this pass.
+- `java.svg` now uses an open-source, Java-brand-style cup/glyph treatment for the badge with a trademark disclaimer shown in the skills dialog and footer.
+- `mulesoft.svg` now uses an open-source MuleSoft-style mark treatment for the badge with a trademark disclaimer shown in the skills dialog and footer.
 
 Implementation notes:
 
