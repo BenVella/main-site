@@ -95,31 +95,36 @@ a {
 
 .tech-badge-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(3.25rem, 1fr));
-  gap: 0.75rem;
+  grid-template-columns: repeat(auto-fit, minmax(3.4rem, 1fr));
+  gap: 0.65rem;
 }
 
 .tech-badge {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.75rem;
+  position: relative;
+  gap: 0;
   width: 100%;
-  padding: 0.8rem 1rem;
-  border: 1px solid var(--line);
-  border-radius: 9999px;
-  background: rgba(17, 17, 27, 0.52);
+  aspect-ratio: 1 / 1;
+  padding: 0.5rem;
+  border: 1px solid rgba(137, 180, 250, 0.12);
+  border-radius: 0.95rem;
+  background: rgba(17, 17, 27, 0.2);
   animation: badge-float 5.5s ease-in-out infinite;
   animation-delay: var(--badge-delay, 0ms);
   color: inherit;
   cursor: pointer;
   font: inherit;
-  text-align: left;
+  text-align: center;
+  transition:
+    border-color 160ms ease,
+    background-color 160ms ease,
+    transform 160ms ease;
 }
 
 .tech-badge-icon-only {
-  gap: 0;
-  padding: 0.5rem 0.6rem;
+  padding: 0.5rem;
 }
 
 .tech-badge-mark {
@@ -174,6 +179,30 @@ a {
 .tech-badge:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 2px;
+}
+
+.tech-badge:hover {
+  border-color: rgba(166, 227, 161, 0.55);
+  background: rgba(166, 227, 161, 0.14);
+  transform: translateY(-1px);
+}
+
+.tech-badge:active {
+  transform: translateY(0);
+}
+
+.tech-badge-indicator {
+  position: absolute;
+  top: 0.25rem;
+  right: 0.3rem;
+  font-size: 0.58rem;
+  line-height: 1;
+  color: rgba(166, 227, 161, 0.9);
+  opacity: 0.88;
+}
+
+.tech-badge-hint {
+  letter-spacing: 0.02em;
 }
 
 .skill-dialog {
