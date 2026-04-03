@@ -526,6 +526,7 @@ a {
 
 .titles-dialog-card {
   background: var(--surface-strong);
+  color: var(--text);
   padding: 1rem;
   max-height: calc(100dvh - 1.5rem);
   overflow: auto;
@@ -541,11 +542,12 @@ a {
 .titles-dialog-title {
   font-size: 1.9rem;
   line-height: 1.1;
+  color: var(--accent);
 }
 
 .titles-dialog-tagline {
   margin-top: 0.45rem;
-  color: var(--muted);
+  color: var(--text);
   font-style: italic;
   line-height: 1.5;
 }
