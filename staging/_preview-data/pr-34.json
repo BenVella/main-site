@@ -1,7 +1,0 @@
-{
-  "prNumber": 34,
-  "branchName": "codex/capture-404-under-staging-subdirectory",
-  "title": "Make 404 page staging-aware and preserve staging preview subpaths",
-  "previewPathSegment": "pr-34",
-  "updatedAt": "2026-04-03T23:07:04.907Z"
-}
