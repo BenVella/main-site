@@ -11,13 +11,13 @@ export type WorkedTitle = {
   contribution: string;
 };
 
-// TODO: Replace these placeholder thumbnail paths with final high-quality exports in public/images/titles.
+// TODO: Replace these temporary SVG placeholders with final high-quality exports in public/images/titles (can keep same filenames with .webp if preferred).
 export const workedTitles: WorkedTitle[] = [
   {
     id: 'lemmings',
     title: 'Lemmings',
     thumbnail: {
-      src: 'images/titles/lemmings.webp',
+      src: 'images/titles/lemmings.svg',
       alt: 'Lemmings title artwork thumbnail.',
     },
     tagline: 'Live mobile title, full-stack production support',
@@ -30,7 +30,7 @@ export const workedTitles: WorkedTitle[] = [
     id: 'subway-surfers-plus',
     title: 'Subway Surfers+',
     thumbnail: {
-      src: 'images/titles/subway-surfers-plus.webp',
+      src: 'images/titles/subway-surfers-plus.svg',
       alt: 'Subway Surfers+ title artwork thumbnail.',
     },
     tagline: 'Apple Arcade port and platform backend delivery',
@@ -43,7 +43,7 @@ export const workedTitles: WorkedTitle[] = [
     id: 'angry-birds-fury-road',
     title: 'Angry Birds: Fury Road',
     thumbnail: {
-      src: 'images/titles/angry-birds-fury-road.webp',
+      src: 'images/titles/angry-birds-fury-road.svg',
       alt: 'Angry Birds: Fury Road title artwork thumbnail.',
     },
     tagline: 'Arcade systems engineering for motion-rig hardware',
@@ -56,7 +56,7 @@ export const workedTitles: WorkedTitle[] = [
     id: 'ultimate-sackboy',
     title: 'Ultimate Sackboy',
     thumbnail: {
-      src: 'images/titles/ultimate-sackboy.webp',
+      src: 'images/titles/ultimate-sackboy.svg',
       alt: 'Ultimate Sackboy title artwork thumbnail.',
     },
     tagline: 'Mobile cloud save and reusable client integration',
@@ -69,7 +69,7 @@ export const workedTitles: WorkedTitle[] = [
     id: 'cards-the-universe-and-everything',
     title: 'Cards, the Universe and Everything',
     thumbnail: {
-      src: 'images/titles/cards-the-universe-and-everything.webp',
+      src: 'images/titles/cards-the-universe-and-everything.svg',
       alt: 'Cards, the Universe and Everything title artwork thumbnail.',
     },
     tagline: 'Steam backend integration and commerce support',
