@@ -19,6 +19,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
 
       - name: Setup Node
         uses: actions/setup-node@v5
@@ -29,11 +31,18 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Generate release metadata
+        id: release
+        run: node scripts/generate-release-metadata.mjs
+
       - name: Build production site
         env:
           SITE_BASE_PATH: /
           SITE_URL: https://www.bennetvella.com
           PUBLIC_SITE_ENV: production
+          PUBLIC_SITE_VERSION: ${{ steps.release.outputs.site_version }}
+          PUBLIC_RELEASE_TAG: ${{ steps.release.outputs.release_tag }}
+          PUBLIC_BUILD_TIMESTAMP: ${{ steps.release.outputs.build_timestamp }}
           PUBLIC_STAGING_ROOT_PATH: /staging/
         run: npm run build
 
@@ -48,6 +57,17 @@ jobs:
           branch: gh-pages
           folder: /tmp/publish
           clean: true
+
+      - name: Create release tag
+        env:
+          RELEASE_TAG: ${{ steps.release.outputs.release_tag }}
+          SITE_VERSION: ${{ steps.release.outputs.site_version }}
+          BUILD_TIMESTAMP: ${{ steps.release.outputs.build_timestamp }}
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email github-actions[bot]@users.noreply.github.com
+          git tag -a "$RELEASE_TAG" -m "Release $SITE_VERSION ($RELEASE_TAG) built on $BUILD_TIMESTAMP"
+          git push origin "$RELEASE_TAG"
 
   deploy-staging:
     if: github.ref == 'refs/heads/develop'

@@ -17,6 +17,9 @@ const favicon = withBase(baseUrl, 'assets/favicon.ico');
 const manifest = withBase(baseUrl, 'assets/site.webmanifest');
 const socialImage = withBase(baseUrl, 'og-image.svg');
 const isStaging = import.meta.env.PUBLIC_SITE_ENV === 'staging';
+const siteVersion = import.meta.env.PUBLIC_SITE_VERSION || '0.1.0';
+const releaseTag = import.meta.env.PUBLIC_RELEASE_TAG || '';
+const buildTimestamp = import.meta.env.PUBLIC_BUILD_TIMESTAMP || '';
 const title = pageTitle ? `${pageTitle} | ${siteConfig.name}` : siteConfig.title;
 const documentTitle = isStaging ? `[Staging] ${title}` : title;
 const description = pageDescription || siteConfig.description;
@@ -31,6 +34,9 @@ const canonicalUrl = new URL(Astro.url.pathname, siteUrl).toString();
     <title>{documentTitle}</title>
     <meta name="description" content={description} />
     <meta name="generator" content={Astro.generator} />
+    <meta name="site-version" content={siteVersion} />
+    {releaseTag && <meta name="release-tag" content={releaseTag} />}
+    {buildTimestamp && <meta name="build-timestamp" content={buildTimestamp} />}
     <link rel="canonical" href={canonicalUrl} />
     {isStaging && <meta name="robots" content="noindex, nofollow" />}
     <link rel="icon" type="image/svg+xml" href={withBase(baseUrl, 'assets/favicon.svg')} />
