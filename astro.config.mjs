@@ -11,6 +11,9 @@ export default defineConfig({
   base,
   output: 'static',
   trailingSlash: 'ignore',
+  build: {
+    inlineStylesheets: 'always',
+  },
   integrations: [mdx(), sitemap()],
   vite: {
     plugins: [tailwindcss()],
