@@ -39,9 +39,9 @@ const stagingLocation = parseStagingLocation(currentPath, import.meta.env.PUBLIC
         </a>
         {
           isStaging && (
-            <span class="staging-badge" aria-label="Staging preview">
+            <a class="staging-badge" href={stagingRootPath} aria-label="Return to staging root">
               Preview / Staging
-            </span>
+            </a>
           )
         }
       </div>
