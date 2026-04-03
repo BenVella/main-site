@@ -19,6 +19,7 @@ This repository contains the Astro source for `www.bennetvella.com`.
 - Store feature data for `public/` assets as base-agnostic relative fragments when practical, and prepend `import.meta.env.BASE_URL` at the render layer.
 - Preserve the custom-domain setup through `public/CNAME`.
 - Present a suggested commit message with each alteration summary.
+- Run `npm run check` and relevant automated tests locally (for this repo, at minimum `npm test`) before finalizing agent-authored changes.
 
 ## Git Rules
 
