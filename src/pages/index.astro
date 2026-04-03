@@ -17,7 +17,7 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
   pageTitle="Lead Game Programmer"
   pageDescription="Portfolio, project case studies, and writing on game systems, backend multiplayer, and technical delivery by Bennet Vella."
 >
-  <HomeHero linkedinUrl={siteConfig.linkedin} />
+  <HomeHero githubUrl={siteConfig.github} linkedinUrl={siteConfig.linkedin} />
 
   <section class="mt-20">
     <SectionHeading
