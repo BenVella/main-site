@@ -191,22 +191,16 @@ a {
   transform: translateY(0);
 }
 
-.tech-badge-indicator {
-  position: absolute;
-  top: 0.25rem;
-  right: 0.3rem;
-  font-size: 0.58rem;
-  line-height: 1;
-  color: rgba(166, 227, 161, 0.9);
-  opacity: 0.88;
-}
-
 .tech-badge-hint {
   letter-spacing: 0.02em;
 }
 
 .skill-dialog {
   width: min(38rem, calc(100vw - 2rem));
+  max-height: calc(100dvh - 2rem);
+  position: fixed;
+  inset: 0;
+  margin: auto;
   border: 1px solid var(--line);
   border-radius: 1.2rem;
   background: transparent;
@@ -221,6 +215,8 @@ a {
 .skill-dialog-card {
   background: var(--surface-strong);
   padding: 1.25rem;
+  max-height: calc(100dvh - 2rem);
+  overflow: auto;
 }
 
 .skill-dialog-header {
