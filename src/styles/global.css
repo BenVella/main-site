@@ -93,10 +93,18 @@ a {
   pointer-events: none;
 }
 
+.tech-badge-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(3.25rem, 1fr));
+  gap: 0.75rem;
+}
+
 .tech-badge {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 0.75rem;
+  width: 100%;
   padding: 0.8rem 1rem;
   border: 1px solid var(--line);
   border-radius: 9999px;
@@ -110,7 +118,6 @@ a {
 }
 
 .tech-badge-icon-only {
-  justify-content: center;
   gap: 0;
   padding: 0.5rem 0.6rem;
 }
