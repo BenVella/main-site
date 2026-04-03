@@ -4,10 +4,11 @@ import { withBase } from '@/utils/base-path';
 
 type Props = {
   technology: Technology;
+  skillId?: string;
   delayMs?: number;
 };
 
-const { technology, delayMs = 0 } = Astro.props;
+const { technology, skillId = technology.name.toLowerCase().replace(/[^a-z0-9]+/g, '-'), delayMs = 0 } = Astro.props;
 const baseUrl = import.meta.env.BASE_URL;
 const getTechnologyIconPath = (iconFile: string) => withBase(baseUrl, `${technologyIconDirectory}/${iconFile}`);
 const hasIcon = Boolean(technology.iconFile);
@@ -15,10 +16,14 @@ const iconStyleClass = technology.iconStyle === 'wide' ? 'tech-badge-mark-wide' 
 const iconImageClass = technology.iconStyle === 'wide' ? 'tech-badge-icon-wide' : '';
 ---
 
-<div
+<button
+  type="button"
   class:list={['tech-badge', hasIcon && 'tech-badge-icon-only']}
   style={`--badge-delay: ${delayMs}ms;`}
-  title={hasIcon ? technology.name : undefined}
+  title={`Open details for ${technology.name}`}
+  data-skill-trigger
+  data-skill-id={skillId}
+  aria-haspopup="dialog"
 >
   {
     hasIcon ? (
@@ -43,4 +48,4 @@ const iconImageClass = technology.iconStyle === 'wide' ? 'tech-badge-icon-wide' 
       <span class="tech-badge-name">{technology.name}</span>
     )
   }
-</div>
+</button>

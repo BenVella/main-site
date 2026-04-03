@@ -1,0 +1,409 @@
+## Do you see Game Development as a long-term career?
+
+Yes, absolutely. Game development has always been my intended destination, even if my path into it was indirect.
+
+I have been tinkering with game development for over a decade, with a more serious and focused personal project ongoing for the past five years. Over the last three years, I have also been working professionally in the industry. Together, this combination of long-term personal investment and industry experience has reinforced that this is the career path I want to continue growing in.
+
+---
+
+## Why are you interested in Anvil Game Studios?
+
+I am primarily looking for a studio that owns its IP, takes pride in its products, and values its players as a direct extension of that.
+
+Anvilâ€™s approach aligns well with what I am looking for. Building things properly with a long-term mindset rather than focusing on short-term output. I am especially interested in being part of a team where I can grow into a long-term contributor and develop deep expertise in areas that meaningfully impact the product.
+
+---
+
+## What do you like to do best related to the Game Development field?
+
+Professionally, I operate across both backend engineering and front end systems, primarily focusing on the boundary between the two. I enjoy solving problems around client server communication, system reliability, and introducing DevOps practices where they provide clear value, always weighing long-term maintenance costs against developer efficiency.
+
+On my personal project, I work across the full stack of development. While I enjoy exploring all areas, my strongest contributions are in programming and systems design, where I can shape both the technical and gameplay foundations.
+
+---
+
+## What do you do to keep yourself engaged with new technologies in the field?
+
+My primary approach is through my personal project, which I treat as a sandbox for experimenting with new ideas and technologies. This allows me to test concepts quickly, discard what does not work, and evolve what does into practical systems.
+
+Alongside that, I stay informed through Unityâ€™s official content and keep up with broader engineering discussions via platforms like Hacker News and selected technical channels. A notable influence is Molly Rocket by Casey Muratori, which I find particularly valuable for its focus on fundamentals and performance oriented thinking.
+
+---
+
+## What is your strongest programming language and in what order of proficiency?
+
+In order of proficiency: C#, Golang, Java, Python, and C.
+
+I would not currently claim proficiency in C++, as I have limited experience with the STL, but I am very interested in developing that skill further if the opportunity arises.
+
+---
+
+## How confident are you with using the Unity engine?
+
+I am fairly confident working with Unity in a production setting and have solid experience building and maintaining systems within the engine.
+
+I am particularly interested in going deeper into ECS, Burst compilation, and data oriented approaches. My experience maintaining legacy systems has led me to favour simpler, flatter code structures that are easier to reason about and maintain over time.
+
+---
+
+## When was the last time you used the Unity engine as part of a project?
+
+I am currently using Unity both professionally and on my personal project, so it is part of my day to day workflow.
+
+---
+
+## Whatâ€™s your experience with multiplayer programming?
+
+My experience is primarily on the backend side. Before transitioning into game development, I spent several years building cloud based systems focused on scalability, durability, and high availability using MuleSoft in Java and Azure in C#.
+
+Within game development, I have worked mainly on asynchronous multiplayer features such as leaderboards, player ghosts, inventory systems, authentication, purchases, and cloud saves.
+
+While I have not yet worked professionally on real time multiplayer systems, I have studied them independently and recently started exploring technologies such as WebSockets and TLS 1.3 to build a stronger foundation in that area.
+
+---
+
+## How do you test your game features?
+
+I follow a layered approach to testing, starting with writing clear, predictable code to minimise unintended behaviour.
+
+From there, I support systems with unit tests, primarily in edit mode, followed by integration testing through CI pipelines. Beyond automated testing, I rely on personal validation, in house QA, and eventually controlled releases such as closed beta or partial rollouts.
+
+This ensures both technical correctness and real world usability are covered.
+
+---
+
+## How do you ensure your game features are well-optimised?
+
+Optimisation is something I value highly, particularly through data oriented design in my personal work. However, in a production environment, it needs to be applied pragmatically.
+
+I believe systems should be designed with optimisation in mind from the start, as poorly structured code is often difficult to improve later without significant rewrites. At the same time, pushing everything toward ECS, Burst, or SIMD can introduce unnecessary complexity and harm maintainability if the gains are marginal.
+
+Ultimately, code is a means to an end. Players care most about the experience, game design and visual quality, so the goal is to build systems that are performant, maintainable, and allow for efficient iteration rather than over engineering for its own sake.
+
+
+## Interpolation
+
+### You are given two random Vector3s (VectorA, VectorB). How would you calculate the midpoint (VectorC) between them?
+
+Find the average:
+
+```csharp
+Vector3 vectorC = (vectorA + vectorB) * 0.5f;
+```
+
+---
+
+### You are now given a GameObject (GameObjectA). Starting from VectorA, how would you move the GameObject to VectorB over multiple frames?
+
+A straightforward approach is to use either Lerp or MoveTowards:
+
+```csharp
+transform.position = Vector3.Lerp(vectorA, vectorB, t);
+t += Time.deltaTime * speed;
+
+transform.position = Vector3.MoveTowards(transform.position, vectorB, speed * Time.deltaTime);
+```
+
+For rigidbodies you can use the above and apply with rb.MovePosition(result).
+
+And for fire and forget behaviour coroutines can work well using any of the above.
+
+---
+
+### How would you detect when the GameObject has reached VectorB and destroy it?
+
+A common approach is to check distance within a small threshold:
+
+```csharp
+if (math.distancesq(pos, VectorB) < epsilonSq)
+{
+    Destroy(gameObject);
+}
+```
+
+---
+
+## Components
+
+### How would you make a cube invisible?
+
+The simplest approach is to disable the MeshRenderer:
+
+```csharp
+renderer.enabled = false;
+```
+
+This avoids triggering GameObject lifecycle events and does not alter hierarchy state.
+
+If invisibility should also disable behaviour and lifecycle logic, then deactivating the GameObject is more appropriate:
+
+```csharp
+gameObject.SetActive(false);
+```
+
+---
+
+### How would you toggle the cube visibility every other frame?
+
+To ensure stable behaviour even with multiple updates per frame, Time.frameCount can be used for idempotency:
+
+```csharp
+renderer.enabled = (Time.frameCount & 1) == 0;
+```
+
+This avoids repeated toggling within the same frame, which could occur with:
+
+```csharp
+renderer.enabled = !renderer.enabled;
+```
+
+---
+
+### How would you alternate between two colours every other frame?
+
+Use MaterialPropertyBlock for low to medium scale of objects.  
+
+```csharp
+    private void LateUpdate()
+    {
+        Color current = (Time.frameCount & 1) == 0 ? colorA : colorB;
+        rend.GetPropertyBlock(mpb);
+        mpb.SetColor(ColorID, current);
+        rend.SetPropertyBlock(mpb);
+    }
+}
+```
+
+For larger scale scenarios, such as tens of thousands of objects, it is more efficient to move the decision to the GPU.
+
+On the CPU side, pass frame parity to the shader:
+
+```csharp
+Shader.SetGlobalFloat("_FrameParity", Time.frameCount & 1);
+```
+
+In the shader, switch between the two colours:
+
+```csharp
+return (_FrameParity  < 0.5) ? _ColorA : _ColorB;
+```
+
+---
+
+## Persistency
+
+### You are given a GameObject (GameObjectBuildingA). How would you assign GameObjectBuildingA a health points (â€œHPâ€) value of 100?
+
+With no further requirements, I would store HP on an existing or dedicated component attached to the GameObject.
+
+On `BuildingEntity`:
+
+```csharp
+private int currentHp;
+
+public void SetHealth(int value) => currentHp = value;
+```
+
+From a caller with a reference to the GameObject:
+
+```csharp
+BuildingEntity entity = gameObjectBuildingA.GetComponent<BuildingEntity>(); // cache if reused
+entity.SetHealth(100);
+```
+
+For a much larger scale system, runtime state could be detached into a data structure keyed by a stable identifier.
+
+```csharp
+struct BuildingStats
+{
+    public int stableId;
+    public int hp;
+}
+```
+
+---
+
+### GameObjectBuildingA now needs to be copied to a different position. In addition, the new GameObject (GameObjectBuildingB) should have an HP value of 50. How can this be achieved?
+
+Clone the original GameObject with `Instantiate`, then override the health value on the clone.
+
+```csharp
+GameObject gameObjectBuildingB =
+    Object.Instantiate(gameObjectBuildingA, newPosition, Quaternion.identity);
+
+BuildingEntity entityB = gameObjectBuildingB.GetComponent<BuildingEntity>();
+entityB.SetHealth(50);
+```
+
+A slightly stronger approach is to expose a one time `Setup` method that accepts a `BuildingStats` payload. Internally, that method can call `SetHealth`, while also giving you a cleaner entry point for future pooling or spawn initialization.
+
+```csharp
+struct BuildingStats
+{
+    public int stableId;
+    public int hp;
+}
+
+public sealed class BuildingEntity : MonoBehaviour
+{
+    private int currentHp;
+
+    public void SetHealth(int value) => currentHp = value;
+
+    public void Setup(in BuildingStats stats)
+    {
+        SetHealth(stats.hp);
+    }
+}
+```
+
+```csharp
+GameObject gameObjectBuildingB =
+    Object.Instantiate(gameObjectBuildingA, newPosition, Quaternion.identity);
+
+BuildingEntity entityB = gameObjectBuildingB.GetComponent<BuildingEntity>();
+entityB.Setup(new BuildingStats { stableId = 2, hp = 50 });
+```
+
+This keeps the direct answer simple while also providing a reusable initialization path if instantiation later becomes pool activation.
+
+---
+
+### Assume that the scene starts empty now. How would you spawn GameObjectBuildingA and GameObjectBuildingB with their respective HP values?
+
+Author the setup ahead of time in Unity and use a dedicated spawner with serialized spawn data.
+
+A practical setup is to define a `BuildingStats` array for the authoring data, iterate over it during spawn, assign an incremental `stableId`, and keep a lookup from `stableId` to the spawned `BuildingEntity`. That gives you a simple bridge between detached data and live scene objects.
+
+```csharp
+public struct BuildingStats
+{
+    public int stableId;
+    public Vector3 pos;
+    public int hp;
+}
+
+public sealed class BuildingEntity : MonoBehaviour
+{
+    private int currentHp;
+
+    public void SetHealth(int value) => currentHp = value;
+
+    public void Setup(in BuildingStats stats)
+    {
+        SetHealth(stats.hp);
+    }
+}
+
+public sealed class BuildingSpawner : MonoBehaviour
+{
+    [SerializeField] private BuildingEntity buildingPrefab;
+
+    private readonly Dictionary<int, BuildingEntity> entitiesByStableId = new();
+
+    private void Start()
+    {
+        BuildingStats[] buildingStats = // likely to be pulled from a ScriptObj on disk
+        {
+            new BuildingStats { hp = 100, pos = Vector3.zero },
+            new BuildingStats { hp = 50, pos = Vector3.one }
+        };
+
+        for (int i = 0; i < buildingStats.Length; i++)
+        {
+            BuildingStats stats = buildingStats[i];
+            stats.stableId = i + 1;
+
+            BuildingEntity newBuilding =
+                Instantiate(buildingPrefab, stats.pos, Quaternion.identity);
+
+            newBuilding.Setup(stats);
+            entitiesByStableId.Add(stats.stableId, entity);
+        }
+    }
+}
+```
+
+The main benefit being detached authoring data.  There is a one time setup entry point, and a stable lookup that can later support save/load, pooling, or batch control.
+
+---
+
+## Collisions
+
+### You are given two GameObjects (GameObjectCube, GameObjectTerrain). GameObjectCube should fall towards GameObjectTerrain and stop once the GameObjectCube touches GameObjectTerrain. How can this behaviour be achieved?
+
+The straightforward option is to move the cube downward at a fixed speed and stop it when a collision with the terrain is detected.
+
+A simple Unity style approach is to use a `Rigidbody` with `useGravity = false`, assign a constant downward velocity, and zero it on contact.
+
+```csharp
+private void Awake()
+{
+    rb = GetComponent<Rigidbody>();
+    rb.useGravity = false;
+}
+
+private void Start()
+{
+    rb.linearVelocity = Vector3.down * fallSpeed;
+}
+
+private void OnCollisionEnter(Collision collision)
+{
+    if (!collision.gameObject.CompareTag("Terrain")) return;
+
+    rb.linearVelocity = Vector3.zero;
+}
+```
+
+Additional setup may be required to account for damping on velocity, or we can on `FixedUpdate` force the velocity we want each time, although that can present as  hacky and going against the intended system.
+
+For larger numbers of objects, it's worth considering moving away from rigidbodies and using batched queries. RaycastCommand could help identify the terrain point for each falling object and help regularly update or interpolate objects to target point.
+
+---
+
+### GameObjectCube should now reverse the direction (â€œbounce offâ€) of the GameObjectTerrain once they touch and continue travelling in the opposite direction. How would you adjust your previous solution?
+
+Keep the same constant speed but flip the travel direction when contact occurs.
+
+```csharp
+private Vector3 direction = Vector3.down;
+
+private void Awake()
+{
+    rb = GetComponent<Rigidbody>();
+    rb.useGravity = false;
+    rb.linearDamping = 0f;
+}
+
+private void FixedUpdate()
+{   // per physics tick reset of values
+    rb.linearVelocity = direction * speed;
+}
+
+private void OnCollisionEnter(Collision collision)
+{
+    if (!collision.gameObject.CompareTag("Terrain")) return;
+    direction = -direction;
+}
+```
+
+At scale, if the motion is this simple and deterministic, we can go with data driven movement plus batched collision queries over full per object physics simulation.
+
+If many objects need richer physical interaction rather than simple ping pong motion, that is where a fuller ECS physics approach starts becoming more relevant.
+
+## AI Agents
+
+### Did you use any AI agents to complete this questionnaire? If yes, list them here.
+
+Yes. I used ChatGPT to confirm Unity API specifics, generate some code snippets from my own notes, and help proofread and format the responses into Markdown blocks for easier editing.
+
+---
+
+### On the topic of AI
+
+AI usage has grown significantly across the industry, and my current workplace is no exception. I was among the early adopters in researching these tools, evaluating how they could be used effectively, and helping align project workflows around them.
+
+In practice, chat based LLMs have mostly been useful for research, replacing a large share of traditional search engine usage, as well as for proofreading, templating, presentations, and general writing support.
+
+On the engineering side, I have also evaluated tools such as Codex, Claude Code, and Claude based workflows for code review, investigation, bug fixing, feature scaffolding, and architecture support.
