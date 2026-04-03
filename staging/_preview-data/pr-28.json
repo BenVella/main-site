@@ -1,7 +1,0 @@
-{
-  "prNumber": 28,
-  "branchName": "codex/make-preview-button-redirect-to-staging",
-  "title": "Always route Preview / Staging badge to staging root",
-  "previewPathSegment": "pr-28",
-  "updatedAt": "2026-04-03T20:36:19.805Z"
-}

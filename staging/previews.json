@@ -1,14 +1,5 @@
 [
   {
-    "prNumber": 28,
-    "branchName": "codex/make-preview-button-redirect-to-staging",
-    "title": "Always route Preview / Staging badge to staging root",
-    "label": "codex/make-preview-button-redirect-to-staging · PR #28",
-    "previewPathSegment": "pr-28",
-    "url": "/staging/pr-28/",
-    "updatedAt": "2026-04-03T20:36:19.805Z"
-  },
-  {
     "prNumber": 27,
     "branchName": "codex/update-mulesoft,-java,-and-steam-icons",
     "title": "Update Steam/Java/MuleSoft icons and show trademark disclaimers in skill dialog",
