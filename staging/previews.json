@@ -7,14 +7,5 @@
     "previewPathSegment": "pr-34",
     "url": "/staging/pr-34/",
     "updatedAt": "2026-04-03T23:07:04.907Z"
-  },
-  {
-    "prNumber": 33,
-    "branchName": "codex/fix-formatting-issue-on-blog-project-page",
-    "title": "Inline stylesheets to stabilize staging page rendering",
-    "label": "codex/fix-formatting-issue-on-blog-project-page · PR #33",
-    "previewPathSegment": "pr-33",
-    "url": "/staging/pr-33/",
-    "updatedAt": "2026-04-03T23:06:13.216Z"
   }
 ]
