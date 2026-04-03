@@ -9,12 +9,12 @@
     "updatedAt": "2026-04-03T08:46:16.100Z"
   },
   {
-    "prNumber": 21,
-    "branchName": "develop",
-    "title": "release latest",
-    "label": "develop · PR #21",
-    "previewPathSegment": "pr-21",
-    "url": "/staging/pr-21/",
-    "updatedAt": "2026-04-03T08:38:01.813Z"
+    "prNumber": 22,
+    "branchName": "codex/remove-existing-articles-and-add-new-content",
+    "title": "Show home preview snippets on PostCard and add `homeSample` frontmatter",
+    "label": "codex/remove-existing-articles-and-add-new-content · PR #22",
+    "previewPathSegment": "pr-22",
+    "url": "/staging/pr-22/",
+    "updatedAt": "2026-04-03T08:47:24.033Z"
   }
 ]
