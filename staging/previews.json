@@ -1,20 +1,11 @@
 [
   {
-    "prNumber": 24,
-    "branchName": "codex/remove-existing-articles-and-add-new-content-qmd8qs",
-    "title": "Add AI-era blog post, home teaser support, and reorder home sections",
-    "label": "codex/remove-existing-articles-and-add-new-content-qmd8qs · PR #24",
-    "previewPathSegment": "pr-24",
-    "url": "/staging/pr-24/",
-    "updatedAt": "2026-04-03T10:25:54.272Z"
-  },
-  {
     "prNumber": 22,
     "branchName": "codex/remove-existing-articles-and-add-new-content",
     "title": "Show home preview snippets on PostCard and add `homeSample` frontmatter",
     "label": "codex/remove-existing-articles-and-add-new-content · PR #22",
     "previewPathSegment": "pr-22",
     "url": "/staging/pr-22/",
-    "updatedAt": "2026-04-03T08:47:24.033Z"
+    "updatedAt": "2026-04-03T10:25:56.247Z"
   }
 ]
