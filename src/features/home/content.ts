@@ -40,8 +40,7 @@ export const heroTechnologies: Technology[] = [
     summary: 'Generic game engine used for real-time gameplay development and tooling.',
     experience:
       'Systems and gameplay programmer. Built transactional reward system, bootstrap system, save system with versioned migration behavior, and backend integration for UGC.',
-    iconFile: 'official/unity.svg',
-    iconStyle: 'wide',
+    iconFile: 'official/unity-symbol.svg',
   },
   {
     id: 'csharp',
@@ -66,8 +65,7 @@ export const heroTechnologies: Technology[] = [
     name: 'Steam',
     summary: 'PC game distribution and platform services ecosystem.',
     experience: 'TODO: Add Steam integration and release workflow details from LinkedIn.',
-    iconFile: 'official/steam.png',
-    iconStyle: 'wide',
+    iconFile: 'official/steam-symbol.svg',
   },
   {
     id: 'git',
@@ -109,6 +107,7 @@ export const heroTechnologies: Technology[] = [
     name: 'Java',
     summary: 'General-purpose language used across enterprise backend integrations.',
     experience: 'TODO: Add Java integration and platform work from LinkedIn.',
+    iconFile: 'official/java.svg',
   },
   {
     id: 'mulesoft',
@@ -116,6 +115,7 @@ export const heroTechnologies: Technology[] = [
     name: 'MuleSoft',
     summary: 'Integration platform for connecting services, APIs, and enterprise systems.',
     experience: 'TODO: Add MuleSoft delivery and integration outcomes from LinkedIn.',
+    iconFile: 'official/mulesoft.svg',
   },
   {
     id: 'windmill',
