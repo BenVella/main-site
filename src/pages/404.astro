@@ -16,4 +16,22 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
       Back to home
     </a>
   </section>
+
+  <script>
+    const currentPath = window.location.pathname;
+    const normalizedStagingRootPath = (import.meta.env.PUBLIC_STAGING_ROOT_PATH || '/staging/')
+      .replace(/^\/+|\/+$/g, '');
+    const stagingRootPath = `/${normalizedStagingRootPath}/`;
+    const escapedStagingRootPath = stagingRootPath.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const previewPathPattern = new RegExp(`^${escapedStagingRootPath}pr-[^/]+/`);
+
+    if (currentPath.startsWith(stagingRootPath)) {
+      const previewPrefix = currentPath.match(previewPathPattern)?.[0] ?? stagingRootPath;
+      const targetPath = `${previewPrefix}404/`;
+
+      if (currentPath !== targetPath) {
+        window.location.replace(targetPath);
+      }
+    }
+  </script>
 </BaseLayout>

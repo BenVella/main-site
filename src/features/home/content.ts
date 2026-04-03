@@ -28,6 +28,7 @@ export type Technology = {
   experience?: string;
   iconFile?: string;
   iconStyle?: 'symbol' | 'wide';
+  trademarkDisclaimer?: string;
 };
 
 export const technologyIconDirectory = 'assets/technology-icons';
@@ -41,6 +42,8 @@ export const heroTechnologies: Technology[] = [
     experience:
       'Systems and gameplay programmer. Built transactional reward system, bootstrap system, save system with versioned migration behavior, and backend integration for UGC.',
     iconFile: 'official/unity-symbol.svg',
+    trademarkDisclaimer:
+      'Unity is a trademark or registered trademark of Unity Technologies or its affiliates in the U.S. and elsewhere.',
   },
   {
     id: 'csharp',
@@ -65,7 +68,10 @@ export const heroTechnologies: Technology[] = [
     name: 'Steam',
     summary: 'PC game distribution and platform services ecosystem.',
     experience: 'TODO: Add Steam integration and release workflow details from LinkedIn.',
-    iconFile: 'official/steam-symbol.svg',
+    iconFile: 'official/steam.png',
+    iconStyle: 'wide',
+    trademarkDisclaimer:
+      'Steam and the Steam logo are trademarks and/or registered trademarks of Valve Corporation in the U.S. and/or other countries.',
   },
   {
     id: 'git',
@@ -108,6 +114,7 @@ export const heroTechnologies: Technology[] = [
     summary: 'General-purpose language used across enterprise backend integrations.',
     experience: 'TODO: Add Java integration and platform work from LinkedIn.',
     iconFile: 'official/java.svg',
+    trademarkDisclaimer: 'Java is a trademark or registered trademark of Oracle and/or its affiliates.',
   },
   {
     id: 'mulesoft',
@@ -116,6 +123,8 @@ export const heroTechnologies: Technology[] = [
     summary: 'Integration platform for connecting services, APIs, and enterprise systems.',
     experience: 'TODO: Add MuleSoft delivery and integration outcomes from LinkedIn.',
     iconFile: 'official/mulesoft.svg',
+    trademarkDisclaimer:
+      'MuleSoft is a trademark of Salesforce, Inc. and is used here only to identify platform experience.',
   },
   {
     id: 'windmill',

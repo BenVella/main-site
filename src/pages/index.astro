@@ -2,10 +2,9 @@
 import { getCollection } from 'astro:content';
 import HomeHero from '@/components/home/HomeHero.astro';
 import PostCard from '@/components/PostCard.astro';
-import ProjectCard from '@/components/ProjectCard.astro';
 import SectionHeading from '@/components/SectionHeading.astro';
+import TitlesWorkedOnSection from '@/components/home/TitlesWorkedOnSection.astro';
 import BaseLayout from '@/layouts/BaseLayout.astro';
-import { featuredProjects } from '@/features/projects/service';
 import { education, experience, siteConfig, strengths } from '@/site.config';
 
 const posts = (await getCollection('blog', ({ data }) => !data.draft))
@@ -19,16 +18,7 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
 >
   <HomeHero githubUrl={siteConfig.github} linkedinUrl={siteConfig.linkedin} />
 
-  <section class="mt-20">
-    <SectionHeading
-      eyebrow="Projects"
-      title="Selected case studies"
-      intro="These are the projects and work areas that best represent how I approach software engineering."
-    />
-    <div class="grid gap-5 lg:grid-cols-3">
-      {featuredProjects.map((project) => <ProjectCard project={project} />)}
-    </div>
-  </section>
+  <TitlesWorkedOnSection />
 
   <section class="mt-20">
     <SectionHeading
