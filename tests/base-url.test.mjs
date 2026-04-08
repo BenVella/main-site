@@ -48,7 +48,7 @@ describe('BASE_URL build output', () => {
     const projectsIndex = readBuiltFile('projects', 'index.html');
     const projectDetail = readBuiltFile('projects', 'cloud-save-platform-go-aws', 'index.html');
 
-    assert.match(homepage, /src="\/preview\/images\/titles\/lemmings\.svg"/);
+    assert.match(homepage, /src="\/preview\/images\/projects\/Hero_Banner_Lemmings-1920x1080-1\.jpg"/);
     assert.match(homepage, /data-title-id="lemmings"/);
 
     assert.match(projectsIndex, /href="\/preview\/projects\/cloud-save-platform-go-aws"/);
