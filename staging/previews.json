@@ -1,5 +1,14 @@
 [
   {
+    "prNumber": 39,
+    "branchName": "codex/add-cv-button-to-navigation-raiejm",
+    "title": "Add CV page with downloadable PDF and header link",
+    "label": "codex/add-cv-button-to-navigation-raiejm · PR #39",
+    "previewPathSegment": "pr-39",
+    "url": "/staging/pr-39/",
+    "updatedAt": "2026-04-09T04:24:33.192Z"
+  },
+  {
     "prNumber": 38,
     "branchName": "codex/add-cv-button-to-navigation",
     "title": "Add CV page and nav item with downloadable PDF and LinkedIn link",
