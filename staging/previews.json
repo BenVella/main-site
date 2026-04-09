@@ -25,14 +25,5 @@
     "previewPathSegment": "pr-39",
     "url": "/staging/pr-39/",
     "updatedAt": "2026-04-09T04:24:33.192Z"
-  },
-  {
-    "prNumber": 38,
-    "branchName": "codex/add-cv-button-to-navigation",
-    "title": "Add CV page and nav item with downloadable PDF and LinkedIn link",
-    "label": "codex/add-cv-button-to-navigation · PR #38",
-    "previewPathSegment": "pr-38",
-    "url": "/staging/pr-38/",
-    "updatedAt": "2026-04-09T04:02:04.447Z"
   }
 ]
