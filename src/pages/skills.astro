@@ -47,8 +47,10 @@ const skillDetails = fullSkillTechnologies.map((technology) => ({
             <h2 class="skills-category-title display-face">{category.title}</h2>
             <p class="skills-category-intro">{category.intro}</p>
 
-            <div class="skills-category-skills" aria-label={`${category.title} skill icons`}>
-              {category.skills.map((technology) => <TechnologyBadge technology={technology} skillId={technology.id} />)}
+            <div class="tech-badge-grid skills-category-skill-grid" aria-label={`${category.title} skill icons`}>
+              {category.skills.map((technology, index) => (
+                <TechnologyBadge technology={technology} skillId={technology.id} delayMs={index * 120} />
+              ))}
             </div>
 
             <div class="skills-category-usage">
