@@ -1,5 +1,14 @@
 [
   {
+    "prNumber": 40,
+    "branchName": "codex/update-skill-dialog-content-for-portfolio-site",
+    "title": "Update skill dialog copy with evidence-based summaries",
+    "label": "codex/update-skill-dialog-content-for-portfolio-site · PR #40",
+    "previewPathSegment": "pr-40",
+    "url": "/staging/pr-40/",
+    "updatedAt": "2026-04-09T04:26:13.330Z"
+  },
+  {
     "prNumber": 39,
     "branchName": "codex/add-cv-button-to-navigation-raiejm",
     "title": "Add CV page with downloadable PDF and header link",
