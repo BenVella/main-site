@@ -154,6 +154,7 @@ export const heroTechnologies: Technology[] = [
     summary: 'Container orchestration and chart-based deployment experience for internal platform workloads.',
     experience:
       'Used to deploy and manage Windmill-based services through Helm charts in Kubernetes environments. Applied as part of practical operations and release workflows for internal tooling. Highlights: Helm chart deployments, cluster-based operations, environment consistency, release support.',
+    iconFile: 'official/kubernetes-helm.svg',
   },
   {
     id: 'openapi',
@@ -162,5 +163,6 @@ export const heroTechnologies: Technology[] = [
     summary: 'API contract specification used to define and align backend service interfaces.',
     experience:
       'Used in team backend workflows to guide implementation and integration boundaries, including Go service contributions. Supports clearer handoff between client, service, and integration work. Highlights: contract-first API design, backend coordination, integration alignment.',
+    iconFile: 'official/openapi.svg',
   },
 ];
