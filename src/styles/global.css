@@ -637,13 +637,12 @@ a {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: brightness(1.14) saturate(1.15) contrast(1.04);
 }
 
 .skills-category-collage-scrim {
   position: absolute;
   inset: 0;
-  background: linear-gradient(145deg, rgba(17, 17, 27, 0.4) 0%, rgba(17, 17, 27, 0.76) 100%);
+  background: linear-gradient(145deg, rgba(17, 17, 27, 0.22) 0%, rgba(17, 17, 27, 0.58) 100%);
 }
 
 .skills-category-content {
