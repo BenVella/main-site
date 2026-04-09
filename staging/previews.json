@@ -1,5 +1,14 @@
 [
   {
+    "prNumber": 41,
+    "branchName": "codex/update-portfolio-skills-presentation",
+    "title": "Restructure skills IA with dedicated category skills page",
+    "label": "codex/update-portfolio-skills-presentation · PR #41",
+    "previewPathSegment": "pr-41",
+    "url": "/staging/pr-41/",
+    "updatedAt": "2026-04-09T04:26:38.487Z"
+  },
+  {
     "prNumber": 40,
     "branchName": "codex/update-skill-dialog-content-for-portfolio-site",
     "title": "Update skill dialog copy with evidence-based summaries",
