@@ -630,19 +630,20 @@ a {
   inset: 0;
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  opacity: 0.42;
+  opacity: 0.62;
 }
 
 .skills-category-collage-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  filter: brightness(1.14) saturate(1.15) contrast(1.04);
 }
 
 .skills-category-collage-scrim {
   position: absolute;
   inset: 0;
-  background: linear-gradient(145deg, rgba(17, 17, 27, 0.72) 0%, rgba(17, 17, 27, 0.93) 100%);
+  background: linear-gradient(145deg, rgba(17, 17, 27, 0.4) 0%, rgba(17, 17, 27, 0.76) 100%);
 }
 
 .skills-category-content {
@@ -654,6 +655,10 @@ a {
 .skills-category-title {
   font-size: 1.6rem;
   color: var(--accent);
+  text-shadow:
+    0 1px 0 rgba(0, 0, 0, 0.8),
+    0 0 18px rgba(17, 17, 27, 0.95),
+    0 0 2px rgba(0, 0, 0, 0.85);
 }
 
 .skills-category-intro {
@@ -661,6 +666,9 @@ a {
   max-width: 70ch;
   color: var(--text);
   line-height: 1.7;
+  text-shadow:
+    0 1px 0 rgba(0, 0, 0, 0.86),
+    0 0 14px rgba(17, 17, 27, 0.92);
 }
 
 .skills-category-skill-grid {
@@ -683,6 +691,9 @@ a {
   text-transform: uppercase;
   font-weight: 700;
   color: var(--accent);
+  text-shadow:
+    0 1px 0 rgba(0, 0, 0, 0.82),
+    0 0 10px rgba(17, 17, 27, 0.9);
 }
 
 .skills-category-usage-list {
