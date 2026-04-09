@@ -1,0 +1,183 @@
+---
+import SectionHeading from '@/components/SectionHeading.astro';
+import TechnologyBadge from '@/components/home/TechnologyBadge.astro';
+import { technologyIconDirectory } from '@/features/home/content';
+import { fullSkillTechnologies, skillCategoryEntries } from '@/features/skills/catalog';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { withBase } from '@/utils/base-path';
+
+const baseUrl = import.meta.env.BASE_URL;
+
+const skillDetails = fullSkillTechnologies.map((technology) => ({
+  id: technology.id ?? technology.name.toLowerCase().replace(/[^a-z0-9]+/g, '-'),
+  name: technology.name,
+  summary: technology.summary ?? `TODO: Add a short summary for ${technology.name}.`,
+  experience: technology.experience ?? 'TODO: Add work experience details from LinkedIn.',
+  iconUrl: technology.iconFile
+    ? withBase(baseUrl, `${technologyIconDirectory}/${technology.iconFile}`)
+    : null,
+  trademarkDisclaimer: technology.trademarkDisclaimer ?? null,
+}));
+---
+
+<BaseLayout
+  pageTitle="Skills"
+  pageDescription="Full skills map covering game client, backend, cloud integration, DevOps, and delivery tooling experience."
+>
+  <section>
+    <SectionHeading
+      eyebrow="Skills"
+      title="Complete capability map"
+      intro="Category-based skills grouped by capability area, with quick cues for where each area has been applied in shipped work."
+    />
+  </section>
+
+  <section class="mt-10 space-y-6">
+    {
+      skillCategoryEntries.map((category) => (
+        <article class="skills-category-card" id={category.id}>
+          <div class="skills-category-collage" aria-hidden="true">
+            {category.collage.map((image) => (
+              <img src={withBase(baseUrl, image.src)} alt={image.alt} loading="lazy" class="skills-category-collage-image" />
+            ))}
+            <div class="skills-category-collage-scrim"></div>
+          </div>
+
+          <div class="skills-category-content">
+            <h2 class="skills-category-title display-face">{category.title}</h2>
+            <p class="skills-category-intro">{category.intro}</p>
+
+            <div class="skills-category-skills" aria-label={`${category.title} skill icons`}>
+              {category.skills.map((technology) => <TechnologyBadge technology={technology} skillId={technology.id} />)}
+            </div>
+
+            <div class="skills-category-usage">
+              <p class="skills-category-usage-label">Where used</p>
+              <ul class="skills-category-usage-list">
+                {category.whereUsed.map((usage) => (
+                  <li>
+                    {usage.href ? <a href={withBase(baseUrl, usage.href)}>{usage.label}</a> : <span>{usage.label}</span>}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </article>
+      ))
+    }
+  </section>
+
+  <dialog
+    class="skill-dialog"
+    id="skills-page-dialog"
+    aria-labelledby="skills-page-dialog-title"
+    aria-describedby="skills-page-dialog-summary skills-page-dialog-experience"
+  >
+    <article class="skill-dialog-card">
+      <header class="skill-dialog-header">
+        <div class="skill-dialog-title-wrap">
+          <span class="skill-dialog-icon-wrap" id="skills-page-dialog-icon-wrap" aria-hidden="true" hidden>
+            <img class="skill-dialog-icon" id="skills-page-dialog-icon" alt="" width="28" height="28" decoding="async" />
+          </span>
+          <h3 class="skill-dialog-title" id="skills-page-dialog-title"></h3>
+        </div>
+        <button class="skill-dialog-close" type="button" data-skills-page-close aria-label="Close skill details">
+          ×
+        </button>
+      </header>
+      <hr class="skill-dialog-rule" />
+      <p class="skill-dialog-summary" id="skills-page-dialog-summary"></p>
+      <hr class="skill-dialog-rule" />
+      <p class="skill-dialog-experience" id="skills-page-dialog-experience"></p>
+      <p class="skill-dialog-disclaimer" id="skills-page-dialog-disclaimer" hidden></p>
+    </article>
+  </dialog>
+
+  <script is:inline define:vars={{ skillDetails }}>
+    const detailsMap = new Map(skillDetails.map((technology) => [technology.id, technology]));
+    const skillDialog = document.getElementById('skills-page-dialog');
+    const titleElement = document.getElementById('skills-page-dialog-title');
+    const summaryElement = document.getElementById('skills-page-dialog-summary');
+    const experienceElement = document.getElementById('skills-page-dialog-experience');
+    const iconWrapElement = document.getElementById('skills-page-dialog-icon-wrap');
+    const iconElement = document.getElementById('skills-page-dialog-icon');
+    const disclaimerElement = document.getElementById('skills-page-dialog-disclaimer');
+    const closeButton = skillDialog?.querySelector('[data-skills-page-close]');
+    const categorySection = document.querySelector('section.mt-10');
+
+    const openSkillDialog = (skillId) => {
+      if (!skillDialog || !titleElement || !summaryElement || !experienceElement) return;
+      const details = detailsMap.get(skillId);
+      if (!details) return;
+
+      titleElement.textContent = details.name;
+      summaryElement.textContent = details.summary;
+      experienceElement.textContent = details.experience;
+
+      if (iconElement && iconWrapElement) {
+        if (details.iconUrl) {
+          iconElement.setAttribute('src', details.iconUrl);
+          iconWrapElement.removeAttribute('hidden');
+        } else {
+          iconElement.removeAttribute('src');
+          iconWrapElement.setAttribute('hidden', '');
+        }
+      }
+
+      if (disclaimerElement) {
+        if (details.trademarkDisclaimer) {
+          disclaimerElement.textContent = details.trademarkDisclaimer;
+          disclaimerElement.removeAttribute('hidden');
+        } else {
+          disclaimerElement.textContent = '';
+          disclaimerElement.setAttribute('hidden', '');
+        }
+      }
+
+      if (typeof skillDialog.showModal === 'function') {
+        if (skillDialog.open) return;
+        skillDialog.showModal();
+        return;
+      }
+
+      skillDialog.setAttribute('open', '');
+    };
+
+    categorySection?.querySelectorAll('[data-skill-trigger]').forEach((trigger) => {
+      trigger.addEventListener('click', () => {
+        const skillId = trigger.getAttribute('data-skill-id');
+        if (!skillId) return;
+        openSkillDialog(skillId);
+      });
+
+      trigger.addEventListener('keydown', (event) => {
+        if (event.key !== 'Enter' && event.key !== ' ') return;
+        event.preventDefault();
+        const skillId = trigger.getAttribute('data-skill-id');
+        if (!skillId) return;
+        openSkillDialog(skillId);
+      });
+    });
+
+    closeButton?.addEventListener('click', () => {
+      if (!skillDialog || !skillDialog.open) return;
+      if (typeof skillDialog.close === 'function') {
+        skillDialog.close();
+        return;
+      }
+
+      skillDialog.removeAttribute('open');
+    });
+
+    skillDialog?.addEventListener('click', (event) => {
+      if (event.target === skillDialog) {
+        if (typeof skillDialog.close === 'function') {
+          skillDialog.close();
+          return;
+        }
+
+        skillDialog.removeAttribute('open');
+      }
+    });
+  </script>
+</BaseLayout>

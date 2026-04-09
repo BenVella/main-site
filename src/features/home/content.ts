@@ -33,7 +33,7 @@ export type Technology = {
 
 export const technologyIconDirectory = 'assets/technology-icons';
 
-export const heroTechnologies: Technology[] = [
+export const allTechnologies: Technology[] = [
   {
     id: 'unity',
     shortLabel: 'U',
@@ -134,4 +134,31 @@ export const heroTechnologies: Technology[] = [
     experience: 'TODO: Add Windmill automation ownership details from LinkedIn.',
     iconFile: 'official/windmill.svg',
   },
+  {
+    id: 'kubernetes',
+    shortLabel: 'K8s',
+    name: 'Kubernetes',
+    summary: 'Container orchestration platform for scaling and operating service workloads.',
+    experience: 'TODO: Add Kubernetes cluster and deployment experience from LinkedIn.',
+  },
+  {
+    id: 'helm',
+    shortLabel: 'Helm',
+    name: 'Helm',
+    summary: 'Package manager for Kubernetes release templating and lifecycle controls.',
+    experience: 'TODO: Add Helm chart authoring and release management details from LinkedIn.',
+  },
+  {
+    id: 'openapi',
+    shortLabel: 'API',
+    name: 'OpenAPI',
+    summary: 'API contract specification standard used to align backend and client integration work.',
+    experience: 'TODO: Add OpenAPI contract design and implementation details from LinkedIn.',
+  },
 ];
+
+const curatedHeroSkillIds = ['unity', 'csharp', 'go', 'java', 'mulesoft', 'docker', 'git', 'kubernetes'];
+
+export const heroTechnologies = allTechnologies.filter((technology) =>
+  curatedHeroSkillIds.includes(technology.id ?? ''),
+);
