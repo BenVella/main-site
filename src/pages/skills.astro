@@ -38,7 +38,9 @@ const skillDetails = fullSkillTechnologies.map((technology) => ({
         <article class="skills-category-card" id={category.id}>
           <div class="skills-category-collage" aria-hidden="true">
             {category.collage.map((image) => (
-              <img src={withBase(baseUrl, image.src)} alt={image.alt} loading="lazy" class="skills-category-collage-image" />
+              <div class="skills-category-collage-tile">
+                <img src={withBase(baseUrl, image.src)} alt={image.alt} loading="lazy" class="skills-category-collage-image" />
+              </div>
             ))}
             <div class="skills-category-collage-scrim"></div>
           </div>
