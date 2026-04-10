@@ -41,7 +41,7 @@ export const skillCategories: SkillCategory[] = [
     collage: [
       { src: 'images/projects/cloud-save-platform.svg', alt: 'Cloud Save Platform architecture artwork for backend service engineering.' },
       { src: 'images/projects/firebase-ugc-platform.svg', alt: 'Firebase UGC platform illustration for backend and auth hardening work.' },
-      { src: 'images/projects/cloud-integrations-data-pipelines.svg', alt: 'Cloud integration architecture visual for API and service contract work.' },
+      { src: 'images/skills/openapi-green-signal.svg', alt: 'OpenAPI green signal artwork representing API contract-driven service delivery.' },
     ],
     skillIds: ['go', 'java', 'dotnet', 'openapi'],
     whereUsed: [
@@ -57,9 +57,9 @@ export const skillCategories: SkillCategory[] = [
     intro:
       'Enterprise and gameplay-adjacent integration delivery focused on data movement, orchestration layers, transformation logic, and reliability.',
     collage: [
-      { src: 'images/projects/cloud-integrations-data-pipelines.svg', alt: 'Data integration and pipeline artwork related to MuleSoft and ETL delivery.' },
-      { src: 'images/projects/cloud-save-platform.svg', alt: 'Cloud save and object storage visual representing integration patterns.' },
-      { src: 'images/projects/firebase-ugc-platform.svg', alt: 'Platform integration visual representing authentication and service connectivity.' },
+      { src: 'images/skills/mulesoft-flow-workbench.svg', alt: 'MuleSoft flow workbench styled diagram showcasing integration components and flow references.' },
+      { src: 'images/skills/mulesoft-flow-tests.svg', alt: 'Mule flow testing styled diagram highlighting mock, spy, and response validation behavior.' },
+      { src: 'images/skills/openapi-green-signal.svg', alt: 'OpenAPI green logo visual emphasizing API-first integration contracts.' },
     ],
     skillIds: ['mulesoft'],
     whereUsed: [
