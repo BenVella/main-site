@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+  <title id="title">MuleSoft flow testing collage tile</title>
+  <desc id="desc">Stylized MUnit style testing flow with mock, spy, and validation steps.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f6fbfa"/>
+      <stop offset="1" stop-color="#d6efe8"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="675" fill="url(#bg)"/>
+  <rect x="20" y="20" width="1160" height="635" rx="10" fill="none" stroke="#1cbfa8" stroke-width="3"/>
+  <text x="60" y="72" font-family="Arial, sans-serif" font-size="30" font-weight="700" fill="#2a3c4d">users-test-suite-users-insert-flowTest</text>
+
+  <g>
+    <circle cx="270" cy="320" r="62" fill="#09b7a5"/>
+    <circle cx="520" cy="320" r="62" fill="#0bb1a1"/>
+    <circle cx="780" cy="260" r="62" fill="#0bb1a1"/>
+    <circle cx="780" cy="395" r="62" fill="#0bb1a1"/>
+    <circle cx="1040" cy="490" r="62" fill="#0bb1a1"/>
+    <circle cx="170" cy="490" r="62" fill="#09b7a5"/>
+    <circle cx="430" cy="490" r="62" fill="#6169ef"/>
+    <circle cx="710" cy="490" r="62" fill="#0bb1a1"/>
+  </g>
+
+  <g stroke="#4d5a6d" stroke-width="4" fill="none" opacity="0.75">
+    <path d="M332 320H458"/>
+    <path d="M582 320H706"/>
+    <path d="M582 340H706"/>
+    <path d="M232 490H360"/>
+    <path d="M492 490H648"/>
+    <path d="M772 490H968"/>
+  </g>
+
+  <g font-family="Arial, sans-serif" font-size="26" fill="#314a58" font-weight="700">
+    <text x="200" y="405">Mock when User insert</text>
+    <text x="485" y="405">Spy</text>
+    <text x="705" y="205">Before call</text>
+    <text x="705" y="457">After call</text>
+    <text x="95" y="580">Set Event User</text>
+    <text x="360" y="580">Flow-ref</text>
+    <text x="650" y="580">Status code</text>
+    <text x="950" y="580">Verify call</text>
+  </g>
+</svg>
