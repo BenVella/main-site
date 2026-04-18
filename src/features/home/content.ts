@@ -82,9 +82,9 @@ export const allTechnologies: Technology[] = [
     id: 'git',
     shortLabel: 'G',
     name: 'Git',
-    summary: 'Primary VCS for collaborative engineering, release management, and CI/CD-connected workflows.',
+    summary: 'Primary VCS for collaborative engineering, release management, GitHub-based delivery, and workflow coaching.',
     experience:
-      'Hands-on with PR-driven processes, protected branches, and delivery pipelines tied to automated checks. Frequently supports repository troubleshooting and recovery during high-pressure delivery windows. Highlights: PR workflows, protected branches, CI/CD integration, repo recovery support.',
+      'Hands-on with PR-driven processes, protected branches, and delivery pipelines tied to automated checks. Also act as a Git evangelist and workshop host for Git and GitHub, helping teams adopt clearer branching, review, and recovery practices. Frequently supports repository troubleshooting during high-pressure delivery windows. Highlights: PR workflows, protected branches, CI/CD integration, workshop leadership, repo recovery support.',
     iconFile: 'official/git.svg',
   },
   {
