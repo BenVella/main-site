@@ -77,7 +77,7 @@ export const skillCategories: SkillCategory[] = [
       { src: 'images/projects/cloud-save-platform.svg', alt: 'Cloud service deployment visual for containerized backend operations.' },
       { src: 'images/projects/cloud-integrations-data-pipelines.svg', alt: 'Pipeline artwork linked to analytics and workflow modernization support.' },
     ],
-    skillIds: ['docker', 'kubernetes', 'helm', 'windmill'],
+    skillIds: ['docker', 'kubernetes-helm', 'windmill'],
     whereUsed: [
       { label: 'Lemmings backend DevOps support' },
       { label: 'internal analytics pipeline modernization' },
