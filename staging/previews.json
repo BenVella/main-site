@@ -1,5 +1,14 @@
 [
   {
+    "prNumber": 44,
+    "branchName": "task/git-skill",
+    "title": "Redesign skills cards as gallery panels with Git workflow details",
+    "label": "task/git-skill · PR #44",
+    "previewPathSegment": "pr-44",
+    "url": "/staging/pr-44/",
+    "updatedAt": "2026-04-18T22:37:36.479Z"
+  },
+  {
     "prNumber": 43,
     "branchName": "task/assets",
     "title": "Split Kubernetes and Helm skill icons and update OpenAPI branding",
