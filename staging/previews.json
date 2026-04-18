@@ -1,1 +1,11 @@
-[]
+[
+  {
+    "prNumber": 42,
+    "branchName": "develop",
+    "title": "Publish skills and CV to main",
+    "label": "develop · PR #42",
+    "previewPathSegment": "pr-42",
+    "url": "/staging/pr-42/",
+    "updatedAt": "2026-04-18T19:25:37.851Z"
+  }
+]
