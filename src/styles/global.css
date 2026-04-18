@@ -1,5 +1,6 @@
 @import 'tailwindcss';
 @plugin "@tailwindcss/typography";
+@import './svg-animations.css';
 
 :root {
   --page: #11111b;
@@ -614,4 +615,117 @@ a {
 .titles-dialog-value {
   margin-top: 0.5rem;
   line-height: 1.6;
+}
+
+.skills-category-card {
+  position: relative;
+  border: 1px solid var(--line);
+  border-radius: 1.25rem;
+  overflow: hidden;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.skills-category-collage {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  opacity: 0.62;
+}
+
+.skills-category-collage-tile {
+  position: relative;
+  overflow: hidden;
+}
+
+.skills-category-collage-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+}
+
+.skills-category-collage-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(145deg, rgba(17, 17, 27, 0.22) 0%, rgba(17, 17, 27, 0.58) 100%);
+}
+
+.skills-category-content {
+  position: relative;
+  z-index: 1;
+  padding: 1.2rem;
+}
+
+.skills-category-title {
+  font-size: 1.6rem;
+  color: var(--accent);
+  text-shadow:
+    0 1px 0 rgba(0, 0, 0, 0.8),
+    0 0 18px rgba(17, 17, 27, 0.95),
+    0 0 2px rgba(0, 0, 0, 0.85);
+}
+
+.skills-category-intro {
+  margin-top: 0.55rem;
+  max-width: 70ch;
+  color: var(--text);
+  line-height: 1.7;
+  text-shadow:
+    0 1px 0 rgba(0, 0, 0, 0.86),
+    0 0 14px rgba(17, 17, 27, 0.92);
+}
+
+.skills-category-skill-grid {
+  margin-top: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(3.25rem, 3.75rem));
+  justify-content: start;
+}
+
+.skills-category-usage {
+  margin-top: 1rem;
+  border: 1px solid var(--line);
+  border-radius: 0.95rem;
+  padding: 0.85rem 0.95rem;
+  background: rgba(17, 17, 27, 0.45);
+}
+
+.skills-category-usage-label {
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--accent);
+  text-shadow:
+    0 1px 0 rgba(0, 0, 0, 0.82),
+    0 0 10px rgba(17, 17, 27, 0.9);
+}
+
+.skills-category-usage-list {
+  margin-top: 0.45rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.skills-category-usage-list li {
+  list-style: none;
+}
+
+.skills-category-usage-list a,
+.skills-category-usage-list span {
+  display: inline-flex;
+  border: 1px solid var(--line);
+  border-radius: 9999px;
+  padding: 0.28rem 0.72rem;
+  font-size: 0.86rem;
+  background: rgba(30, 30, 46, 0.7);
+  color: var(--text);
+}
+
+.skills-category-usage-list a:hover {
+  border-color: rgba(166, 227, 161, 0.5);
+  background: rgba(166, 227, 161, 0.16);
 }

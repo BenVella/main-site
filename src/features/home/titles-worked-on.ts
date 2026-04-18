@@ -17,7 +17,7 @@ export const workedTitles: WorkedTitle[] = [
     id: 'lemmings',
     title: 'Lemmings',
     thumbnail: {
-      src: 'images/titles/lemmings.svg',
+      src: 'images/projects/Hero_Banner_Lemmings-1920x1080-1.jpg',
       alt: 'Lemmings title artwork thumbnail.',
     },
     tagline: 'Live mobile title, full-stack production support',
@@ -30,7 +30,7 @@ export const workedTitles: WorkedTitle[] = [
     id: 'subway-surfers-plus',
     title: 'Subway Surfers+',
     thumbnail: {
-      src: 'images/titles/subway-surfers-plus.svg',
+      src: 'images/titles/subwaysurfers_arcade.jpg',
       alt: 'Subway Surfers+ title artwork thumbnail.',
     },
     tagline: 'Apple Arcade port and platform backend delivery',
@@ -43,7 +43,7 @@ export const workedTitles: WorkedTitle[] = [
     id: 'angry-birds-fury-road',
     title: 'Angry Birds: Fury Road',
     thumbnail: {
-      src: 'images/titles/angry-birds-fury-road.svg',
+      src: 'images/projects/angry_birds.jpg',
       alt: 'Angry Birds: Fury Road title artwork thumbnail.',
     },
     tagline: 'Arcade systems engineering for motion-rig hardware',
@@ -56,7 +56,7 @@ export const workedTitles: WorkedTitle[] = [
     id: 'ultimate-sackboy',
     title: 'Ultimate Sackboy',
     thumbnail: {
-      src: 'images/titles/ultimate-sackboy.svg',
+      src: 'images/projects/utimate_sackboy.jpg',
       alt: 'Ultimate Sackboy title artwork thumbnail.',
     },
     tagline: 'Mobile cloud save and reusable client integration',
@@ -69,7 +69,7 @@ export const workedTitles: WorkedTitle[] = [
     id: 'cards-the-universe-and-everything',
     title: 'Cards, the Universe and Everything',
     thumbnail: {
-      src: 'images/titles/cards-the-universe-and-everything.svg',
+      src: 'images/titles/cards-the-universe-and-everything.jpg',
       alt: 'Cards, the Universe and Everything title artwork thumbnail.',
     },
     tagline: 'Steam backend integration and commerce support',

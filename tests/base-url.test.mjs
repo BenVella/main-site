@@ -6,6 +6,15 @@ import { before, describe, test } from 'node:test';
 
 const repoRoot = path.resolve(import.meta.dirname, '..');
 const distDir = path.join(repoRoot, 'dist');
+const buildCommand = process.platform === 'win32'
+  ? {
+      command: 'cmd.exe',
+      args: ['/d', '/s', '/c', 'npm run build'],
+    }
+  : {
+      command: 'npm',
+      args: ['run', 'build'],
+    };
 
 function readBuiltFile(...segments) {
   return readFileSync(path.join(distDir, ...segments), 'utf8');
@@ -26,7 +35,7 @@ function collectHtmlFiles(directory) {
 before(() => {
   rmSync(distDir, { recursive: true, force: true });
 
-  const result = spawnSync('npm', ['run', 'build'], {
+  const result = spawnSync(buildCommand.command, buildCommand.args, {
     cwd: repoRoot,
     encoding: 'utf8',
     env: {
@@ -48,7 +57,7 @@ describe('BASE_URL build output', () => {
     const projectsIndex = readBuiltFile('projects', 'index.html');
     const projectDetail = readBuiltFile('projects', 'cloud-save-platform-go-aws', 'index.html');
 
-    assert.match(homepage, /src="\/preview\/images\/titles\/lemmings\.svg"/);
+    assert.match(homepage, /src="\/preview\/images\/projects\/Hero_Banner_Lemmings-1920x1080-1\.jpg"/);
     assert.match(homepage, /data-title-id="lemmings"/);
 
     assert.match(projectsIndex, /href="\/preview\/projects\/cloud-save-platform-go-aws"/);

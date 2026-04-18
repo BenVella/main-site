@@ -1,0 +1,80 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import SectionHeading from '@/components/SectionHeading.astro';
+import { education, experience, siteConfig, strengths } from '@/site.config';
+import { withBase } from '@/utils/base-path';
+
+const baseUrl = import.meta.env.BASE_URL;
+const cvPdfUrl = withBase(baseUrl, 'assets/bennet-vella-cv.pdf');
+---
+
+<BaseLayout
+  pageTitle="CV"
+  pageDescription="Curriculum vitae for Bennet Vella, including experience, strengths, and education."
+>
+  <section class="section-card rounded-[2rem] p-8 md:p-10">
+    <SectionHeading
+      eyebrow="CV"
+      title="Bennet Vella · Curriculum Vitae"
+      intro="A concise overview of professional experience, technical strengths, and education."
+    />
+
+    <div class="mt-8 flex flex-wrap items-center gap-3">
+      <a href={cvPdfUrl} class="button-primary" download>
+        Download CV (PDF)
+      </a>
+      <a href={siteConfig.linkedin} target="_blank" rel="noreferrer" class="button-secondary gap-2">
+        <svg aria-hidden="true" viewBox="0 0 24 24" class="h-4 w-4" fill="currentColor">
+          <path d="M4.98 3.5C4.98 4.88 3.87 6 2.49 6S0 4.88 0 3.5 1.11 1 2.49 1s2.49 1.12 2.49 2.5ZM.5 8h4V23h-4V8Zm7 0h3.83v2.05h.06c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.77 2.65 4.77 6.1V23h-4v-7.76c0-1.85-.03-4.24-2.58-4.24-2.58 0-2.97 2.02-2.97 4.11V23h-4V8Z" />
+        </svg>
+        View
+        <span>LinkedIn</span>
+        profile
+      </a>
+    </div>
+
+    <div class="mt-10 space-y-10">
+      <section>
+        <h2 class="display-face text-2xl font-semibold">Technical strengths</h2>
+        <ul class="mt-4 grid gap-3 md:grid-cols-2">
+          {
+            strengths.map((strength) => (
+              <li class="section-card rounded-[1rem] px-5 py-4 leading-7">{strength}</li>
+            ))
+          }
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="display-face text-2xl font-semibold">Professional experience</h2>
+        <div class="mt-4 space-y-4">
+          {
+            experience.map((item) => (
+              <article class="section-card rounded-[1.5rem] p-6">
+                <p class="text-sm font-semibold muted">{item.period}</p>
+                <h3 class="mt-2 text-xl font-semibold">{item.title}</h3>
+                <p class="mt-1 text-sm uppercase tracking-[0.16em] muted">{item.company}</p>
+                <p class="mt-4 leading-7 muted">{item.summary}</p>
+              </article>
+            ))
+          }
+        </div>
+      </section>
+
+      <section>
+        <h2 class="display-face text-2xl font-semibold">Education</h2>
+        <div class="mt-4 space-y-4">
+          {
+            education.map((item) => (
+              <article class="section-card rounded-[1.5rem] p-6">
+                <p class="text-sm font-semibold muted">{item.period}</p>
+                <h3 class="mt-2 text-xl font-semibold">{item.title}</h3>
+                <p class="mt-1 leading-7 muted">{item.institution}</p>
+              </article>
+            ))
+          }
+        </div>
+      </section>
+    </div>
+  </section>
+</BaseLayout>
