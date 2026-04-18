@@ -1,5 +1,6 @@
 @import 'tailwindcss';
 @plugin "@tailwindcss/typography";
+@import './svg-animations.css';
 
 :root {
   --page: #11111b;
