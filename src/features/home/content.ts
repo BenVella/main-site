@@ -33,7 +33,7 @@ export type Technology = {
 
 export const technologyIconDirectory = 'assets/technology-icons';
 
-export const heroTechnologies: Technology[] = [
+export const allTechnologies: Technology[] = [
   {
     id: 'unity',
     shortLabel: 'U',
@@ -166,3 +166,9 @@ export const heroTechnologies: Technology[] = [
     iconFile: 'official/openapi.svg',
   },
 ];
+
+const curatedHeroSkillIds = ['unity', 'csharp', 'go', 'java', 'mulesoft', 'docker', 'git', 'kubernetes-helm'];
+
+export const heroTechnologies = allTechnologies.filter((technology) =>
+  curatedHeroSkillIds.includes(technology.id ?? ''),
+);
