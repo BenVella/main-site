@@ -32,17 +32,24 @@ const skillDetails = fullSkillTechnologies.map((technology) => ({
     />
   </section>
 
-  <section class="mt-10 space-y-6">
+  <section class="mt-10 skills-panel-grid" data-skills-category-grid>
     {
       skillCategoryEntries.map((category) => (
         <article class="skills-category-card" id={category.id}>
-          <div class="skills-category-collage" aria-hidden="true">
-            {category.collage.map((image) => (
-              <div class="skills-category-collage-tile">
-                <img src={withBase(baseUrl, image.src)} alt={image.alt} loading="lazy" class="skills-category-collage-image" />
-              </div>
-            ))}
-            <div class="skills-category-collage-scrim"></div>
+          <div class="skills-category-gallery" data-skills-gallery>
+            <div class="skills-category-gallery-track" data-skills-gallery-track>
+              {category.collage.map((image) => (
+                <figure class="skills-category-gallery-slide" data-skills-gallery-slide>
+                  <img
+                    src={withBase(baseUrl, image.src)}
+                    alt={image.alt}
+                    loading="lazy"
+                    class="skills-category-gallery-image"
+                  />
+                  <figcaption class="skills-category-gallery-caption">{image.caption ?? image.alt}</figcaption>
+                </figure>
+              ))}
+            </div>
           </div>
 
           <div class="skills-category-content">
@@ -56,11 +63,21 @@ const skillDetails = fullSkillTechnologies.map((technology) => ({
             </div>
 
             <div class="skills-category-usage">
-              <p class="skills-category-usage-label">Where used</p>
+              <p class="skills-category-usage-label">{category.usageLabel ?? 'Where used'}</p>
               <ul class="skills-category-usage-list">
                 {category.whereUsed.map((usage) => (
                   <li>
-                    {usage.href ? <a href={withBase(baseUrl, usage.href)}>{usage.label}</a> : <span>{usage.label}</span>}
+                    {usage.href ? (
+                      <a href={withBase(baseUrl, usage.href)} class="skills-category-usage-item">
+                        <span class="skills-category-usage-item-title">{usage.label}</span>
+                        {usage.description ? <span class="skills-category-usage-item-description">{usage.description}</span> : null}
+                      </a>
+                    ) : (
+                      <div class="skills-category-usage-item">
+                        <span class="skills-category-usage-item-title">{usage.label}</span>
+                        {usage.description ? <span class="skills-category-usage-item-description">{usage.description}</span> : null}
+                      </div>
+                    )}
                   </li>
                 ))}
               </ul>
@@ -107,7 +124,73 @@ const skillDetails = fullSkillTechnologies.map((technology) => ({
     const iconElement = document.getElementById('skills-page-dialog-icon');
     const disclaimerElement = document.getElementById('skills-page-dialog-disclaimer');
     const closeButton = skillDialog?.querySelector('[data-skills-page-close]');
-    const categorySection = document.querySelector('section.mt-10');
+    const categorySection = document.querySelector('[data-skills-category-grid]');
+
+    const startGalleryAutoScroll = (galleryRoot) => {
+      const track = galleryRoot.querySelector('[data-skills-gallery-track]');
+      const slides = Array.from(galleryRoot.querySelectorAll('[data-skills-gallery-slide]'));
+      if (!(track instanceof HTMLElement) || slides.length <= 1) return null;
+
+      let activeIndex = 0;
+      let intervalId = null;
+      let scrollTimer = null;
+
+      const goToSlide = (index) => {
+        activeIndex = index;
+        const targetSlide = slides[activeIndex];
+        if (!(targetSlide instanceof HTMLElement)) return;
+        track.scrollTo({ left: targetSlide.offsetLeft, behavior: 'smooth' });
+      };
+
+      const syncIndexFromScroll = () => {
+        const currentLeft = track.scrollLeft;
+        let nearestIndex = 0;
+        let nearestDistance = Number.POSITIVE_INFINITY;
+
+        slides.forEach((slide, index) => {
+          if (!(slide instanceof HTMLElement)) return;
+          const distance = Math.abs(slide.offsetLeft - currentLeft);
+          if (distance < nearestDistance) {
+            nearestDistance = distance;
+            nearestIndex = index;
+          }
+        });
+
+        activeIndex = nearestIndex;
+      };
+
+      const stop = () => {
+        if (intervalId !== null) {
+          window.clearInterval(intervalId);
+          intervalId = null;
+        }
+      };
+
+      const start = () => {
+        stop();
+        intervalId = window.setInterval(() => {
+          const nextIndex = (activeIndex + 1) % slides.length;
+          goToSlide(nextIndex);
+        }, 5000);
+      };
+
+      track.addEventListener('scroll', () => {
+        if (scrollTimer !== null) {
+          window.clearTimeout(scrollTimer);
+        }
+
+        scrollTimer = window.setTimeout(syncIndexFromScroll, 120);
+      });
+
+      galleryRoot.addEventListener('pointerenter', stop);
+      galleryRoot.addEventListener('pointerleave', start);
+      galleryRoot.addEventListener('focusin', stop);
+      galleryRoot.addEventListener('focusout', start);
+
+      start();
+
+      return undefined;
+    };
 
     const openSkillDialog = (skillId) => {
       if (!skillDialog || !titleElement || !summaryElement || !experienceElement) return;
@@ -182,6 +265,10 @@ const skillDetails = fullSkillTechnologies.map((technology) => ({
 
         skillDialog.removeAttribute('open');
       }
+    });
+
+    document.querySelectorAll('[data-skills-gallery]').forEach((galleryRoot) => {
+      startGalleryAutoScroll(galleryRoot);
     });
   </script>
 </BaseLayout>

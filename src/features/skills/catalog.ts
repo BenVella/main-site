@@ -4,11 +4,13 @@ export type SkillCategory = {
   id: string;
   title: string;
   intro: string;
-  collage: Array<{ src: string; alt: string }>;
+  collage: Array<{ src: string; alt: string; caption?: string }>;
   skillIds: string[];
+  usageLabel?: string;
   whereUsed: Array<{
     label: string;
     href?: string;
+    description?: string;
   }>;
 };
 
@@ -19,9 +21,21 @@ export const skillCategories: SkillCategory[] = [
     intro:
       'Production Unity client engineering spanning gameplay features, engine-facing systems, rendering-sensitive workflows, and platform integration.',
     collage: [
-      { src: 'images/titles/subwaysurfers_arcade.jpg', alt: 'Subway Surfers+ artwork highlighting production Unity client work.' },
-      { src: 'images/projects/utimate_sackboy.jpg', alt: 'Ultimate Sackboy gameplay visual associated with package and cloud save work.' },
-      { src: 'images/projects/angry_birds.jpg', alt: 'Angry Birds: Fury Road artwork reflecting systems and camera engineering.' },
+      {
+        src: 'images/titles/subwaysurfers_arcade.jpg',
+        alt: 'Subway Surfers+ artwork highlighting production Unity client work.',
+        caption: 'Lead-level Unity ownership on production gameplay systems and client architecture.',
+      },
+      {
+        src: 'images/projects/utimate_sackboy.jpg',
+        alt: 'Ultimate Sackboy gameplay visual associated with package and cloud save work.',
+        caption: 'Package engineering, cloud save, and bootstrap flow improvements for a shipped title.',
+      },
+      {
+        src: 'images/projects/angry_birds.jpg',
+        alt: 'Angry Birds: Fury Road artwork reflecting systems and camera engineering.',
+        caption: 'Gameplay and camera-side engineering work in production mobile delivery contexts.',
+      },
     ],
     skillIds: ['unity', 'csharp', 'steam'],
     whereUsed: [
@@ -39,9 +53,21 @@ export const skillCategories: SkillCategory[] = [
     intro:
       'Service-side delivery across gameplay-adjacent backend APIs, authentication and commerce integration, and resilient storage/upload pipelines.',
     collage: [
-      { src: 'images/projects/cloud-save-platform.svg', alt: 'Cloud Save Platform architecture artwork for backend service engineering.' },
-      { src: 'images/projects/firebase-ugc-platform.svg', alt: 'Firebase UGC platform illustration for backend and auth hardening work.' },
-      { src: 'images/skills/openapi-green-signal.svg', alt: 'OpenAPI green signal artwork representing API contract-driven service delivery.' },
+      {
+        src: 'images/projects/cloud-save-platform.svg',
+        alt: 'Cloud Save Platform architecture artwork for backend service engineering.',
+        caption: 'Signed upload flows and service implementation built around operational backend constraints.',
+      },
+      {
+        src: 'images/projects/firebase-ugc-platform.svg',
+        alt: 'Firebase UGC platform illustration for backend and auth hardening work.',
+        caption: 'Authentication hardening and storage reliability for user-generated content pipelines.',
+      },
+      {
+        src: 'images/skills/openapi-green-signal.svg',
+        alt: 'OpenAPI green signal artwork representing API contract-driven service delivery.',
+        caption: 'Contract-first backend work that keeps client and service boundaries explicit.',
+      },
     ],
     skillIds: ['go', 'java', 'dotnet', 'openapi'],
     whereUsed: [
@@ -57,9 +83,21 @@ export const skillCategories: SkillCategory[] = [
     intro:
       'Enterprise and gameplay-adjacent integration delivery focused on data movement, orchestration layers, transformation logic, and reliability.',
     collage: [
-      { src: 'images/skills/mulesoft-flow-workbench.svg', alt: 'MuleSoft flow workbench styled diagram showcasing integration components and flow references.' },
-      { src: 'images/skills/mulesoft-flow-tests.svg', alt: 'Mule flow testing styled diagram highlighting mock, spy, and response validation behavior.' },
-      { src: 'images/skills/openapi-green-signal.svg', alt: 'OpenAPI green logo visual emphasizing API-first integration contracts.' },
+      {
+        src: 'images/skills/mulesoft-flow-workbench.svg',
+        alt: 'MuleSoft flow workbench styled diagram showcasing integration components and flow references.',
+        caption: 'Layered flow design for system, process, and application integration responsibilities.',
+      },
+      {
+        src: 'images/skills/mulesoft-flow-tests.svg',
+        alt: 'Mule flow testing styled diagram highlighting mock, spy, and response validation behavior.',
+        caption: 'Production-minded testing around mocks, spies, and message transformations.',
+      },
+      {
+        src: 'images/skills/openapi-green-signal.svg',
+        alt: 'OpenAPI green logo visual emphasizing API-first integration contracts.',
+        caption: 'Clear contracts that reduce ambiguity between integration points and downstream consumers.',
+      },
     ],
     skillIds: ['mulesoft'],
     whereUsed: [
@@ -73,9 +111,21 @@ export const skillCategories: SkillCategory[] = [
     intro:
       'Operational engineering for deployability and reliability, from containerized single-VM workflows to Kubernetes Helm-driven platform rollouts.',
     collage: [
-      { src: 'images/projects/Hero_Banner_Lemmings-1920x1080-1.jpg', alt: 'Lemmings banner associated with backend DevOps support and operations work.' },
-      { src: 'images/projects/cloud-save-platform.svg', alt: 'Cloud service deployment visual for containerized backend operations.' },
-      { src: 'images/projects/cloud-integrations-data-pipelines.svg', alt: 'Pipeline artwork linked to analytics and workflow modernization support.' },
+      {
+        src: 'images/projects/Hero_Banner_Lemmings-1920x1080-1.jpg',
+        alt: 'Lemmings banner associated with backend DevOps support and operations work.',
+        caption: 'Operational support for live backend environments tied to shipped game services.',
+      },
+      {
+        src: 'images/projects/cloud-save-platform.svg',
+        alt: 'Cloud service deployment visual for containerized backend operations.',
+        caption: 'Containerized service delivery with repeatable local and deployment workflows.',
+      },
+      {
+        src: 'images/projects/cloud-integrations-data-pipelines.svg',
+        alt: 'Pipeline artwork linked to analytics and workflow modernization support.',
+        caption: 'Pipeline maintenance and rollout work focused on reliability and operational clarity.',
+      },
     ],
     skillIds: ['docker', 'kubernetes-helm', 'windmill'],
     whereUsed: [
@@ -85,14 +135,83 @@ export const skillCategories: SkillCategory[] = [
     ],
   },
   {
+    id: 'git-enthusiast',
+    title: 'Git Enthusiast',
+    intro:
+      'Git evangelist and workshop host for Git and GitHub, introducing practical workflows that keep branching, review, release, and recovery processes clear under production pressure.',
+    collage: [
+      {
+        src: 'images/skills/gitflow-1.png',
+        alt: 'Git flow diagram used as the backdrop for Git workflow and process guidance.',
+        caption: 'A practical branching model for explaining how feature, develop, and release flows stay understandable.',
+      },
+    ],
+    skillIds: ['git'],
+    usageLabel: 'Git workflows and operations',
+    whereUsed: [
+      {
+        label: 'GitHub flow',
+        description: 'Use short-lived branches and PRs to keep review, ownership, and merge intent obvious.',
+      },
+      {
+        label: 'Feature branch coordination',
+        description: 'Keep parallel work isolated while still integrating early enough to avoid long-lived divergence.',
+      },
+      {
+        label: 'Release and hotfix branches',
+        description: 'Separate stabilization from ongoing development so urgent fixes land cleanly without derailing mainline work.',
+      },
+      {
+        label: 'Interactive rebase',
+        description: 'Curate commit history before review so the final branch reads as a coherent engineering narrative.',
+      },
+      {
+        label: 'Cherry-pick and backports',
+        description: 'Move targeted fixes between branches when release timing or support windows require selective promotion.',
+      },
+      {
+        label: 'Revert and rollback',
+        description: 'Prefer explicit undo paths that are fast to communicate and safe to deploy under pressure.',
+      },
+      {
+        label: 'Reflog-based recovery',
+        description: 'Recover dropped work and repair local history when an aggressive reset or rebase goes wrong.',
+      },
+      {
+        label: 'Bisect for regressions',
+        description: 'Reduce debugging time by turning a vague historical breakage into a bounded commit search.',
+      },
+      {
+        label: 'Conflict resolution',
+        description: 'Resolve merges with process discipline so code intent stays intact instead of just getting the branch green.',
+      },
+      {
+        label: 'Protected branch policies',
+        description: 'Tie branch rules to review and automation so process quality is enforced, not assumed.',
+      },
+    ],
+  },
+  {
     id: 'delivery-tooling-collaboration',
     title: 'Delivery Tooling & Collaboration',
     intro:
       'Practical team delivery through source-control governance, PR-first collaboration patterns, and resilient CI/CD-connected release workflows.',
     collage: [
-      { src: 'images/projects/unity-package-engineering.svg', alt: 'Reusable package delivery artwork associated with collaborative engineering practices.' },
-      { src: 'images/projects/unity-systems-modernization.svg', alt: 'Modernization visual for collaborative refactor and quality workflows.' },
-      { src: 'images/titles/cards-the-universe-and-everything.jpg', alt: 'Cards title art reflecting cross-team release and delivery collaboration.' },
+      {
+        src: 'images/projects/unity-package-engineering.svg',
+        alt: 'Reusable package delivery artwork associated with collaborative engineering practices.',
+        caption: 'Reusable package work that benefits from clear review, versioning, and release discipline.',
+      },
+      {
+        src: 'images/projects/unity-systems-modernization.svg',
+        alt: 'Modernization visual for collaborative refactor and quality workflows.',
+        caption: 'Refactor-heavy collaboration where process clarity matters as much as the code changes.',
+      },
+      {
+        src: 'images/titles/cards-the-universe-and-everything.jpg',
+        alt: 'Cards title art reflecting cross-team release and delivery collaboration.',
+        caption: 'Cross-team delivery supported by review-first workflows and predictable promotion paths.',
+      },
     ],
     skillIds: ['git', 'perforce'],
     whereUsed: [
