@@ -243,10 +243,20 @@ a {
   background: rgba(255, 255, 255, 0.08);
 }
 
+.skill-dialog-icon-wrap-wide {
+  width: 4.2rem;
+  padding: 0 0.45rem;
+}
+
 .skill-dialog-icon {
   width: 1.45rem;
   height: 1.45rem;
   object-fit: contain;
+}
+
+.skill-dialog-icon-wide {
+  width: 3.2rem;
+  height: 1.15rem;
 }
 
 .skill-dialog-title {
