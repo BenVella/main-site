@@ -9,15 +9,6 @@
     "updatedAt": "2026-05-15T19:56:41.120Z"
   },
   {
-    "prNumber": 46,
-    "branchName": "task/blog-game-studio-decline",
-    "title": "Add game studios decline blog post",
-    "label": "task/blog-game-studio-decline · PR #46",
-    "previewPathSegment": "pr-46",
-    "url": "/staging/pr-46/",
-    "updatedAt": "2026-05-15T19:17:37.164Z"
-  },
-  {
     "prNumber": 44,
     "branchName": "task/git-skill",
     "title": "Redesign skills cards as gallery panels with Git workflow details",
