@@ -1,0 +1,28 @@
+<svg class="svg-banner" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 440" fill="none" aria-hidden="true">
+  <defs>
+    <linearGradient id="ugc-bg" x1="0" y1="0" x2="1600" y2="440" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0b1322" stop-opacity="0.82"/>
+      <stop offset="1" stop-color="#111d35" stop-opacity="0.56"/>
+    </linearGradient>
+    <linearGradient id="ugc-flow" x1="360" y1="220" x2="1240" y2="220" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#7aa7ff" stop-opacity="0.72"/>
+      <stop offset="1" stop-color="#9a8ff2" stop-opacity="0.68"/>
+    </linearGradient>
+  </defs>
+  <rect x="80" y="46" width="1440" height="348" rx="52" fill="url(#ugc-bg)"/>
+  <g stroke="url(#ugc-flow)" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <path class="flow" d="M360 220H560"/>
+    <path class="flow" d="M640 220H840"/>
+    <path class="flow" d="M920 220H1120"/>
+    <path class="flow" d="M700 220C750 220 760 160 760 136H940"/>
+  </g>
+  <g>
+    <rect x="290" y="184" width="140" height="72" rx="22" fill="#7aa7ff" fill-opacity="0.13" stroke="#7aa7ff" stroke-width="4"/>
+    <rect x="570" y="184" width="140" height="72" rx="22" fill="#8a7adf" fill-opacity="0.13" stroke="#8a7adf" stroke-width="4"/>
+    <rect x="850" y="184" width="140" height="72" rx="22" fill="#7aa7ff" fill-opacity="0.13" stroke="#7aa7ff" stroke-width="4"/>
+    <rect x="1130" y="184" width="140" height="72" rx="22" fill="#8a7adf" fill-opacity="0.13" stroke="#8a7adf" stroke-width="4"/>
+    <rect x="940" y="100" width="160" height="64" rx="20" fill="#7fd8b7" fill-opacity="0.1" stroke="#7fd8b7" stroke-width="4"/>
+    <circle class="pulse" cx="760" cy="136" r="12" fill="#85b7ff"/>
+    <circle class="glow" cx="760" cy="136" r="34" fill="#85b7ff" opacity="0.16"/>
+  </g>
+</svg>
