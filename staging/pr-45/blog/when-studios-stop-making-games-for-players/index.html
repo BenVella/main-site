@@ -1,0 +1,91 @@
+<!DOCTYPE html><html lang="en" data-site-env="staging"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>[Staging] When studios stop making games for players | Bennet Vella</title><meta name="description" content="The industry feels weaker when studios optimise for predictable monetisation before they protect the creative work players came for."><meta name="generator" content="Astro v5.8.1"><meta name="site-version" content="0.1.0"><link rel="canonical" href="https://www.bennetvella.com/staging/pr-45/blog/when-studios-stop-making-games-for-players/"><meta name="robots" content="noindex, nofollow"><link rel="icon" type="image/svg+xml" href="/staging/pr-45/assets/favicon.svg"><link rel="icon" type="image/png" sizes="96x96" href="/staging/pr-45/assets/favicon-96x96.png"><link rel="shortcut icon" href="/staging/pr-45/assets/favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/staging/pr-45/assets/apple-touch-icon.png"><link rel="manifest" href="/staging/pr-45/assets/site.webmanifest"><meta name="theme-color" content="#11111b"><meta property="og:type" content="website"><meta property="og:title" content="When studios stop making games for players | Bennet Vella"><meta property="og:description" content="The industry feels weaker when studios optimise for predictable monetisation before they protect the creative work players came for."><meta property="og:url" content="https://www.bennetvella.com/staging/pr-45/blog/when-studios-stop-making-games-for-players/"><meta property="og:image" content="https://www.bennetvella.com/staging/pr-45/og-image.svg"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="When studios stop making games for players | Bennet Vella"><meta name="twitter:description" content="The industry feels weaker when studios optimise for predictable monetisation before they protect the creative work players came for."><meta name="twitter:image" content="https://www.bennetvella.com/staging/pr-45/og-image.svg"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="/staging/pr-45/_astro/about.B-L5FQkF.css"></head> <body> <header class="page-shell pt-6"> <div class="section-card rounded-[2rem] px-6 py-5"> <div class="flex flex-col gap-4 md:flex-row md:items-start md:justify-between"> <div class="flex flex-wrap items-center gap-3"> <a href="/staging/pr-45/" class="flex flex-col"> <span class="display-face text-2xl font-semibold">Bennet Vella</span> <span class="text-sm muted">Software engineer</span> </a> <span class="staging-badge" aria-label="Staging preview">
+Preview / Staging
+</span> </div> <div class="flex flex-col gap-3 md:items-end"> <div class="preview-switcher" data-preview-switcher data-manifest-url="/staging/previews.json" data-staging-root-path="/staging/" data-current-path="/staging/pr-45/blog/when-studios-stop-making-games-for-players/"> <label class="preview-switcher-label" for="staging-preview-select">
+Open PR previews
+</label> <select id="staging-preview-select" class="preview-switcher-select" aria-label="Switch between staging previews" disabled> <option> Loading pr-45... </option> </select> </div> <nav aria-label="Primary navigation"> <ul class="flex flex-wrap items-center gap-2 text-sm font-medium md:justify-end"> <li> <a href="/staging/pr-45/" class="nav-link"> Home </a> </li><li> <a href="/staging/pr-45/about" class="nav-link"> About </a> </li><li> <a href="/staging/pr-45/projects" class="nav-link"> Projects </a> </li><li> <a href="/staging/pr-45/blog" class="nav-link nav-link-active"> Blog </a> </li><li> <a href="/staging/pr-45/contact" class="nav-link"> Contact </a> </li> </ul> </nav> </div> </div> </div> </header> <script type="module">const P="/staging/",p=e=>e.startsWith("/")?e:`/${e}`,S=e=>e.endsWith("/")?e:`${e}/`,w=e=>S(p(e||P)),d=(e,n)=>{const r=p(e||"/"),t=w(n),i=t.replace(/\/$/,"");if(r!==i&&!r.startsWith(t))return{isStaging:!1,previewPathSegment:null,previewNumber:null,relativePath:"",stagingRootPath:t};const l=r===i?"":r.slice(t.length),c=l.match(/^(pr-(\d+))(?:\/(.*))?$/);return c?{isStaging:!0,previewPathSegment:c[1],previewNumber:Number(c[2]),relativePath:c[3]?`/${c[3]}`:"",stagingRootPath:t}:{isStaging:!0,previewPathSegment:null,previewNumber:null,relativePath:l?`/${l}`:"",stagingRootPath:t}},v=(e,n,r)=>{const t=w(r),i=e.replace(/^\/+/,"");return n?i?`${t}${n}/${i}`:`${t}${n}/`:i?`${t}${i}`:t},f="[data-preview-switcher]",$=()=>{const e=document.querySelector(f);if(!(e instanceof HTMLElement))return;const n=e.querySelector("select"),r=e.dataset.manifestUrl,t=e.dataset.stagingRootPath,i=e.dataset.currentPath||window.location.pathname;if(!(n instanceof HTMLSelectElement)||!r||!t)return;const l=d(i,t),c={label:"develop · staging",previewPathSegment:""},u=s=>{const o=[c];for(const a of s)o.push({label:a.label||`${a.branchName} · PR #${a.prNumber}`,previewPathSegment:a.previewPathSegment||`pr-${a.prNumber}`});const g=l.previewPathSegment||"";g&&!o.some(a=>a.previewPathSegment===g)&&o.push({label:`${g} · unavailable`,previewPathSegment:g}),n.replaceChildren(...o.map(a=>{const h=document.createElement("option");return h.value=a.previewPathSegment,h.textContent=a.label,h.selected=a.previewPathSegment===g,h})),n.disabled=o.length<=1&&!g},m=async()=>{try{const s=await fetch(r,{cache:"no-store"});if(!s.ok)throw new Error(`Manifest request failed with ${s.status}`);const o=await s.json();u(Array.isArray(o)?o:[])}catch(s){console.error("Failed to load staging previews.",s),u([])}};n.addEventListener("change",()=>{const s=v(l.relativePath,n.value||null,t);window.location.assign(s)}),m()};$();</script> <main class="page-shell py-10">  <article class="section-card rounded-[2rem] p-8 md:p-10"> <p class="eyebrow">Blog</p> <h1 class="display-face mt-4 text-4xl font-semibold md:text-6xl"> When studios stop making games for players </h1> <p class="mt-4 max-w-3xl text-lg leading-8 muted">The industry feels weaker when studios optimise for predictable monetisation before they protect the creative work players came for.</p> <div class="mt-6 flex flex-wrap gap-2"> <span class="chip"> Games </span><span class="chip"> Game Development </span><span class="chip"> Product Strategy </span> </div> <p class="mt-6 text-sm muted">
+Published  15 May 2026 </p> <div class="rich-prose mt-10"> <p>There is a particular kind of sadness in watching a studio reduce the people who
+understand its games best, then explain the decision in the language of strategy.
+Redundancies are announced as portfolio discipline. Creative risk becomes market
+alignment. The game itself becomes one more asset in a plan built around margins,
+engagement, retention, and recurring spend.</p>
+<p>Those things are not fake concerns. Studios are businesses. Budgets are real.
+Teams need funding, schedules, publishing support, and a path to survive past the
+next launch. But the balance has shifted in a way players can feel. Too often,
+the question is no longer “how do we make this good enough that people care?” It
+is “how do we make this efficient enough to extract value from the people who
+show up?”</p>
+<p>Developers usually know when that has happened.</p>
+<p>They know when a feature is not landing. They know when the loop is more
+obligation than joy. They know when friction exists because it serves a purchase
+flow, not because it creates meaningful tension. They know when a title is being
+steered by a dashboard that can measure churn but cannot measure delight.</p>
+<p>The frustrating part is that teams often say this out loud. Designers, engineers,
+artists, writers, QA analysts, community teams, and producers can all see warning
+signs before launch. They can tell when a build is technically functional but
+emotionally empty. They can tell when the solution is more craft, more focus, or
+less scope, not another monetisation layer wrapped around a weak core.</p>
+<p>At the highest level, though, some studios seem increasingly distant from the
+creative work itself. Decisions are justified through meta-analysis, market
+comparisons, data crunching, and business strategy decks. Those inputs can be
+useful, but they are not substitutes for taste. A spreadsheet can show where a
+player drops out. It cannot decide whether the answer should be better pacing,
+better teaching, a cleaner interface, a more generous reward curve, or a payment
+prompt.</p>
+<p>That difference matters.</p>
+<p>Older top titles were not perfect, and nostalgia can over-polish their edges. But
+many of them were clearly built around the game as a whole: the feel of the
+controls, the clarity of the rules, the strength of the world, the pacing of the
+story, the memory left after the credits. Commercial success mattered, but the
+route to that success was making something players wanted to keep playing,
+replaying, talking about, and sharing.</p>
+<p>Modern games can still do that. Plenty of teams are still making excellent work.
+The decline is not that contemporary developers have forgotten how to make good
+games. It is that more projects are being shaped by incentives that reward
+something else first.</p>
+<p>A rough edge that should be fixed for every player becomes an opportunity to sell
+convenience to some players. A progression curve that should be satisfying
+becomes a place to test frustration tolerance. A cosmetic system that could
+celebrate identity becomes a storefront cadence. An online service that should
+support the experience becomes the experience’s main reason to exist.</p>
+<p>That is how a game starts feeling like it was made for a wallet instead of a
+person.</p>
+<p>Players notice. They may not use the same language as product reviews,
+post-launch reports, or acquisition forecasts, but they notice when a game is
+asking for trust and spend before it has earned affection. They notice when a
+world is broad but shallow. They notice when menus feel more lovingly maintained
+than the mechanics. They notice when the fun has been delayed, diluted, or
+metered.</p>
+<p>That is also why players keep returning to old games. It is not only nostalgia.
+It is the feeling that the work respected their time. The best older games made a
+clear bargain: buy this, play this, and we will try to give you a complete
+experience. They were made for players first, even when they were also made to
+sell.</p>
+<p>The healthier path is not anti-business. It is better business over a longer
+horizon. A studio that protects craft is protecting its brand. A publisher that
+listens to developers before the launch window is protecting its investment. A
+team that removes bad friction instead of monetising around it is building trust
+that can carry into the next release.</p>
+<p>Good games can turn a profit. But when profit is treated as the design principle
+instead of the outcome of good design, the work becomes thinner. Players feel
+managed rather than invited. Developers feel ignored rather than trusted. Studios
+become factories for strategies instead of places where games are made.</p>
+<p>The industry does not need less analysis. It needs analysis in service of better
+games, not games in service of cleaner analysis. It needs leadership close enough
+to the work to know the difference between a metric improving and a game getting
+better.</p>
+<p>Because players remember when a game was made for them. They remember the worlds
+that trusted them, the systems that respected them, and the teams that seemed to
+care about the experience as much as the revenue. If studios want that loyalty
+back, the route is not complicated.</p>
+<p>Make the game good. Then let the business case grow from that.</p> </div> </article>  </main> <footer class="page-shell pb-10 pt-8"> <div class="section-card rounded-[2rem] px-6 py-6 text-sm"> <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between"> <div> <p class="font-semibold">Bennet Vella</p> <p class="muted">
+Delivered as a static Astro site on GitHub Pages. Based on <a href="https://github.com/bakate/astro-theme-starter" target="_blank" rel="noreferrer">astro-theme-starter</a> by bakate.
+</p> </div> <div class="flex flex-wrap gap-4"> <a href="https://github.com/benvella" target="_blank" rel="noreferrer">GitHub</a> <a href="https://mt.linkedin.com/in/bennet-vella" target="_blank" rel="noreferrer">LinkedIn</a> </div> </div> <div class="mt-5 space-y-2 border-t border-[color:var(--line)] pt-4 text-xs"> <p class="muted">
+Third-party marks are used only for identification of relevant technologies and do
+        not imply sponsorship, affiliation, or endorsement.
+</p> <p class="muted">
+Unity is a trademark or registered trademark of Unity Technologies or its affiliates
+        in the U.S. and elsewhere.
+</p> <p class="muted">
+Steam and the Steam logo are trademarks and/or registered trademarks of Valve
+        Corporation in the U.S. and/or other countries.
+</p> </div> </div> </footer> </body></html>
