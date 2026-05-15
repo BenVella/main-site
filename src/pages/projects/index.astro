@@ -102,13 +102,34 @@ const baseUrl = import.meta.env.BASE_URL;
     return `${url.pathname}${url.search}${url.hash}`;
   };
 
+  const dialogsClosingFromHelper = new WeakSet<HTMLDialogElement>();
+
+  const clearProjectUrlForDialog = (modal: HTMLDialogElement) => {
+    const slug = modal.getAttribute('data-project-modal');
+    const currentProjectSlug = new URL(window.location.href).searchParams.get('project');
+    if (!slug || currentProjectSlug !== slug) return;
+
+    history.pushState({ project: null }, '', buildProjectUrl(null));
+  };
+
+  const closeProjectDialog = (modal: Element | null, options: { updateUrl: boolean } = { updateUrl: true }) => {
+    if (!(modal instanceof HTMLDialogElement) || !modal.open) return;
+
+    dialogsClosingFromHelper.add(modal);
+    modal.close();
+
+    if (options.updateUrl) {
+      clearProjectUrlForDialog(modal);
+    }
+  };
+
   const openProjectDialog = (slug: string, options: { updateUrl: boolean } = { updateUrl: true }) => {
     const modal = projectDialogMap.get(slug);
     if (!(modal instanceof HTMLDialogElement)) return;
 
     projectDialogs.forEach((dialog) => {
       if (dialog !== modal && dialog instanceof HTMLDialogElement && dialog.open) {
-        dialog.close();
+        closeProjectDialog(dialog, { updateUrl: false });
       }
     });
 
@@ -118,16 +139,6 @@ const baseUrl = import.meta.env.BASE_URL;
 
     if (options.updateUrl) {
       history.pushState({ project: slug }, '', buildProjectUrl(slug));
-    }
-  };
-
-  const closeProjectDialog = (modal: Element | null, options: { updateUrl: boolean } = { updateUrl: true }) => {
-    if (!(modal instanceof HTMLDialogElement) || !modal.open) return;
-
-    modal.close();
-
-    if (options.updateUrl) {
-      history.pushState({ project: null }, '', buildProjectUrl(null));
     }
   };
 
@@ -151,6 +162,17 @@ const baseUrl = import.meta.env.BASE_URL;
       if (event.target === modal) {
         closeProjectDialog(modal);
       }
+    });
+
+    modal.addEventListener('close', () => {
+      if (!(modal instanceof HTMLDialogElement)) return;
+
+      if (dialogsClosingFromHelper.has(modal)) {
+        dialogsClosingFromHelper.delete(modal);
+        return;
+      }
+
+      clearProjectUrlForDialog(modal);
     });
   });
 
