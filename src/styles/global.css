@@ -269,9 +269,12 @@ a {
   border: 1px solid var(--line);
   border-radius: 9999px;
   background: rgba(17, 17, 27, 0.62);
-  width: 2rem;
-  height: 2rem;
-  line-height: 1;
+  color: var(--muted);
+  padding: 0.35rem 0.7rem;
+  min-height: 2rem;
+  line-height: 1.1;
+  font-size: 0.8rem;
+  font-weight: 500;
   cursor: pointer;
 }
 
