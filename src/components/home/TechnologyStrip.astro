@@ -31,6 +31,7 @@ const technologyDetails = technologies.map((technology) => ({
   iconUrl: technology.iconFile
     ? withBase(baseUrl, `${technologyIconDirectory}/${technology.iconFile}`)
     : null,
+  iconStyle: technology.iconStyle ?? null,
   trademarkDisclaimer: technology.trademarkDisclaimer ?? null,
 }));
 ---
@@ -99,9 +100,13 @@ const technologyDetails = technologies.map((technology) => ({
     if (iconElement && iconWrapElement) {
       if (details.iconUrl) {
         iconElement.setAttribute('src', details.iconUrl);
+        iconWrapElement.classList.toggle('skill-dialog-icon-wrap-wide', details.iconStyle === 'wide');
+        iconElement.classList.toggle('skill-dialog-icon-wide', details.iconStyle === 'wide');
         iconWrapElement.removeAttribute('hidden');
       } else {
         iconElement.removeAttribute('src');
+        iconWrapElement.classList.remove('skill-dialog-icon-wrap-wide');
+        iconElement.classList.remove('skill-dialog-icon-wide');
         iconWrapElement.setAttribute('hidden', '');
       }
     }

@@ -148,13 +148,22 @@ export const allTechnologies: Technology[] = [
     iconFile: 'official/windmill.svg',
   },
   {
-    id: 'kubernetes-helm',
+    id: 'kubernetes',
     shortLabel: 'K8s',
-    name: 'Kubernetes + Helm',
-    summary: 'Container orchestration and chart-based deployment experience for internal platform workloads.',
+    name: 'Kubernetes',
+    summary: 'Container orchestration experience for internal platform workloads and service operations.',
     experience:
-      'Used to deploy and manage Windmill-based services through Helm charts in Kubernetes environments. Applied as part of practical operations and release workflows for internal tooling. Highlights: Helm chart deployments, cluster-based operations, environment consistency, release support.',
-    iconFile: 'official/kubernetes-helm.svg',
+      'Used to deploy and operate Windmill-based services in Kubernetes environments as part of practical internal platform support. Work centered on cluster-based operations, environment consistency, and release readiness for internal tooling. Highlights: cluster operations, workload deployment, environment consistency, release support.',
+    iconFile: 'official/kubernetes.svg',
+  },
+  {
+    id: 'helm',
+    shortLabel: 'Helm',
+    name: 'Helm',
+    summary: 'Chart-based packaging and release tooling used to deploy workloads into Kubernetes environments.',
+    experience:
+      'Used alongside Kubernetes to package, configure, and release Windmill-based services through Helm charts. Applied in practical operations workflows for internal tooling rather than as a standalone platform focus. Highlights: chart-based releases, configuration templating, deployment workflows, Kubernetes support.',
+    iconFile: 'official/helm.svg',
   },
   {
     id: 'openapi',
@@ -164,10 +173,11 @@ export const allTechnologies: Technology[] = [
     experience:
       'Used in team backend workflows to guide implementation and integration boundaries, including Go service contributions. Supports clearer handoff between client, service, and integration work. Highlights: contract-first API design, backend coordination, integration alignment.',
     iconFile: 'official/openapi.svg',
+    iconStyle: 'wide',
   },
 ];
 
-const curatedHeroSkillIds = ['unity', 'csharp', 'go', 'java', 'mulesoft', 'docker', 'git', 'kubernetes-helm'];
+const curatedHeroSkillIds = ['unity', 'csharp', 'go', 'java', 'mulesoft', 'docker', 'git', 'kubernetes', 'helm'];
 
 export const heroTechnologies = allTechnologies.filter((technology) =>
   curatedHeroSkillIds.includes(technology.id ?? ''),
