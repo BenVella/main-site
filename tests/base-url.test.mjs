@@ -60,7 +60,8 @@ describe('BASE_URL build output', () => {
     assert.match(homepage, /src="\/preview\/images\/projects\/Hero_Banner_Lemmings-1920x1080-1\.jpg"/);
     assert.match(homepage, /data-title-id="lemmings"/);
 
-    assert.match(projectsIndex, /href="\/preview\/projects\/cloud-save-platform-go-aws"/);
+    assert.match(projectsIndex, /data-project-modal-trigger="cloud-save-platform-go-aws"/);
+    assert.doesNotMatch(projectsIndex, /Open standalone page/);
     assert.match(projectsIndex, /src="\/preview\/images\/projects\/cloud-save-platform\.svg"/);
 
     assert.match(projectDetail, /src="\/preview\/images\/projects\/cloud-save-platform\.svg"/);
