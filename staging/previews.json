@@ -7,14 +7,5 @@
     "previewPathSegment": "pr-51",
     "url": "/staging/pr-51/",
     "updatedAt": "2026-05-16T07:21:38.857Z"
-  },
-  {
-    "prNumber": 50,
-    "branchName": "codex/strip-trademark-warnings-from-footer",
-    "title": "Simplify footer trademark notice",
-    "label": "codex/strip-trademark-warnings-from-footer · PR #50",
-    "previewPathSegment": "pr-50",
-    "url": "/staging/pr-50/",
-    "updatedAt": "2026-05-16T07:21:19.224Z"
   }
 ]
