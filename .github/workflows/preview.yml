@@ -3,6 +3,12 @@ name: Validate Astro Site
 on:
   pull_request:
     types: [opened, synchronize, reopened, ready_for_review, edited]
+    paths-ignore:
+      - 'docs/**'
+      - 'legacy-jekyll/**'
+      - 'qna-context'
+      - 'README.md'
+      - '.devcontainer/**'
   workflow_dispatch:
 
 permissions:
