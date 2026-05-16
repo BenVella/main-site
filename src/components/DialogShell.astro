@@ -1,0 +1,50 @@
+---
+type Props = {
+  [attribute: string]: unknown;
+  id: string;
+  labelledby: string;
+  describedby?: string;
+  class?: string;
+  closeLabel?: string;
+  closeAriaLabel?: string;
+  closeDataAttribute: string;
+  panelsClass?: string;
+};
+
+const {
+  id,
+  labelledby,
+  describedby,
+  class: className,
+  closeLabel = 'Close',
+  closeAriaLabel = 'Close dialog',
+  closeDataAttribute,
+  panelsClass,
+  ...dialogAttributes
+} = Astro.props;
+const closeAttributes = { [closeDataAttribute]: '' };
+---
+
+<dialog
+  id={id}
+  class:list={['site-dialog', className]}
+  aria-labelledby={labelledby}
+  aria-describedby={describedby}
+  {...dialogAttributes}
+>
+  <article class="site-dialog-card">
+    <header class="site-dialog-header">
+      <div class="site-dialog-heading">
+        <slot name="heading" />
+      </div>
+      <button class="site-dialog-close" type="button" aria-label={closeAriaLabel} {...closeAttributes}>
+        {closeLabel}
+      </button>
+    </header>
+    <slot name="media" />
+    <div class:list={['site-dialog-panels', panelsClass]}>
+      <slot />
+    </div>
+    <slot name="disclaimer" />
+  </article>
+</dialog>
