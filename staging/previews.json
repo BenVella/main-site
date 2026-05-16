@@ -1,5 +1,14 @@
 [
   {
+    "prNumber": 52,
+    "branchName": "codex/update-skills-page-git-entry",
+    "title": "Refine skills page Git details",
+    "label": "codex/update-skills-page-git-entry · PR #52",
+    "previewPathSegment": "pr-52",
+    "url": "/staging/pr-52/",
+    "updatedAt": "2026-05-16T08:06:00.111Z"
+  },
+  {
     "prNumber": 51,
     "branchName": "codex/update-cv-page-button-text",
     "title": "Match CV LinkedIn button label",
