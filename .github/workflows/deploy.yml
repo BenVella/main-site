@@ -3,6 +3,12 @@ name: Deploy Astro Site
 on:
   push:
     branches: ['main', 'develop']
+    paths-ignore:
+      - 'docs/**'
+      - 'legacy-jekyll/**'
+      - 'qna-context'
+      - 'README.md'
+      - '.devcontainer/**'
   workflow_dispatch:
 
 permissions:
