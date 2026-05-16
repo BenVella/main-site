@@ -1,5 +1,14 @@
 [
   {
+    "prNumber": 54,
+    "branchName": "codex/remove-up-down-floating-animations",
+    "title": "Remove passive skill badge float animation",
+    "label": "codex/remove-up-down-floating-animations · PR #54",
+    "previewPathSegment": "pr-54",
+    "url": "/staging/pr-54/",
+    "updatedAt": "2026-05-16T15:05:56.522Z"
+  },
+  {
     "prNumber": 53,
     "branchName": "codex/prevent-workflows-from-triggering-on-docs",
     "title": "Limit workflows to consequential site changes",
