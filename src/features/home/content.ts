@@ -88,6 +88,14 @@ export const allTechnologies: Technology[] = [
     iconFile: 'official/git.svg',
   },
   {
+    id: 'ai-capability-research',
+    shortLabel: 'AI',
+    name: 'AI Capability Research',
+    summary: 'Practical research into agentic engineering workflows, repo readiness, and safe human-in-the-loop boundaries.',
+    experience:
+      'Evaluates coding-agent workflows for rapid prototypes, large-codebase investigation, project setup, and team guardrails. Work focuses on identifying agent-viable tasks, clarifying when human review is required, and making legacy or complex projects easier to explore. Highlights: agentic capability research, agent-ready project setup, boundary setting, prototyping, legacy investigation support.',
+  },
+  {
     id: 'docker',
     shortLabel: 'D',
     name: 'Docker',

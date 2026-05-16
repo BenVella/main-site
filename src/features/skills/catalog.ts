@@ -38,13 +38,24 @@ export const skillCategories: SkillCategory[] = [
       },
     ],
     skillIds: ['unity', 'csharp', 'steam'],
+    usageLabel: 'Key areas',
     whereUsed: [
-      { label: 'Subway Surfers+' },
-      { label: 'Lemmings' },
-      { label: 'Ultimate Sackboy' },
-      { label: 'Angry Birds: Fury Road' },
-      { label: 'Unity Package Engineering', href: 'projects?project=unity-package-engineering' },
-      { label: 'Unity Systems Modernization', href: 'projects?project=unity-systems-modernization' },
+      {
+        label: 'Production Unity systems',
+        description: 'Gameplay, camera, package, and runtime work for shipped mobile titles.',
+      },
+      {
+        label: 'Client-service features',
+        description: 'Authentication, UGC, cloud save, and bootstrap flows across gameplay-adjacent services.',
+      },
+      {
+        label: 'Platform integration',
+        description: 'Release-minded client work with Steam, store, and service connectivity constraints.',
+      },
+      {
+        label: 'Performance-minded R&D',
+        description: 'Shaders, mesh generation, renderer experiments, and data-oriented runtime patterns.',
+      },
     ],
   },
   {
@@ -70,11 +81,24 @@ export const skillCategories: SkillCategory[] = [
       },
     ],
     skillIds: ['go', 'java', 'dotnet', 'openapi'],
+    usageLabel: 'Key areas',
     whereUsed: [
-      { label: 'Cloud Save Platform', href: 'projects?project=cloud-save-platform-go-aws' },
-      { label: 'Firebase UGC Platform Hardening', href: 'projects?project=firebase-ugc-platform-hardening' },
-      { label: 'Cards, the Universe and Everything' },
-      { label: 'Subway Surfers+' },
+      {
+        label: 'Steam auth and purchasing',
+        description: 'Platform authentication and purchase service integration for PC release support.',
+      },
+      {
+        label: 'UGC services',
+        description: 'User-generated content flows with authentication, storage, and reliability hardening.',
+      },
+      {
+        label: 'App Store Connect integrations',
+        description: 'Async leaderboard and challenge flows tied into app store service boundaries.',
+      },
+      {
+        label: 'Contract-led service APIs',
+        description: 'OpenAPI-guided backend work for clear client, service, and storage handoffs.',
+      },
     ],
   },
   {
@@ -100,9 +124,24 @@ export const skillCategories: SkillCategory[] = [
       },
     ],
     skillIds: ['mulesoft'],
+    usageLabel: 'Key areas',
     whereUsed: [
-      { label: 'Enterprise/cloud integration work' },
-      { label: 'Cloud Integrations & Data Pipelines', href: 'projects?project=cloud-integrations-data-pipelines' },
+      {
+        label: 'Large-scale, high-load capability',
+        description: 'Integration patterns designed around throughput, reliability, and production pressure.',
+      },
+      {
+        label: 'Data transformation',
+        description: 'Mapping, validation, and message-shaping work across enterprise payloads.',
+      },
+      {
+        label: 'Client integration layers',
+        description: 'Application-facing integration points that keep consumer contracts clear.',
+      },
+      {
+        label: 'Business and warehouse layers',
+        description: 'Process, system, and data warehousing paths for multi-layer integration flows.',
+      },
     ],
   },
   {
@@ -128,10 +167,67 @@ export const skillCategories: SkillCategory[] = [
       },
     ],
     skillIds: ['docker', 'kubernetes', 'helm', 'windmill'],
+    usageLabel: 'Key areas',
     whereUsed: [
-      { label: 'Lemmings backend DevOps support' },
-      { label: 'internal analytics pipeline modernization' },
-      { label: 'Cloud Save Platform', href: 'projects?project=cloud-save-platform-go-aws' },
+      {
+        label: 'Automated testing and validation',
+        description: 'Checks and validation gates that keep deployment readiness visible.',
+      },
+      {
+        label: 'Multi-environment support',
+        description: 'Repeatable local, staging, and production-oriented runtime patterns.',
+      },
+      {
+        label: 'Deployment operations',
+        description: 'Docker, Kubernetes, and Helm workflows for reliable service rollout.',
+      },
+      {
+        label: 'Monitoring alerts',
+        description: 'Operational alerting paths that make production issues easier to spot and triage.',
+      },
+    ],
+  },
+  {
+    id: 'ai-capability-research',
+    title: 'AI Capability Research',
+    intro:
+      'Practical research into agentic development, project readiness, and safe human-in-the-loop boundaries for engineering teams.',
+    collage: [
+      {
+        src: 'images/projects/unity-systems-modernization.svg',
+        alt: 'Modernization visual representing agent-assisted investigation in large codebases.',
+        caption: 'Agent-assisted exploration for legacy and large-project understanding.',
+      },
+      {
+        src: 'images/projects/cloud-integrations-data-pipelines.svg',
+        alt: 'Pipeline artwork representing structured agent workflows and project setup.',
+        caption: 'Project structure and context design for reliable agentic workflows.',
+      },
+      {
+        src: 'images/skills/openapi-green-signal.svg',
+        alt: 'OpenAPI signal artwork representing boundaries and explicit contracts for AI-assisted work.',
+        caption: 'Clear boundaries and contracts that define when agents should assist and when humans should decide.',
+      },
+    ],
+    skillIds: ['ai-capability-research'],
+    usageLabel: 'Key areas',
+    whereUsed: [
+      {
+        label: 'Agentic capability',
+        description: 'Hands-on evaluation of where coding agents can safely accelerate delivery.',
+      },
+      {
+        label: 'Project setup for agentification',
+        description: 'Repository structure, instructions, and context that make agent work practical.',
+      },
+      {
+        label: 'Boundary setting',
+        description: 'Clear lines for agent-viable work and when human involvement is required.',
+      },
+      {
+        label: 'Prototype and investigation support',
+        description: 'Fast prototyping plus slower, deeper assistance for legacy and large projects.',
+      },
     ],
   },
   {
@@ -147,7 +243,7 @@ export const skillCategories: SkillCategory[] = [
       },
     ],
     skillIds: ['git'],
-    usageLabel: 'Git support areas',
+    usageLabel: 'Key areas',
     whereUsed: [
       {
         label: 'Lightweight Git workflows',
@@ -165,37 +261,6 @@ export const skillCategories: SkillCategory[] = [
         label: 'Coaching with workshops',
         description: 'Training power users and everyday contributors on Git and GitHub workflows.',
       },
-    ],
-  },
-  {
-    id: 'delivery-tooling-collaboration',
-    title: 'Delivery Tooling & Collaboration',
-    intro:
-      'Practical team delivery through source-control governance, PR-first collaboration patterns, and resilient CI/CD-connected release workflows.',
-    collage: [
-      {
-        src: 'images/projects/unity-package-engineering.svg',
-        alt: 'Reusable package delivery artwork associated with collaborative engineering practices.',
-        caption: 'Reusable package work that benefits from clear review, versioning, and release discipline.',
-      },
-      {
-        src: 'images/projects/unity-systems-modernization.svg',
-        alt: 'Modernization visual for collaborative refactor and quality workflows.',
-        caption: 'Refactor-heavy collaboration where process clarity matters as much as the code changes.',
-      },
-      {
-        src: 'images/titles/cards-the-universe-and-everything.jpg',
-        alt: 'Cards title art reflecting cross-team release and delivery collaboration.',
-        caption: 'Cross-team delivery supported by review-first workflows and predictable promotion paths.',
-      },
-    ],
-    skillIds: ['git', 'perforce'],
-    whereUsed: [
-      { label: 'PR-driven workflows' },
-      { label: 'protected branches' },
-      { label: 'CI/CD-connected workflows' },
-      { label: 'repo recovery / support' },
-      { label: 'Perforce streams usage' },
     ],
   },
 ];
