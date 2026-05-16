@@ -1,5 +1,14 @@
 [
   {
+    "prNumber": 51,
+    "branchName": "codex/update-cv-page-button-text",
+    "title": "Match CV LinkedIn button label",
+    "label": "codex/update-cv-page-button-text · PR #51",
+    "previewPathSegment": "pr-51",
+    "url": "/staging/pr-51/",
+    "updatedAt": "2026-05-16T07:21:38.857Z"
+  },
+  {
     "prNumber": 50,
     "branchName": "codex/strip-trademark-warnings-from-footer",
     "title": "Simplify footer trademark notice",
