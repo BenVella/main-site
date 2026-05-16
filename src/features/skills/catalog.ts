@@ -38,13 +38,24 @@ export const skillCategories: SkillCategory[] = [
       },
     ],
     skillIds: ['unity', 'csharp', 'steam'],
+    usageLabel: 'Key areas',
     whereUsed: [
-      { label: 'Subway Surfers+' },
-      { label: 'Lemmings' },
-      { label: 'Ultimate Sackboy' },
-      { label: 'Angry Birds: Fury Road' },
-      { label: 'Unity Package Engineering', href: 'projects?project=unity-package-engineering' },
-      { label: 'Unity Systems Modernization', href: 'projects?project=unity-systems-modernization' },
+      {
+        label: 'Production Unity systems',
+        description: 'Gameplay, camera, package, and runtime work for shipped mobile titles.',
+      },
+      {
+        label: 'Client-service features',
+        description: 'Authentication, UGC, cloud save, and bootstrap flows across gameplay-adjacent services.',
+      },
+      {
+        label: 'Platform integration',
+        description: 'Release-minded client work with Steam, store, and service connectivity constraints.',
+      },
+      {
+        label: 'Performance-minded R&D',
+        description: 'Shaders, mesh generation, renderer experiments, and data-oriented runtime patterns.',
+      },
     ],
   },
   {
@@ -70,11 +81,24 @@ export const skillCategories: SkillCategory[] = [
       },
     ],
     skillIds: ['go', 'java', 'dotnet', 'openapi'],
+    usageLabel: 'Key areas',
     whereUsed: [
-      { label: 'Cloud Save Platform', href: 'projects?project=cloud-save-platform-go-aws' },
-      { label: 'Firebase UGC Platform Hardening', href: 'projects?project=firebase-ugc-platform-hardening' },
-      { label: 'Cards, the Universe and Everything' },
-      { label: 'Subway Surfers+' },
+      {
+        label: 'Steam auth and purchasing',
+        description: 'Platform authentication and purchase service integration for PC release support.',
+      },
+      {
+        label: 'UGC services',
+        description: 'User-generated content flows with authentication, storage, and reliability hardening.',
+      },
+      {
+        label: 'App Store Connect integrations',
+        description: 'Async leaderboard and challenge flows tied into app store service boundaries.',
+      },
+      {
+        label: 'Contract-led service APIs',
+        description: 'OpenAPI-guided backend work for clear client, service, and storage handoffs.',
+      },
     ],
   },
   {
@@ -100,9 +124,24 @@ export const skillCategories: SkillCategory[] = [
       },
     ],
     skillIds: ['mulesoft'],
+    usageLabel: 'Key areas',
     whereUsed: [
-      { label: 'Enterprise/cloud integration work' },
-      { label: 'Cloud Integrations & Data Pipelines', href: 'projects?project=cloud-integrations-data-pipelines' },
+      {
+        label: 'Large-scale, high-load capability',
+        description: 'Integration patterns designed around throughput, reliability, and production pressure.',
+      },
+      {
+        label: 'Data transformation',
+        description: 'Mapping, validation, and message-shaping work across enterprise payloads.',
+      },
+      {
+        label: 'Client integration layers',
+        description: 'Application-facing integration points that keep consumer contracts clear.',
+      },
+      {
+        label: 'Business and warehouse layers',
+        description: 'Process, system, and data warehousing paths for multi-layer integration flows.',
+      },
     ],
   },
   {
@@ -128,17 +167,31 @@ export const skillCategories: SkillCategory[] = [
       },
     ],
     skillIds: ['docker', 'kubernetes', 'helm', 'windmill'],
+    usageLabel: 'Key areas',
     whereUsed: [
-      { label: 'Lemmings backend DevOps support' },
-      { label: 'internal analytics pipeline modernization' },
-      { label: 'Cloud Save Platform', href: 'projects?project=cloud-save-platform-go-aws' },
+      {
+        label: 'Automated testing and validation',
+        description: 'Checks and validation gates that keep deployment readiness visible.',
+      },
+      {
+        label: 'Multi-environment support',
+        description: 'Repeatable local, staging, and production-oriented runtime patterns.',
+      },
+      {
+        label: 'Deployment operations',
+        description: 'Docker, Kubernetes, and Helm workflows for reliable service rollout.',
+      },
+      {
+        label: 'Monitoring alerts',
+        description: 'Operational alerting paths that make production issues easier to spot and triage.',
+      },
     ],
   },
   {
     id: 'git-enthusiast',
     title: 'Git Enthusiast',
     intro:
-      'Git evangelist and workshop host for Git and GitHub, introducing practical workflows that keep branching, review, release, and recovery processes clear under production pressure.',
+      'Git evangelist and workshop host for Git and GitHub, focused on practical workflows, repository governance, clean history, and team enablement.',
     collage: [
       {
         src: 'images/skills/gitflow-1.png',
@@ -147,79 +200,24 @@ export const skillCategories: SkillCategory[] = [
       },
     ],
     skillIds: ['git'],
-    usageLabel: 'Git workflows and operations',
+    usageLabel: 'Key areas',
     whereUsed: [
       {
-        label: 'GitHub flow',
-        description: 'Use short-lived branches and PRs to keep review, ownership, and merge intent obvious.',
+        label: 'Lightweight Git workflows',
+        description: 'Practical, robust setups that scale from small teams to larger delivery groups.',
       },
       {
-        label: 'Feature branch coordination',
-        description: 'Keep parallel work isolated while still integrating early enough to avoid long-lived divergence.',
+        label: 'Repo setup for security',
+        description: 'Branch protection, rulesets, and CODEOWNERS patterns that make safeguards explicit.',
       },
       {
-        label: 'Release and hotfix branches',
-        description: 'Separate stabilization from ongoing development so urgent fixes land cleanly without derailing mainline work.',
+        label: 'Commit hygiene',
+        description: 'Judicious squash vs true merge choices, rebasing, and conflict resolution support.',
       },
       {
-        label: 'Interactive rebase',
-        description: 'Curate commit history before review so the final branch reads as a coherent engineering narrative.',
+        label: 'Coaching with workshops',
+        description: 'Training power users and everyday contributors on Git and GitHub workflows.',
       },
-      {
-        label: 'Cherry-pick and backports',
-        description: 'Move targeted fixes between branches when release timing or support windows require selective promotion.',
-      },
-      {
-        label: 'Revert and rollback',
-        description: 'Prefer explicit undo paths that are fast to communicate and safe to deploy under pressure.',
-      },
-      {
-        label: 'Reflog-based recovery',
-        description: 'Recover dropped work and repair local history when an aggressive reset or rebase goes wrong.',
-      },
-      {
-        label: 'Bisect for regressions',
-        description: 'Reduce debugging time by turning a vague historical breakage into a bounded commit search.',
-      },
-      {
-        label: 'Conflict resolution',
-        description: 'Resolve merges with process discipline so code intent stays intact instead of just getting the branch green.',
-      },
-      {
-        label: 'Protected branch policies',
-        description: 'Tie branch rules to review and automation so process quality is enforced, not assumed.',
-      },
-    ],
-  },
-  {
-    id: 'delivery-tooling-collaboration',
-    title: 'Delivery Tooling & Collaboration',
-    intro:
-      'Practical team delivery through source-control governance, PR-first collaboration patterns, and resilient CI/CD-connected release workflows.',
-    collage: [
-      {
-        src: 'images/projects/unity-package-engineering.svg',
-        alt: 'Reusable package delivery artwork associated with collaborative engineering practices.',
-        caption: 'Reusable package work that benefits from clear review, versioning, and release discipline.',
-      },
-      {
-        src: 'images/projects/unity-systems-modernization.svg',
-        alt: 'Modernization visual for collaborative refactor and quality workflows.',
-        caption: 'Refactor-heavy collaboration where process clarity matters as much as the code changes.',
-      },
-      {
-        src: 'images/titles/cards-the-universe-and-everything.jpg',
-        alt: 'Cards title art reflecting cross-team release and delivery collaboration.',
-        caption: 'Cross-team delivery supported by review-first workflows and predictable promotion paths.',
-      },
-    ],
-    skillIds: ['git', 'perforce'],
-    whereUsed: [
-      { label: 'PR-driven workflows' },
-      { label: 'protected branches' },
-      { label: 'CI/CD-connected workflows' },
-      { label: 'repo recovery / support' },
-      { label: 'Perforce streams usage' },
     ],
   },
 ];
