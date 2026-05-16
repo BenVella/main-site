@@ -1,14 +1,5 @@
 [
   {
-    "prNumber": 47,
-    "branchName": "codex/update-project-dialog-visually-and-functionality",
-    "title": "Unify project dialogs with skill modal behavior",
-    "label": "codex/update-project-dialog-visually-and-functionality · PR #47",
-    "previewPathSegment": "pr-47",
-    "url": "/staging/pr-47/",
-    "updatedAt": "2026-05-15T20:34:44.724Z"
-  },
-  {
     "prNumber": 44,
     "branchName": "task/git-skill",
     "title": "Redesign skills cards as gallery panels with Git workflow details",
