@@ -112,8 +112,6 @@ a {
   border: 1px solid rgba(137, 180, 250, 0.12);
   border-radius: 0.95rem;
   background: rgba(17, 17, 27, 0.2);
-  animation: badge-float 5.5s ease-in-out infinite;
-  animation-delay: var(--badge-delay, 0ms);
   color: inherit;
   cursor: pointer;
   font: inherit;
@@ -386,23 +384,6 @@ a {
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border: 0;
-}
-
-@keyframes badge-float {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-
-  50% {
-    transform: translateY(-4px);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .tech-badge {
-    animation: none;
-  }
 }
 
 .eyebrow {
