@@ -188,49 +188,6 @@ export const skillCategories: SkillCategory[] = [
     ],
   },
   {
-    id: 'ai-capability-research',
-    title: 'AI Capability Research',
-    intro:
-      'Practical research into agentic development, project readiness, and safe human-in-the-loop boundaries for engineering teams.',
-    collage: [
-      {
-        src: 'images/projects/unity-systems-modernization.svg',
-        alt: 'Modernization visual representing agent-assisted investigation in large codebases.',
-        caption: 'Agent-assisted exploration for legacy and large-project understanding.',
-      },
-      {
-        src: 'images/projects/cloud-integrations-data-pipelines.svg',
-        alt: 'Pipeline artwork representing structured agent workflows and project setup.',
-        caption: 'Project structure and context design for reliable agentic workflows.',
-      },
-      {
-        src: 'images/skills/openapi-green-signal.svg',
-        alt: 'OpenAPI signal artwork representing boundaries and explicit contracts for AI-assisted work.',
-        caption: 'Clear boundaries and contracts that define when agents should assist and when humans should decide.',
-      },
-    ],
-    skillIds: ['ai-capability-research'],
-    usageLabel: 'Key areas',
-    whereUsed: [
-      {
-        label: 'Agentic capability',
-        description: 'Hands-on evaluation of where coding agents can safely accelerate delivery.',
-      },
-      {
-        label: 'Project setup for agentification',
-        description: 'Repository structure, instructions, and context that make agent work practical.',
-      },
-      {
-        label: 'Boundary setting',
-        description: 'Clear lines for agent-viable work and when human involvement is required.',
-      },
-      {
-        label: 'Prototype and investigation support',
-        description: 'Fast prototyping plus slower, deeper assistance for legacy and large projects.',
-      },
-    ],
-  },
-  {
     id: 'git-enthusiast',
     title: 'Git Enthusiast',
     intro:
