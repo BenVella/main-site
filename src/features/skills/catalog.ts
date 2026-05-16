@@ -29,8 +29,8 @@ export const skillCategories: SkillCategory[] = [
       { label: 'Lemmings' },
       { label: 'Ultimate Sackboy' },
       { label: 'Angry Birds: Fury Road' },
-      { label: 'Unity Package Engineering', href: 'projects/unity-package-engineering' },
-      { label: 'Unity Systems Modernization', href: 'projects/unity-systems-modernization' },
+      { label: 'Unity Package Engineering', href: 'projects?project=unity-package-engineering' },
+      { label: 'Unity Systems Modernization', href: 'projects?project=unity-systems-modernization' },
     ],
   },
   {
@@ -45,8 +45,8 @@ export const skillCategories: SkillCategory[] = [
     ],
     skillIds: ['go', 'java', 'dotnet', 'openapi'],
     whereUsed: [
-      { label: 'Cloud Save Platform', href: 'projects/cloud-save-platform-go-aws' },
-      { label: 'Firebase UGC Platform Hardening', href: 'projects/firebase-ugc-platform-hardening' },
+      { label: 'Cloud Save Platform', href: 'projects?project=cloud-save-platform-go-aws' },
+      { label: 'Firebase UGC Platform Hardening', href: 'projects?project=firebase-ugc-platform-hardening' },
       { label: 'Cards, the Universe and Everything' },
       { label: 'Subway Surfers+' },
     ],
@@ -64,7 +64,7 @@ export const skillCategories: SkillCategory[] = [
     skillIds: ['mulesoft'],
     whereUsed: [
       { label: 'Enterprise/cloud integration work' },
-      { label: 'Cloud Integrations & Data Pipelines', href: 'projects/cloud-integrations-data-pipelines' },
+      { label: 'Cloud Integrations & Data Pipelines', href: 'projects?project=cloud-integrations-data-pipelines' },
     ],
   },
   {
@@ -81,7 +81,7 @@ export const skillCategories: SkillCategory[] = [
     whereUsed: [
       { label: 'Lemmings backend DevOps support' },
       { label: 'internal analytics pipeline modernization' },
-      { label: 'Cloud Save Platform', href: 'projects/cloud-save-platform-go-aws' },
+      { label: 'Cloud Save Platform', href: 'projects?project=cloud-save-platform-go-aws' },
     ],
   },
   {
