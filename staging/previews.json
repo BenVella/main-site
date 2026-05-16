@@ -1,11 +1,11 @@
 [
   {
-    "prNumber": 49,
-    "branchName": "codex/implement-consistent-dialog-popup-style",
-    "title": "Unify dialog popup styling with reusable DialogShell",
-    "label": "codex/implement-consistent-dialog-popup-style · PR #49",
-    "previewPathSegment": "pr-49",
-    "url": "/staging/pr-49/",
-    "updatedAt": "2026-05-16T07:21:17.411Z"
+    "prNumber": 50,
+    "branchName": "codex/strip-trademark-warnings-from-footer",
+    "title": "Simplify footer trademark notice",
+    "label": "codex/strip-trademark-warnings-from-footer · PR #50",
+    "previewPathSegment": "pr-50",
+    "url": "/staging/pr-50/",
+    "updatedAt": "2026-05-16T07:21:19.224Z"
   }
 ]
