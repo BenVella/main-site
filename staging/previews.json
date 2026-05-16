@@ -7,5 +7,14 @@
     "previewPathSegment": "pr-52",
     "url": "/staging/pr-52/",
     "updatedAt": "2026-05-16T09:25:30.530Z"
+  },
+  {
+    "prNumber": 49,
+    "branchName": "codex/implement-consistent-dialog-popup-style",
+    "title": "Unify dialog popup styling with reusable DialogShell",
+    "label": "codex/implement-consistent-dialog-popup-style · PR #49",
+    "previewPathSegment": "pr-49",
+    "url": "/staging/pr-49/",
+    "updatedAt": "2026-05-16T12:19:28.629Z"
   }
 ]
