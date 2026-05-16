@@ -7,14 +7,5 @@
     "previewPathSegment": "pr-52",
     "url": "/staging/pr-52/",
     "updatedAt": "2026-05-16T08:06:00.111Z"
-  },
-  {
-    "prNumber": 51,
-    "branchName": "codex/update-cv-page-button-text",
-    "title": "Match CV LinkedIn button label",
-    "label": "codex/update-cv-page-button-text · PR #51",
-    "previewPathSegment": "pr-51",
-    "url": "/staging/pr-51/",
-    "updatedAt": "2026-05-16T07:21:38.857Z"
   }
 ]
