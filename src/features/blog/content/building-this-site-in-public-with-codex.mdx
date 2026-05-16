@@ -1,0 +1,60 @@
+---
+title: Building this site in public with Codex
+description: A short history of this Astro site, how it evolved from a starter into a portfolio over several weeks, and why public static work changes the risk profile of agentic development.
+pubDate: 2026-05-16
+tags:
+  - Astro
+  - Codex
+  - Workflow
+  - Web Development
+draft: false
+homeSample: This site started as a practical Astro swap, retained its starter credit, and then became a weeks-long Codex-assisted portfolio experiment with public staging previews, Android-based review, and enough standards pressure to keep the result coherent.
+---
+
+This website has become a useful record of how I now like to build small public software: keep the surface area simple, make the work inspectable, and let automation carry a lot of the repetition while I keep responsibility for direction.
+
+The footer still says the site is a static Astro site on GitHub Pages and is based on [astro-theme-starter](https://github.com/bakate/astro-theme-starter) by bakate. That credit matters because this was not born as a blank canvas. It began as a base Astro shape, then turned into a personal portfolio by replacing the generic parts with my own structure, writing, projects, CV, technology details, dialog behaviour, staging rules, and deployment conventions.
+
+Looking back through the commit history, the progression is quite visible. The repository started life as a much smaller GitHub Pages site in 2025. On 30 March 2026, the major turn happened: the Astro swap landed. The same day added repository instructions, documentation habits, a dark theme pass, the footer template credit, and the first staging deployment path. Over the following days the work moved quickly into hero copy, technology badges, project models, modal previews, blog sampling, release metadata, staging preview routing, and trademark notes. April added title grids, staging fixes, social footer buttons, MuleSoft assets, the CV page, and a more deliberate skills information architecture. By mid-May the work had become polish: cleaner dialogs, skills gallery panels, workflow reductions, copy corrections, and small animation removals.
+
+That arc is exactly what this site feels like from the inside. It was not a one-shot “generate a website” exercise. It was a sequence of small public changes, most of them simple on their own, accumulating into a site that now has a recognisable shape.
+
+## Built mostly with Codex, but not blindly
+
+A large amount of the site has been developed using Codex. That includes content passes, Astro component changes, GitHub Actions adjustments, staging preview behaviour, style cleanup, and this post. The practical workflow has been surprisingly mobile: use Codex web from a phone, inspect the result directly on mobile, review the pull request, and merge it through the GitHub Android app when it looks right.
+
+That sounds casual, but it works here because the project has a constrained risk profile. It is a static website. There is no backend runtime, no private database, no secret business logic, and no user data being processed. The source is public, the deployed pages are public, and browser-delivered web pages are already transparent by default. Anyone can inspect the HTML, CSS, scripts, images, and network requests. In that context, the safety conversation is less about protecting hidden systems and more about preventing broken links, inconsistent styling, misleading wording, or accidental publication of something that should not be public.
+
+So the useful question becomes: does the result work, and is it consistent with the instructions?
+
+That is where Codex is strongest when it is given clear boundaries. The repository instructions keep repeating the same standards: stay static, preserve GitHub Pages compatibility, avoid root-relative internal links, keep `import.meta.env.BASE_URL` in mind, retain the custom domain, and run checks. Those rules are not glamorous, but they create pressure. They make the agent persist toward consistency instead of just producing something that happens to render on one path.
+
+## The “unchecked code that works” problem
+
+There is an uncomfortable similarity between agentic website work and ordinary company web development. Plenty of companies hire developers, get a site or tool that appears to work, and never deeply inspect every implementation detail. The navigation works, the page loads, the form submits, the release ships, and the business moves on.
+
+That does not mean standards are irrelevant. It means standards are often enforced indirectly: through conventions, review checklists, CI, linting, shared patterns, and the persistence of people who care enough to keep asking whether a change fits the system. Codex is not fundamentally different in that regard. If it is told only to make a page, it may make a page. If it is given durable rules, existing examples, tests, and review pressure, it tends to converge toward the local style.
+
+Codex review occasionally steps in as another layer when relevant. That does not remove the need for human ownership, but it does mirror a healthy engineering process: implementation, automated validation, targeted review, and then final judgment from the person responsible for shipping.
+
+The point is not that generated code deserves less scrutiny. The point is that a lot of human-written web code already receives pragmatic scrutiny rather than perfect scrutiny. The result works, the public surface is acceptable, and the remaining question is whether the project has enough discipline to stay coherent over time.
+
+## Public staging is part of the design
+
+The staging logic is not hidden. It is deliberately public because the site itself is public.
+
+Production is published from `main` at the root domain. The `develop` branch publishes a staging build under `staging`. Same-repository pull requests publish their own preview builds under `staging/pr-<number>`. Those previews are listed through a generated staging manifest, and staging pages expose a preview selector so a route can be compared between the shared staging build and a pull request preview.
+
+When a pull request is closed or merged, the cleanup workflow removes the corresponding preview folder and metadata entry from the Pages branch. The staging publish step also preserves active pull request previews instead of wiping them, then refreshes the manifest. This makes inspection easy before merge and keeps the public staging area from collecting stale previews afterwards.
+
+That publicness is helpful. If a change affects a page, I can open the preview on my phone and see the actual deployed result, not just trust a screenshot or a local build. If the mobile spacing is wrong, the dialog feels awkward, or a link path breaks under a staging prefix, it is obvious. For a personal static site, that feedback loop is more valuable than pretending there is a secret environment to protect.
+
+## The result is still authored
+
+The interesting part of using Codex this heavily is not that the site stopped needing taste. It is that taste moved up a level.
+
+Instead of spending all effort typing boilerplate, I spend more effort deciding what belongs, what should be removed, what tone fits, what constraints matter, and whether the generated implementation respects the site. The commit history shows that process: build a feature, inspect it, make it more consistent, simplify copy, remove effects that feel excessive, and keep tightening the system.
+
+That is probably the most honest description of this website's creation. It is a public Astro portfolio, started from a credited base theme, transformed over weeks through Codex-heavy iteration, reviewed through GitHub's normal pull request flow, often from an Android phone, and kept stable by boring standards that are repeated until they stick.
+
+For this kind of project, that is enough. The site is transparent, inspectable, static, and intentionally modest. The important thing is not hiding how it was made. The important thing is making the process visible enough that the result can be judged on the page.
