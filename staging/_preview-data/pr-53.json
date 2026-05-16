@@ -1,7 +1,0 @@
-{
-  "prNumber": 53,
-  "branchName": "codex/prevent-workflows-from-triggering-on-docs",
-  "title": "Limit workflows to consequential site changes",
-  "previewPathSegment": "pr-53",
-  "updatedAt": "2026-05-16T14:36:40.565Z"
-}
