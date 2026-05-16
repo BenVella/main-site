@@ -1,4 +1,5 @@
 ---
+import DialogShell from '@/components/DialogShell.astro';
 import TechnologyBadge from '@/components/home/TechnologyBadge.astro';
 import { technologyIconDirectory, type Technology } from '@/features/home/content';
 import { withBase } from '@/utils/base-path';
@@ -56,24 +57,34 @@ const technologyDetails = technologies.map((technology) => ({
   </div>
 </div>
 
-<dialog class="skill-dialog" id="skill-dialog" aria-labelledby="skill-dialog-title" aria-describedby="skill-dialog-summary skill-dialog-experience">
-  <article class="skill-dialog-card">
-    <header class="skill-dialog-header">
-      <div class="skill-dialog-title-wrap">
-        <span class="skill-dialog-icon-wrap" id="skill-dialog-icon-wrap" aria-hidden="true" hidden>
-          <img class="skill-dialog-icon" id="skill-dialog-icon" alt="" width="28" height="28" decoding="async" />
-        </span>
-        <h3 class="skill-dialog-title" id="skill-dialog-title"></h3>
-      </div>
-      <button class="skill-dialog-close" type="button" data-skill-close aria-label="Close skill details">Close</button>
-    </header>
-    <hr class="skill-dialog-rule" />
-    <p class="skill-dialog-summary" id="skill-dialog-summary"></p>
-    <hr class="skill-dialog-rule" />
-    <p class="skill-dialog-experience" id="skill-dialog-experience"></p>
-    <p class="skill-dialog-disclaimer" id="skill-dialog-disclaimer" hidden></p>
-  </article>
-</dialog>
+<DialogShell
+  id="skill-dialog"
+  labelledby="skill-dialog-title"
+  describedby="skill-dialog-summary skill-dialog-experience"
+  class="site-dialog-compact"
+  closeDataAttribute="data-skill-close"
+  closeAriaLabel="Close skill details"
+>
+  <Fragment slot="heading">
+    <div class="site-dialog-title-row">
+      <span class="skill-dialog-icon-wrap" id="skill-dialog-icon-wrap" aria-hidden="true" hidden>
+        <img class="skill-dialog-icon" id="skill-dialog-icon" alt="" width="28" height="28" decoding="async" />
+      </span>
+      <h3 class="site-dialog-title site-dialog-title-small" id="skill-dialog-title"></h3>
+    </div>
+    <p class="site-dialog-description">Skill context and applied experience.</p>
+  </Fragment>
+
+  <section class="site-dialog-panel">
+    <p class="site-dialog-panel-label">Overview</p>
+    <p class="site-dialog-panel-value" id="skill-dialog-summary"></p>
+  </section>
+  <section class="site-dialog-panel">
+    <p class="site-dialog-panel-label">Experience</p>
+    <p class="site-dialog-panel-value" id="skill-dialog-experience"></p>
+  </section>
+  <p slot="disclaimer" class="site-dialog-disclaimer" id="skill-dialog-disclaimer" hidden></p>
+</DialogShell>
 
 <script is:inline define:vars={{ technologyDetails }}>
   const detailsMap = new Map(technologyDetails.map((technology) => [technology.id, technology]));
