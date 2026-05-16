@@ -46,8 +46,8 @@ const technologyDetails = technologies.map((technology) => ({
   </p>
   <div class="tech-badge-grid mt-5">
     {
-      technologies.map((technology, index) => (
-        <TechnologyBadge technology={technology} skillId={getSkillId(technology)} delayMs={index * 120} />
+      technologies.map((technology) => (
+        <TechnologyBadge technology={technology} skillId={getSkillId(technology)} />
       ))
     }
   </div>

@@ -11,4 +11,3 @@
 
 # Tech
 6. prevent docs and other incosequential areas from triggering workflows / deploys
-7. skill animation removal
