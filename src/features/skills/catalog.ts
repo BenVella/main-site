@@ -138,7 +138,7 @@ export const skillCategories: SkillCategory[] = [
     id: 'git-enthusiast',
     title: 'Git Enthusiast',
     intro:
-      'Git evangelist and workshop host for Git and GitHub, introducing practical workflows that keep branching, review, release, and recovery processes clear under production pressure.',
+      'Git evangelist and workshop host for Git and GitHub, focused on practical workflows, repository governance, clean history, and team enablement.',
     collage: [
       {
         src: 'images/skills/gitflow-1.png',
@@ -147,47 +147,23 @@ export const skillCategories: SkillCategory[] = [
       },
     ],
     skillIds: ['git'],
-    usageLabel: 'Git workflows and operations',
+    usageLabel: 'Git support areas',
     whereUsed: [
       {
-        label: 'GitHub flow',
-        description: 'Use short-lived branches and PRs to keep review, ownership, and merge intent obvious.',
+        label: 'Lightweight Git workflows',
+        description: 'Practical, robust setups that scale from small teams to larger delivery groups.',
       },
       {
-        label: 'Feature branch coordination',
-        description: 'Keep parallel work isolated while still integrating early enough to avoid long-lived divergence.',
+        label: 'Repo setup for security',
+        description: 'Branch protection, rulesets, and CODEOWNERS patterns that make safeguards explicit.',
       },
       {
-        label: 'Release and hotfix branches',
-        description: 'Separate stabilization from ongoing development so urgent fixes land cleanly without derailing mainline work.',
+        label: 'Commit hygiene',
+        description: 'Judicious squash vs true merge choices, rebasing, and conflict resolution support.',
       },
       {
-        label: 'Interactive rebase',
-        description: 'Curate commit history before review so the final branch reads as a coherent engineering narrative.',
-      },
-      {
-        label: 'Cherry-pick and backports',
-        description: 'Move targeted fixes between branches when release timing or support windows require selective promotion.',
-      },
-      {
-        label: 'Revert and rollback',
-        description: 'Prefer explicit undo paths that are fast to communicate and safe to deploy under pressure.',
-      },
-      {
-        label: 'Reflog-based recovery',
-        description: 'Recover dropped work and repair local history when an aggressive reset or rebase goes wrong.',
-      },
-      {
-        label: 'Bisect for regressions',
-        description: 'Reduce debugging time by turning a vague historical breakage into a bounded commit search.',
-      },
-      {
-        label: 'Conflict resolution',
-        description: 'Resolve merges with process discipline so code intent stays intact instead of just getting the branch green.',
-      },
-      {
-        label: 'Protected branch policies',
-        description: 'Tie branch rules to review and automation so process quality is enforced, not assumed.',
+        label: 'Coaching with workshops',
+        description: 'Training power users and everyday contributors on Git and GitHub workflows.',
       },
     ],
   },
