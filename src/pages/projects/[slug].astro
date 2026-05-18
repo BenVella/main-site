@@ -1,9 +1,7 @@
 ---
+import AutoScrollGallery from '@/components/AutoScrollGallery.astro';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import { getProjectBySlug, projects } from '@/features/projects/service';
-import { withBase } from '@/utils/base-path';
-
-const baseUrl = import.meta.env.BASE_URL;
 
 export function getStaticPaths() {
   return projects.map((project) => ({
@@ -16,14 +14,16 @@ const project = getProjectBySlug(Astro.params.slug ?? '');
 if (!project) {
   throw new Error('Project not found');
 }
+
+const projectGallery = project.gallery ?? [project.image];
 ---
 
 <BaseLayout pageTitle={project.title} pageDescription={project.caption}>
   <article class="section-card overflow-hidden rounded-[2rem] p-5 md:p-8">
-    <img
-      src={withBase(baseUrl, project.image.src)}
-      alt={project.image.alt}
-      class="h-64 w-full rounded-2xl object-cover md:h-[22rem]"
+    <AutoScrollGallery
+      items={projectGallery}
+      galleryId={`project-page-gallery-${project.slug}`}
+      imageClass="h-64 w-full rounded-2xl object-cover md:h-[22rem]"
     />
 
     <p class="mt-6 text-xs font-semibold uppercase tracking-[0.16em] muted">{project.company}</p>

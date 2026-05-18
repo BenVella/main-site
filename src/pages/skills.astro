@@ -1,4 +1,6 @@
 ---
+import AutoScrollGallery from '@/components/AutoScrollGallery.astro';
+import DialogShell from '@/components/DialogShell.astro';
 import SectionHeading from '@/components/SectionHeading.astro';
 import TechnologyBadge from '@/components/home/TechnologyBadge.astro';
 import { technologyIconDirectory } from '@/features/home/content';
@@ -16,6 +18,7 @@ const skillDetails = fullSkillTechnologies.map((technology) => ({
   iconUrl: technology.iconFile
     ? withBase(baseUrl, `${technologyIconDirectory}/${technology.iconFile}`)
     : null,
+  iconStyle: technology.iconStyle ?? null,
   trademarkDisclaimer: technology.trademarkDisclaimer ?? null,
 }));
 ---
@@ -32,35 +35,38 @@ const skillDetails = fullSkillTechnologies.map((technology) => ({
     />
   </section>
 
-  <section class="mt-10 space-y-6">
+  <section class="mt-10 skills-panel-grid" data-skills-category-grid>
     {
       skillCategoryEntries.map((category) => (
         <article class="skills-category-card" id={category.id}>
-          <div class="skills-category-collage" aria-hidden="true">
-            {category.collage.map((image) => (
-              <div class="skills-category-collage-tile">
-                <img src={withBase(baseUrl, image.src)} alt={image.alt} loading="lazy" class="skills-category-collage-image" />
-              </div>
-            ))}
-            <div class="skills-category-collage-scrim"></div>
-          </div>
+          <AutoScrollGallery items={category.collage} galleryId={`skills-gallery-${category.id}`} />
 
           <div class="skills-category-content">
             <h2 class="skills-category-title display-face">{category.title}</h2>
             <p class="skills-category-intro">{category.intro}</p>
 
             <div class="tech-badge-grid skills-category-skill-grid" aria-label={`${category.title} skill icons`}>
-              {category.skills.map((technology, index) => (
-                <TechnologyBadge technology={technology} skillId={technology.id} delayMs={index * 120} />
+              {category.skills.map((technology) => (
+                <TechnologyBadge technology={technology} skillId={technology.id} />
               ))}
             </div>
 
             <div class="skills-category-usage">
-              <p class="skills-category-usage-label">Where used</p>
+              <p class="skills-category-usage-label">{category.usageLabel ?? 'Where used'}</p>
               <ul class="skills-category-usage-list">
                 {category.whereUsed.map((usage) => (
                   <li>
-                    {usage.href ? <a href={withBase(baseUrl, usage.href)}>{usage.label}</a> : <span>{usage.label}</span>}
+                    {usage.href ? (
+                      <a href={withBase(baseUrl, usage.href)} class="skills-category-usage-item">
+                        <span class="skills-category-usage-item-title">{usage.label}</span>
+                        {usage.description ? <span class="skills-category-usage-item-description">{usage.description}</span> : null}
+                      </a>
+                    ) : (
+                      <div class="skills-category-usage-item">
+                        <span class="skills-category-usage-item-title">{usage.label}</span>
+                        {usage.description ? <span class="skills-category-usage-item-description">{usage.description}</span> : null}
+                      </div>
+                    )}
                   </li>
                 ))}
               </ul>
@@ -71,31 +77,34 @@ const skillDetails = fullSkillTechnologies.map((technology) => ({
     }
   </section>
 
-  <dialog
-    class="skill-dialog"
+  <DialogShell
     id="skills-page-dialog"
-    aria-labelledby="skills-page-dialog-title"
-    aria-describedby="skills-page-dialog-summary skills-page-dialog-experience"
+    labelledby="skills-page-dialog-title"
+    describedby="skills-page-dialog-summary skills-page-dialog-experience"
+    class="site-dialog-compact"
+    closeDataAttribute="data-skills-page-close"
+    closeAriaLabel="Close skill details"
   >
-    <article class="skill-dialog-card">
-      <header class="skill-dialog-header">
-        <div class="skill-dialog-title-wrap">
-          <span class="skill-dialog-icon-wrap" id="skills-page-dialog-icon-wrap" aria-hidden="true" hidden>
-            <img class="skill-dialog-icon" id="skills-page-dialog-icon" alt="" width="28" height="28" decoding="async" />
-          </span>
-          <h3 class="skill-dialog-title" id="skills-page-dialog-title"></h3>
-        </div>
-        <button class="skill-dialog-close" type="button" data-skills-page-close aria-label="Close skill details">
-          ×
-        </button>
-      </header>
-      <hr class="skill-dialog-rule" />
-      <p class="skill-dialog-summary" id="skills-page-dialog-summary"></p>
-      <hr class="skill-dialog-rule" />
-      <p class="skill-dialog-experience" id="skills-page-dialog-experience"></p>
-      <p class="skill-dialog-disclaimer" id="skills-page-dialog-disclaimer" hidden></p>
-    </article>
-  </dialog>
+    <Fragment slot="heading">
+      <div class="site-dialog-title-row">
+        <span class="skill-dialog-icon-wrap" id="skills-page-dialog-icon-wrap" aria-hidden="true" hidden>
+          <img class="skill-dialog-icon" id="skills-page-dialog-icon" alt="" width="28" height="28" decoding="async" />
+        </span>
+        <h3 class="site-dialog-title site-dialog-title-small" id="skills-page-dialog-title"></h3>
+      </div>
+      <p class="site-dialog-description">Skill context and applied experience.</p>
+    </Fragment>
+
+    <section class="site-dialog-panel">
+      <p class="site-dialog-panel-label">Overview</p>
+      <p class="site-dialog-panel-value" id="skills-page-dialog-summary"></p>
+    </section>
+    <section class="site-dialog-panel">
+      <p class="site-dialog-panel-label">Experience</p>
+      <p class="site-dialog-panel-value" id="skills-page-dialog-experience"></p>
+    </section>
+    <p slot="disclaimer" class="site-dialog-disclaimer" id="skills-page-dialog-disclaimer" hidden></p>
+  </DialogShell>
 
   <script is:inline define:vars={{ skillDetails }}>
     const detailsMap = new Map(skillDetails.map((technology) => [technology.id, technology]));
@@ -107,7 +116,7 @@ const skillDetails = fullSkillTechnologies.map((technology) => ({
     const iconElement = document.getElementById('skills-page-dialog-icon');
     const disclaimerElement = document.getElementById('skills-page-dialog-disclaimer');
     const closeButton = skillDialog?.querySelector('[data-skills-page-close]');
-    const categorySection = document.querySelector('section.mt-10');
+    const categorySection = document.querySelector('[data-skills-category-grid]');
 
     const openSkillDialog = (skillId) => {
       if (!skillDialog || !titleElement || !summaryElement || !experienceElement) return;
@@ -121,9 +130,13 @@ const skillDetails = fullSkillTechnologies.map((technology) => ({
       if (iconElement && iconWrapElement) {
         if (details.iconUrl) {
           iconElement.setAttribute('src', details.iconUrl);
+          iconWrapElement.classList.toggle('skill-dialog-icon-wrap-wide', details.iconStyle === 'wide');
+          iconElement.classList.toggle('skill-dialog-icon-wide', details.iconStyle === 'wide');
           iconWrapElement.removeAttribute('hidden');
         } else {
           iconElement.removeAttribute('src');
+          iconWrapElement.classList.remove('skill-dialog-icon-wrap-wide');
+          iconElement.classList.remove('skill-dialog-icon-wide');
           iconWrapElement.setAttribute('hidden', '');
         }
       }

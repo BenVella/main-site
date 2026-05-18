@@ -1,4 +1,5 @@
 ---
+import DialogShell from '@/components/DialogShell.astro';
 import SectionHeading from '@/components/SectionHeading.astro';
 import { workedTitles } from '@/features/home/titles-worked-on';
 import { withBase } from '@/utils/base-path';
@@ -34,41 +35,38 @@ const titleDetails = workedTitles.map((entry) => ({
   </div>
 </section>
 
-<dialog
-  class="titles-dialog"
+<DialogShell
   id="titles-dialog"
-  aria-labelledby="titles-dialog-title"
-  aria-describedby="titles-dialog-tagline titles-dialog-contribution"
+  labelledby="titles-dialog-title"
+  describedby="titles-dialog-tagline titles-dialog-contribution"
+  closeDataAttribute="data-title-close"
+  closeAriaLabel="Close title details"
+  panelsClass="site-dialog-panels-two-column"
 >
-  <article class="titles-dialog-card">
-    <header class="titles-dialog-header">
-      <div>
-        <h3 class="titles-dialog-title display-face" id="titles-dialog-title"></h3>
-        <p class="titles-dialog-tagline" id="titles-dialog-tagline"></p>
-      </div>
-      <button class="titles-dialog-close" type="button" data-title-close aria-label="Close title details">
-        ×
-      </button>
-    </header>
+  <Fragment slot="heading">
+    <h3 class="site-dialog-title display-face" id="titles-dialog-title"></h3>
+    <p class="site-dialog-description" id="titles-dialog-tagline"></p>
+  </Fragment>
 
-    <img id="titles-dialog-image" class="titles-dialog-image" alt="" width="1200" height="675" decoding="async" />
-
-    <div class="titles-dialog-meta-grid">
-      <section class="titles-dialog-meta-block">
-        <p class="titles-dialog-label">Platform</p>
-        <p class="titles-dialog-value" id="titles-dialog-platform"></p>
-      </section>
-      <section class="titles-dialog-meta-block">
-        <p class="titles-dialog-label">Role</p>
-        <p class="titles-dialog-value" id="titles-dialog-role"></p>
-      </section>
-      <section class="titles-dialog-meta-block titles-dialog-meta-block-full">
-        <p class="titles-dialog-label">Contribution</p>
-        <p class="titles-dialog-value" id="titles-dialog-contribution"></p>
-      </section>
+  <Fragment slot="media">
+    <div class="site-dialog-media">
+      <img id="titles-dialog-image" class="site-dialog-image" alt="" width="1200" height="675" decoding="async" />
     </div>
-  </article>
-</dialog>
+  </Fragment>
+
+  <section class="site-dialog-panel">
+    <p class="site-dialog-panel-label">Platform</p>
+    <p class="site-dialog-panel-value" id="titles-dialog-platform"></p>
+  </section>
+  <section class="site-dialog-panel">
+    <p class="site-dialog-panel-label">Role</p>
+    <p class="site-dialog-panel-value" id="titles-dialog-role"></p>
+  </section>
+  <section class="site-dialog-panel site-dialog-panel-full">
+    <p class="site-dialog-panel-label">Contribution</p>
+    <p class="site-dialog-panel-value" id="titles-dialog-contribution"></p>
+  </section>
+</DialogShell>
 
 <script is:inline define:vars={{ titleDetails }}>
   const detailsMap = new Map(titleDetails.map((entry) => [entry.id, entry]));

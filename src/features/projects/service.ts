@@ -1,3 +1,5 @@
+import type { GalleryImage } from '@/types/gallery';
+
 export type Project = {
   slug: string;
   title: string;
@@ -6,10 +8,8 @@ export type Project = {
   role: string;
   company: string;
   featured: boolean;
-  image: {
-    src: string;
-    alt: string;
-  };
+  image: GalleryImage;
+  gallery?: GalleryImage[];
   details: {
     summary: string;
     highlights: string[];
@@ -53,8 +53,8 @@ export const projects: Project[] = [
     company: 'Exient',
     featured: true,
     image: {
-      src: 'images/projects/unity-package-engineering.svg',
-      alt: 'Framed preview artwork representing modular Unity package development.',
+      src: 'images/projects/unity-package-engineering.png',
+      alt: 'Preview image for Unity Package Engineering work, showing reusable Unity package development.',
     },
     details: {
       summary:
@@ -77,9 +77,23 @@ export const projects: Project[] = [
     company: 'Exient',
     featured: true,
     image: {
-      src: 'images/projects/firebase-ugc-platform.svg',
-      alt: 'Framed preview artwork representing user-generated content moderation and cloud operations.',
+      src: 'images/projects/firebase-ugc-platform.png',
+      alt: 'Preview image for Firebase UGC Platform Hardening work, showing Firestore-backed user-generated content data flows.',
     },
+    gallery: [
+      {
+        src: 'images/projects/firebase-ugc-platform.png',
+        alt: 'Preview image for Firebase UGC Platform Hardening work, showing Firestore-backed user-generated content data flows.',
+        caption:
+          'Firestore-backed data model view used to communicate UGC lifecycle structure and operational boundaries.',
+      },
+      {
+        src: 'images/projects/firebase-ugc-platform-rules.png',
+        alt: 'Preview image for Firebase UGC Platform Hardening work, showing Firestore security rules coverage.',
+        caption:
+          'Companion view showing Firestore security rules coverage for user-generated content access and moderation flows.',
+      },
+    ],
     details: {
       summary:
         'Scaled a prototype UGC stack into a stable production setup by tightening authentication paths, improving operability, and documenting lifecycle responsibilities.',
@@ -125,8 +139,8 @@ export const projects: Project[] = [
     company: 'Exient',
     featured: true,
     image: {
-      src: 'images/projects/cloud-integrations-data-pipelines.svg',
-      alt: 'Framed preview artwork representing cloud integrations and data movement across systems.',
+      src: 'images/projects/cloud-integrations-data-pipelines.png',
+      alt: 'Preview image for Cloud Integrations and Data Pipelines work, showing MuleSoft architecture and connected system flows.',
     },
     details: {
       summary:

@@ -3,6 +3,11 @@ name: Remove Closed Preview
 on:
   pull_request:
     types: [closed]
+    paths-ignore:
+      - 'docs/**'
+      - 'qna-context'
+      - 'README.md'
+      - '.devcontainer/**'
 
 permissions:
   contents: write

@@ -1,4 +1,6 @@
 ---
+import AutoScrollGallery from '@/components/AutoScrollGallery.astro';
+import DialogShell from '@/components/DialogShell.astro';
 import SectionHeading from '@/components/SectionHeading.astro';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import { projects } from '@/features/projects/service';
@@ -41,13 +43,6 @@ const baseUrl = import.meta.env.BASE_URL;
             >
               View deeper details
             </button>
-            <a
-              href={withBase(baseUrl, `projects/${project.slug}`)}
-              class="mt-3 inline-flex text-sm font-semibold"
-              style="color: var(--accent);"
-            >
-              Open standalone page
-            </a>
           </div>
         </article>
       ))
@@ -56,68 +51,159 @@ const baseUrl = import.meta.env.BASE_URL;
 
   {
     projects.map((project) => (
-      <dialog
-        class="section-card w-[min(42rem,92vw)] rounded-[1.75rem] p-0 text-left backdrop:bg-slate-950/70"
-        data-project-modal={project.slug}
+      <DialogShell
         id={`project-modal-${project.slug}`}
+        labelledby={`project-modal-title-${project.slug}`}
+        describedby={`project-modal-summary-${project.slug}`}
+        class="project-dialog"
+        closeDataAttribute="data-project-modal-close"
+        closeAriaLabel="Close project details"
+        panelsClass="site-dialog-panels-two-column"
+        data-project-modal={project.slug}
       >
-        <article class="p-6 md:p-8">
-          <div class="flex items-start justify-between gap-4">
-            <div>
-              <p class="text-xs font-semibold uppercase tracking-[0.16em] muted">{project.company}</p>
-              <h2 class="mt-2 display-face text-3xl font-semibold">{project.title}</h2>
-              <p class="mt-2 text-sm muted">{project.role} · {project.period}</p>
-            </div>
-            <button type="button" class="button-secondary" data-project-modal-close>
-              Close
-            </button>
+        <Fragment slot="heading">
+          <p class="text-xs font-semibold uppercase tracking-[0.16em] muted">{project.company}</p>
+          <h2 class="site-dialog-title display-face mt-2" id={`project-modal-title-${project.slug}`}>{project.title}</h2>
+          <p class="site-dialog-description">{project.role} · {project.period}</p>
+        </Fragment>
+
+        <Fragment slot="media">
+          <div class="site-dialog-media">
+            <AutoScrollGallery
+              items={project.gallery ?? [project.image]}
+              galleryId={`project-modal-gallery-${project.slug}`}
+              imageClass="site-dialog-image"
+            />
           </div>
-          <p class="mt-6 leading-7 muted">{project.details.summary}</p>
+        </Fragment>
 
-          <h3 class="mt-8 text-base font-semibold">Key contributions</h3>
-          <ul class="mt-3 space-y-2">
-            {project.details.highlights.map((item) => <li class="leading-7 muted">• {item}</li>)}
+        <section class="site-dialog-panel site-dialog-panel-full">
+          <p class="site-dialog-panel-label">Summary</p>
+          <p class="site-dialog-panel-value" id={`project-modal-summary-${project.slug}`}>{project.details.summary}</p>
+        </section>
+        <section class="site-dialog-panel site-dialog-panel-full">
+          <p class="site-dialog-panel-label">Key contributions</p>
+          <ul class="site-dialog-list">
+            {project.details.highlights.map((item) => <li class="site-dialog-list-item">• {item}</li>)}
           </ul>
-
-          <h3 class="mt-8 text-base font-semibold">Stack</h3>
+        </section>
+        <section class="site-dialog-panel site-dialog-panel-full">
+          <p class="site-dialog-panel-label">Stack</p>
           <div class="mt-3 flex flex-wrap gap-2">
             {project.details.stack.map((item) => <span class="chip">{item}</span>)}
           </div>
-        </article>
-      </dialog>
+        </section>
+      </DialogShell>
     ))
   }
 </BaseLayout>
 
 <script>
+  const projectDialogs = Array.from(document.querySelectorAll('dialog[data-project-modal]'));
+  const projectDialogMap = new Map(projectDialogs.map((modal) => [modal.getAttribute('data-project-modal'), modal]));
   const modalTriggers = document.querySelectorAll('[data-project-modal-trigger]');
+
+  const buildProjectUrl = (slug: string | null) => {
+    const url = new URL(window.location.href);
+    if (slug) {
+      url.searchParams.set('project', slug);
+    } else {
+      url.searchParams.delete('project');
+    }
+
+    return `${url.pathname}${url.search}${url.hash}`;
+  };
+
+  const dialogsClosingFromHelper = new WeakSet<HTMLDialogElement>();
+
+  const clearProjectUrlForDialog = (modal: HTMLDialogElement) => {
+    const slug = modal.getAttribute('data-project-modal');
+    const currentProjectSlug = new URL(window.location.href).searchParams.get('project');
+    if (!slug || currentProjectSlug !== slug) return;
+
+    history.pushState({ project: null }, '', buildProjectUrl(null));
+  };
+
+  const closeProjectDialog = (modal: Element | null, options: { updateUrl: boolean } = { updateUrl: true }) => {
+    if (!(modal instanceof HTMLDialogElement) || !modal.open) return;
+
+    dialogsClosingFromHelper.add(modal);
+    modal.close();
+
+    if (options.updateUrl) {
+      clearProjectUrlForDialog(modal);
+    }
+  };
+
+  const openProjectDialog = (slug: string, options: { updateUrl: boolean } = { updateUrl: true }) => {
+    const modal = projectDialogMap.get(slug);
+    if (!(modal instanceof HTMLDialogElement)) return;
+
+    projectDialogs.forEach((dialog) => {
+      if (dialog !== modal && dialog instanceof HTMLDialogElement && dialog.open) {
+        closeProjectDialog(dialog, { updateUrl: false });
+      }
+    });
+
+    if (!modal.open) {
+      modal.showModal();
+    }
+
+    if (options.updateUrl) {
+      history.pushState({ project: slug }, '', buildProjectUrl(slug));
+    }
+  };
 
   modalTriggers.forEach((trigger) => {
     trigger.addEventListener('click', () => {
       const slug = trigger.getAttribute('data-project-modal-trigger');
       if (!slug) return;
-      const modal = document.querySelector(`[data-project-modal="${slug}"]`);
-      if (modal instanceof HTMLDialogElement) {
-        modal.showModal();
-      }
+      openProjectDialog(slug);
     });
   });
 
-  const closeButtons = document.querySelectorAll('[data-project-modal-close]');
-  closeButtons.forEach((button) => {
+  document.querySelectorAll('[data-project-modal-close]').forEach((button) => {
     button.addEventListener('click', () => {
       const modal = button.closest('dialog');
-      if (modal instanceof HTMLDialogElement) {
-        modal.close();
+      closeProjectDialog(modal);
+    });
+  });
+
+  projectDialogs.forEach((modal) => {
+    modal.addEventListener('click', (event) => {
+      if (event.target === modal) {
+        closeProjectDialog(modal);
+      }
+    });
+
+    modal.addEventListener('close', () => {
+      if (!(modal instanceof HTMLDialogElement)) return;
+
+      if (dialogsClosingFromHelper.has(modal)) {
+        dialogsClosingFromHelper.delete(modal);
+        return;
+      }
+
+      clearProjectUrlForDialog(modal);
+    });
+  });
+
+  window.addEventListener('popstate', () => {
+    const slug = new URL(window.location.href).searchParams.get('project');
+    if (slug && projectDialogMap.has(slug)) {
+      openProjectDialog(slug, { updateUrl: false });
+      return;
+    }
+
+    projectDialogs.forEach((modal) => {
+      if (modal instanceof HTMLDialogElement && modal.open) {
+        closeProjectDialog(modal, { updateUrl: false });
       }
     });
   });
 
-  document.querySelectorAll('dialog[data-project-modal]').forEach((modal) => {
-    modal.addEventListener('click', (event) => {
-      if (event.target === modal && modal instanceof HTMLDialogElement) {
-        modal.close();
-      }
-    });
-  });
+  const initialProjectSlug = new URL(window.location.href).searchParams.get('project');
+  if (initialProjectSlug && projectDialogMap.has(initialProjectSlug)) {
+    openProjectDialog(initialProjectSlug, { updateUrl: false });
+  }
 </script>
