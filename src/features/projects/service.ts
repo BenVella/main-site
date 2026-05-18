@@ -53,8 +53,8 @@ export const projects: Project[] = [
     company: 'Exient',
     featured: true,
     image: {
-      src: 'images/projects/unity-package-engineering.svg',
-      alt: 'Framed preview artwork representing modular Unity package development.',
+      src: 'images/projects/unity-package-engineering.png',
+      alt: 'Preview image for Unity Package Engineering work, showing reusable Unity package development.',
     },
     details: {
       summary:
