@@ -125,8 +125,8 @@ export const projects: Project[] = [
     company: 'Exient',
     featured: true,
     image: {
-      src: 'images/projects/cloud-integrations-data-pipelines.svg',
-      alt: 'Framed preview artwork representing cloud integrations and data movement across systems.',
+      src: 'images/projects/cloud-integrations-data-pipelines.png',
+      alt: 'Preview image for Cloud Integrations and Data Pipelines work, showing MuleSoft architecture and connected system flows.',
     },
     details: {
       summary:
