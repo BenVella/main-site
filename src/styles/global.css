@@ -31,6 +31,11 @@ body {
   font-family: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
 }
 
+:root:has(.site-dialog[open]),
+body:has(.site-dialog[open]) {
+  overflow: hidden;
+}
+
 html[data-site-env='staging'] body {
   background:
     radial-gradient(circle at top left, rgba(250, 179, 135, 0.16), transparent 32%),
@@ -204,6 +209,8 @@ a {
   border-radius: 1.2rem;
   background: transparent;
   padding: 0;
+  overflow: hidden;
+  box-sizing: border-box;
 }
 
 .site-dialog-compact {
@@ -221,6 +228,7 @@ a {
   padding: 1rem;
   max-height: calc(100dvh - 1.5rem);
   overflow: auto;
+  overscroll-behavior: contain;
 }
 
 .site-dialog-header {
@@ -281,14 +289,20 @@ a {
 
 .site-dialog-media {
   margin-top: 0.95rem;
+  min-width: 0;
 }
 
 .site-dialog-image {
+  display: block;
   width: 100%;
+  height: auto;
+  max-height: min(52dvh, 34rem);
+  margin-inline: auto;
   border-radius: 0.9rem;
   border: 1px solid var(--line);
-  object-fit: cover;
-  aspect-ratio: 16 / 9;
+  object-fit: contain;
+  background: transparent;
+  aspect-ratio: auto;
 }
 
 .site-dialog-panels {
@@ -639,6 +653,20 @@ a {
   aspect-ratio: 16 / 9;
   object-fit: cover;
   background: rgba(17, 17, 27, 0.55);
+}
+
+.site-dialog .auto-scroll-gallery-slide {
+  background: transparent;
+}
+
+.site-dialog .auto-scroll-gallery-image {
+  background: transparent;
+}
+
+@media (max-width: 699px) {
+  .site-dialog-image {
+    max-height: min(42dvh, 24rem);
+  }
 }
 
 .auto-scroll-gallery-caption {
