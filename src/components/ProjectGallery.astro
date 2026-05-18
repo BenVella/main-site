@@ -1,0 +1,105 @@
+---
+import type { ProjectAsset } from '@/features/projects/service';
+import { withBase } from '@/utils/base-path';
+
+type Props = {
+  items: ProjectAsset[];
+  galleryId: string;
+  imageClass?: string;
+};
+
+const { items, galleryId, imageClass = 'project-gallery-image' } = Astro.props;
+const baseUrl = import.meta.env.BASE_URL;
+---
+
+<div class="skills-category-gallery" data-skills-gallery id={galleryId}>
+  <div class="skills-category-gallery-track" data-skills-gallery-track>
+    {
+      items.map((item, index) => (
+        <figure
+          class="skills-category-gallery-slide"
+          data-skills-gallery-slide
+          aria-label={`Project image ${index + 1} of ${items.length}`}
+        >
+          <img
+            src={withBase(baseUrl, item.src)}
+            alt={item.alt}
+            loading="lazy"
+            class={`skills-category-gallery-image ${imageClass}`}
+          />
+          {item.caption ? <figcaption class="skills-category-gallery-caption">{item.caption}</figcaption> : null}
+        </figure>
+      ))
+    }
+  </div>
+</div>
+
+<script>
+  const galleryRoots = Array.from(document.querySelectorAll('[data-skills-gallery]'));
+
+  galleryRoots.forEach((galleryRoot) => {
+    if (!(galleryRoot instanceof HTMLElement)) return;
+
+    const track = galleryRoot.querySelector('[data-skills-gallery-track]');
+    const slides = Array.from(galleryRoot.querySelectorAll('[data-skills-gallery-slide]'));
+    if (!(track instanceof HTMLElement) || slides.length <= 1) return;
+
+    let activeIndex = 0;
+    let intervalId = null;
+    let scrollTimer = null;
+
+    const goToSlide = (index) => {
+      activeIndex = index;
+      const targetSlide = slides[activeIndex];
+      if (!(targetSlide instanceof HTMLElement)) return;
+      track.scrollTo({ left: targetSlide.offsetLeft, behavior: 'smooth' });
+    };
+
+    const syncIndexFromScroll = () => {
+      const currentLeft = track.scrollLeft;
+      let nearestIndex = 0;
+      let nearestDistance = Number.POSITIVE_INFINITY;
+
+      slides.forEach((slide, index) => {
+        if (!(slide instanceof HTMLElement)) return;
+        const distance = Math.abs(slide.offsetLeft - currentLeft);
+        if (distance < nearestDistance) {
+          nearestDistance = distance;
+          nearestIndex = index;
+        }
+      });
+
+      activeIndex = nearestIndex;
+    };
+
+    const stop = () => {
+      if (intervalId !== null) {
+        window.clearInterval(intervalId);
+        intervalId = null;
+      }
+    };
+
+    const start = () => {
+      stop();
+      intervalId = window.setInterval(() => {
+        const nextIndex = (activeIndex + 1) % slides.length;
+        goToSlide(nextIndex);
+      }, 5000);
+    };
+
+    track.addEventListener('scroll', () => {
+      if (scrollTimer !== null) {
+        window.clearTimeout(scrollTimer);
+      }
+
+      scrollTimer = window.setTimeout(syncIndexFromScroll, 120);
+    });
+
+    galleryRoot.addEventListener('pointerenter', stop);
+    galleryRoot.addEventListener('pointerleave', start);
+    galleryRoot.addEventListener('focusin', stop);
+    galleryRoot.addEventListener('focusout', start);
+
+    start();
+  });
+</script>

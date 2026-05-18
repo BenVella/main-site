@@ -1,3 +1,9 @@
+export type ProjectAsset = {
+  src: string;
+  alt: string;
+  caption?: string;
+};
+
 export type Project = {
   slug: string;
   title: string;
@@ -6,10 +12,8 @@ export type Project = {
   role: string;
   company: string;
   featured: boolean;
-  image: {
-    src: string;
-    alt: string;
-  };
+  image: ProjectAsset;
+  gallery?: ProjectAsset[];
   details: {
     summary: string;
     highlights: string[];
@@ -77,9 +81,23 @@ export const projects: Project[] = [
     company: 'Exient',
     featured: true,
     image: {
-      src: 'images/projects/firebase-ugc-platform.svg',
-      alt: 'Framed preview artwork representing user-generated content moderation and cloud operations.',
+      src: 'images/projects/firebase-ugc-platform.png',
+      alt: 'Preview image for Firebase UGC Platform Hardening work, showing Firestore-backed user-generated content data flows.',
     },
+    gallery: [
+      {
+        src: 'images/projects/firebase-ugc-platform.png',
+        alt: 'Preview image for Firebase UGC Platform Hardening work, showing Firestore-backed user-generated content data flows.',
+        caption:
+          'Firestore-backed data model view used to communicate UGC lifecycle structure and operational boundaries.',
+      },
+      {
+        src: 'images/projects/firebase-ugc-platform-rules.png',
+        alt: 'Preview image for Firebase UGC Platform Hardening work, showing Firestore security rules coverage.',
+        caption:
+          'Companion view showing Firestore security rules coverage for user-generated content access and moderation flows.',
+      },
+    ],
     details: {
       summary:
         'Scaled a prototype UGC stack into a stable production setup by tightening authentication paths, improving operability, and documenting lifecycle responsibilities.',
