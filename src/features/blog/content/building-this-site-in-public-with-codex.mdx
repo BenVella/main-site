@@ -1,0 +1,66 @@
+---
+title: Building programmer portfolio website
+description: A blunt note on building this cheap static Astro portfolio with Codex, from a starter theme into a public staging and PR-preview workflow.
+pubDate: 2026-05-16
+tags:
+  - Astro
+  - Codex
+  - Workflow
+  - Web Development
+draft: false
+homeSample: This website exists to keep a clean professional portfolio online cheaply, without pretending I want to become a web developer. Codex built it from a starter into a static Astro site with public staging and PR previews.
+---
+
+This website exists for one practical reason: I want a professional looking portfolio site that is cheap to run and easy to update, without trying to become a web developer.
+
+My normal tech stack is game development, backend work, tools, integrations, and platform code. That is far removed from modern web frontend work. I do not want to spend my spare time manually becoming fluent in every piece of Astro, Tailwind, MDX, GitHub Pages deployment, and frontend styling just to keep a personal site online.
+
+I do still want to own the content. The writing, project descriptions, CV positioning, technology claims, and public presentation are mine. The website is part of the portfolio, but it is also just a static website. At this size, a clean, lightweight, consistent personal site can be built with LLMs today. That might not hold for a large dynamic product with users, data, payments, admin tools, and real operational risk. For this site, it is perfectly reasonable.
+
+The footer still credits [astro-theme-starter](https://github.com/bakate/astro-theme-starter) by bakate. That is accurate. The Astro switch started from that kind of base site, then Codex quickly changed the look, content, structure, and deployment pipeline until it became this portfolio.
+
+The commit history shows the progression clearly. The repo started as a smaller GitHub Pages site in 2025. On 30 March 2026, the Astro swap landed. The same day added repository instructions, documentation habits, a dark theme pass, the footer template credit, and the first staging deployment path. After that came hero copy, technology badges, project models, modal previews, blog cards, release metadata, staging preview routing, and trademark notes. April added title grids, staging fixes, social footer buttons, MuleSoft assets, the CV page, and the dedicated skills page. By mid-May it was mostly polish: cleaner dialogs, skills gallery panels, workflow reductions, copy fixes, and removing effects that were not worth keeping.
+
+## Built by Codex, inspected like a visual deliverable
+
+This site has been built completely by Codex and mostly blindly on implementation details.
+
+That is not a complaint. It is the model I am using. I treat Codex like a hired junior developer who is given detailed instructions and asked to produce a result. I inspect the visible deliverable, the behaviour, the generated pages, the pull request, and the checks. I do not read every implementation detail unless something fails, looks wrong, or touches an area I care about.
+
+That is also close to how a lot of hired web work behaves in practice. Companies pay someone to make a site. If the site loads, looks right, routes correctly, and passes whatever checks exist, most people do not inspect every line. They judge the result. They inspect more deeply when something breaks or when the work is sensitive.
+
+This site is not sensitive. There is no backend, no private database, no user data, no hidden business logic, and no secret system being exposed. The repo is public. The pages are public. Web pages are already transparent in the browser. Anyone can inspect the HTML, CSS, scripts, images, network requests, and source history. There is no need to hide site-related work when the site itself is part of the GitHub portfolio on display.
+
+The standard is simple: does it work, does it look professional, and does it follow the repo instructions?
+
+Those instructions matter. The site must stay static. It must work on GitHub Pages. Links and assets need to respect `import.meta.env.BASE_URL`. The custom domain must stay intact. Checks should pass. These are boring rules, but they stop the work from drifting. Codex is useful here because it will keep applying those rules if they are written down and repeated.
+
+## The unchecked code problem
+
+There is a similarity between this and normal company web development.
+
+A business hires web developers. The developers write code. The business checks the result, maybe checks performance, maybe checks accessibility, maybe runs CI, maybe gets a code review, and then ships. A lot of code still goes effectively unchecked by the people paying for it because the point is the working site, not the private satisfaction of knowing every line.
+
+That is not an excuse for sloppy work. It is just how the incentives often work. Standards survive through constraints, tests, conventions, review habits, and people being persistent about consistency. For this site, the constraints are small enough that they can be written down clearly and enforced through repeated Codex tasks, automated checks, staging previews, and occasional Codex review when it is relevant.
+
+Human judgement still sits at the end. If the page reads badly, the mobile layout feels off, the copy overclaims, or a feature adds complexity for no benefit, it gets changed. The source can be imperfect internally and still be acceptable if the public result is clean, maintainable enough, and consistent with the project rules.
+
+## Public staging is intentional
+
+The staging logic is public because the whole site is public.
+
+Production is published from `main` at the root domain. The `develop` branch publishes a staging build under `staging`. Same-repository pull requests publish preview builds under `staging/pr-<number>`. The previews are listed through a generated staging manifest, and staging pages expose a selector so the shared staging build and an individual PR preview can be compared.
+
+When a pull request is closed or merged, the cleanup workflow removes that preview folder and its metadata from the Pages branch. The staging publish step preserves active PR previews instead of deleting them, then rebuilds the manifest. This keeps inspection easy before merge and clears old previews afterwards.
+
+That is enough process for a static personal site. I can open the deployed preview on my phone, check the page directly, review the pull request, and merge from the GitHub Android app. A lot of this site, including this post, has been done through Codex web on a phone, inspected on mobile, and merged on Android.
+
+That workflow would be reckless for some products. Here it is fine. The output is public, the risk is low, and the feedback loop is fast.
+
+## What this site proves for me
+
+This site does not prove that LLMs can replace web teams for serious products. It proves something narrower and more useful: a programmer can maintain a sharp personal portfolio website without becoming a frontend specialist.
+
+The important parts are ownership of the content, clear instructions, public staging, checks that catch obvious mistakes, and enough taste to reject bad output. Codex can do the web implementation. I can decide what the site should say, what should be removed, and whether the result is good enough to represent me.
+
+That is the whole deal. Cheap static hosting. Public source. Public previews. A professional site. No attempt to pretend this is more mysterious than it is.
