@@ -1,7 +1,0 @@
-{
-  "prNumber": 56,
-  "branchName": "codex/inspect-and-clean-up-legacy-jekyll-folder",
-  "title": "Remove legacy Jekyll source; switch Docker dev to Node/Astro; update docs and workflows",
-  "previewPathSegment": "pr-56",
-  "updatedAt": "2026-05-18T07:14:11.798Z"
-}
