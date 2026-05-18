@@ -1,11 +1,11 @@
 services:
-  jekyll:
-    image: bike-site:latest
+  astro:
+    image: bennet-vella-site:latest
     build:
       context: .
     volumes:
       - .:/usr/src/app
-      - /usr/src/app/_site
+      - /usr/src/app/node_modules
     ports:
-      - "4000:4000"
-    command: bundle exec jekyll serve --host 0.0.0.0 --watch
+      - "4321:4321"
+    command: npm run dev -- --host 0.0.0.0

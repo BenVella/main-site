@@ -7,8 +7,7 @@ This repository contains the Astro source for `www.bennetvella.com`.
 - `src/`: pages, layouts, components, styles, and content-backed site features
 - `public/`: static assets copied directly into the build
 - `.github/workflows/`: deployment and validation workflows
-- `docs/`: planning, implementation, completed task records, and stable wiki notes
-- `legacy-jekyll/`: older site material kept for reference
+- `docs/`: planning, implementation, completed task records, stable wiki notes, and the active `docs/todo.md` backlog
 
 ## Working Rules
 
@@ -20,6 +19,7 @@ This repository contains the Astro source for `www.bennetvella.com`.
 - Preserve the custom-domain setup through `public/CNAME`.
 - Present a suggested commit message with each alteration summary.
 - Run `npm run check` and relevant automated tests locally (for this repo, at minimum `npm test`) before finalizing agent-authored changes.
+- Keep `docs/todo.md` up to date as changes land: remove, mark, or revise completed items in the same change set that concludes them.
 
 ## Git Rules
 
