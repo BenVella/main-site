@@ -1,13 +1,21 @@
-# Manual
+# Todo
 
-1. bring in manual assets for git, mule and unity
-2. polish and upload a proper cv
+Keep this backlog current as changes land. When a change concludes a listed item, update this file in the same change set.
 
-# Blog
+## Manual
 
-3. blog on data oriented and architectural insight, with oop downfalls
-4. blog on legacy oop problems
-5. blog on portfolio site creation
+These are human-led refinement tasks. Do not mark them complete only because supporting files or first-pass assets exist.
 
-# Tech
-6. prevent docs and other incosequential areas from triggering workflows / deploys
+1. Refine manual assets for Git, MuleSoft, and Unity.
+2. Polish and upload a proper CV.
+
+## Blog
+
+3. Blog on data-oriented and architectural insight, including object-oriented programming tradeoffs and pitfalls.
+4. Blog on legacy object-oriented programming problems.
+
+## Recently concluded
+
+- The portfolio-site creation blog post is published.
+- Workflows ignore documentation-only and other inconsequential paths so those changes do not trigger deploy or validation runs.
+- The legacy Jekyll source archive was removed after confirming the Astro site owns the live source tree.

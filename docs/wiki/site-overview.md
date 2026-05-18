@@ -34,6 +34,7 @@ The site is intended to serve as a professional portfolio and blog, with:
 - `src/features/projects/service.ts` contains typed project data
 - `src/features/blog/content/` contains blog posts in Markdown or MDX
 - `public/` contains static assets copied directly into the build
+- `docs/todo.md` tracks the active backlog and should be updated in the same change set that completes or revises a task
 
 ## Deployment
 
@@ -46,6 +47,8 @@ The build expects:
 - Node.js 20 in CI
 - `npm install`
 - `npm run build`
+
+Local Docker development uses the Astro dev server on port 4321 via the root `Dockerfile` and `docker-compose.yml`.
 
 The site is currently configured for the custom domain `https://www.bennetvella.com`.
 
