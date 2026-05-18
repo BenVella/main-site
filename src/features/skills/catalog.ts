@@ -1,10 +1,11 @@
 import { allTechnologies } from '@/features/home/content';
+import type { GalleryImage } from '@/types/gallery';
 
 export type SkillCategory = {
   id: string;
   title: string;
   intro: string;
-  collage: Array<{ src: string; alt: string; caption?: string }>;
+  collage: GalleryImage[];
   skillIds: string[];
   usageLabel?: string;
   whereUsed: Array<{
@@ -70,7 +71,7 @@ export const skillCategories: SkillCategory[] = [
         caption: 'Signed upload flows and service implementation built around operational backend constraints.',
       },
       {
-        src: 'images/projects/firebase-ugc-platform.svg',
+        src: 'images/projects/firebase-ugc-platform.png',
         alt: 'Firebase UGC platform illustration for backend and auth hardening work.',
         caption: 'Authentication hardening and storage reliability for user-generated content pipelines.',
       },
@@ -161,7 +162,7 @@ export const skillCategories: SkillCategory[] = [
         caption: 'Containerized service delivery with repeatable local and deployment workflows.',
       },
       {
-        src: 'images/projects/cloud-integrations-data-pipelines.svg',
+        src: 'images/projects/cloud-integrations-data-pipelines.png',
         alt: 'Pipeline artwork linked to analytics and workflow modernization support.',
         caption: 'Pipeline maintenance and rollout work focused on reliability and operational clarity.',
       },
