@@ -1,8 +1,4 @@
-export type ProjectAsset = {
-  src: string;
-  alt: string;
-  caption?: string;
-};
+import type { GalleryImage } from '@/types/gallery';
 
 export type Project = {
   slug: string;
@@ -12,8 +8,8 @@ export type Project = {
   role: string;
   company: string;
   featured: boolean;
-  image: ProjectAsset;
-  gallery?: ProjectAsset[];
+  image: GalleryImage;
+  gallery?: GalleryImage[];
   details: {
     summary: string;
     highlights: string[];

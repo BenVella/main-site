@@ -1,10 +1,11 @@
 import { allTechnologies } from '@/features/home/content';
+import type { GalleryImage } from '@/types/gallery';
 
 export type SkillCategory = {
   id: string;
   title: string;
   intro: string;
-  collage: Array<{ src: string; alt: string; caption?: string }>;
+  collage: GalleryImage[];
   skillIds: string[];
   usageLabel?: string;
   whereUsed: Array<{

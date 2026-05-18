@@ -1,6 +1,6 @@
 ---
+import AutoScrollGallery from '@/components/AutoScrollGallery.astro';
 import BaseLayout from '@/layouts/BaseLayout.astro';
-import ProjectGallery from '@/components/ProjectGallery.astro';
 import { getProjectBySlug, projects } from '@/features/projects/service';
 
 export function getStaticPaths() {
@@ -20,7 +20,7 @@ const projectGallery = project.gallery ?? [project.image];
 
 <BaseLayout pageTitle={project.title} pageDescription={project.caption}>
   <article class="section-card overflow-hidden rounded-[2rem] p-5 md:p-8">
-    <ProjectGallery
+    <AutoScrollGallery
       items={projectGallery}
       galleryId={`project-page-gallery-${project.slug}`}
       imageClass="h-64 w-full rounded-2xl object-cover md:h-[22rem]"
