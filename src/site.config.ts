@@ -49,6 +49,11 @@ export const experience = [
 
 export const education = [
   {
+    period: "Master's studies",
+    title: 'Computer Science and Artificial Intelligence',
+    institution: 'University of Malta',
+  },
+  {
     period: "Bachelor's",
     title: 'Software Development',
     institution: 'MCAST',
