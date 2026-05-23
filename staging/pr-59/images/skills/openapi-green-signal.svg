@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+  <title id="title">OpenAPI green logo collage tile</title>
+  <desc id="desc">Green themed OpenAPI signal artwork over code backdrop.</desc>
+  <rect width="1200" height="675" fill="#5c7c44"/>
+  <rect x="290" y="180" width="500" height="315" rx="10" fill="#171a1f"/>
+  <g opacity="0.35" fill="#8ed34c">
+    <rect x="340" y="235" width="120" height="16"/>
+    <rect x="340" y="270" width="260" height="16"/>
+    <rect x="340" y="305" width="210" height="16"/>
+    <rect x="340" y="340" width="290" height="16"/>
+    <rect x="340" y="375" width="180" height="16"/>
+    <rect x="340" y="410" width="240" height="16"/>
+  </g>
+  <g fill="none" stroke="#ffffff" stroke-width="14" stroke-linecap="round">
+    <circle cx="690" cy="315" r="122"/>
+    <circle cx="690" cy="315" r="40" fill="#45464e"/>
+    <path d="M690 193V437"/>
+    <path d="M588 266L793 365"/>
+    <path d="M588 365L793 266"/>
+    <path d="M730 274L848 176"/>
+    <circle cx="870" cy="158" r="44" fill="#45464e"/>
+  </g>
+  <circle cx="330" cy="205" r="22" fill="#8ed200"/>
+</svg>

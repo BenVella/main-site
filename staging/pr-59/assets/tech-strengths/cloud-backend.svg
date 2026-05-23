@@ -1,0 +1,31 @@
+<svg class="svg-banner" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 440" fill="none" aria-hidden="true">
+  <defs>
+    <linearGradient id="cloud-bg" x1="0" y1="0" x2="1600" y2="440" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0b1220" stop-opacity="0.82"/>
+      <stop offset="1" stop-color="#121b33" stop-opacity="0.58"/>
+    </linearGradient>
+    <linearGradient id="cloud-link" x1="320" y1="220" x2="1280" y2="220" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#7aa7ff" stop-opacity="0.7"/>
+      <stop offset="1" stop-color="#9a8ff2" stop-opacity="0.66"/>
+    </linearGradient>
+  </defs>
+  <rect x="80" y="46" width="1440" height="348" rx="52" fill="url(#cloud-bg)"/>
+  <g stroke="url(#cloud-link)" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round">
+    <path class="flow" d="M800 220C720 160 605 150 515 188"/>
+    <path class="flow" d="M800 220C905 152 1025 162 1110 204"/>
+    <path class="flow" d="M800 220C690 235 588 274 510 320"/>
+    <path class="flow" d="M800 220C912 236 1030 265 1125 302"/>
+    <path class="flow" d="M800 220C790 140 790 122 790 108"/>
+    <path class="flow" d="M800 220C810 300 810 330 810 344"/>
+  </g>
+  <g>
+    <circle class="glow" cx="800" cy="220" r="60" fill="#7aa7ff" opacity="0.16"/>
+    <circle class="pulse" cx="800" cy="220" r="21" fill="#7aa7ff" fill-opacity="0.9"/>
+    <circle cx="515" cy="188" r="14" fill="#8a7adf" fill-opacity="0.88"/>
+    <circle cx="1110" cy="204" r="14" fill="#8a7adf" fill-opacity="0.88"/>
+    <circle cx="510" cy="320" r="14" fill="#7aa7ff" fill-opacity="0.84"/>
+    <circle cx="1125" cy="302" r="14" fill="#7aa7ff" fill-opacity="0.84"/>
+    <circle cx="790" cy="108" r="13" fill="#85b7ff" fill-opacity="0.82"/>
+    <circle cx="810" cy="344" r="13" fill="#85b7ff" fill-opacity="0.82"/>
+  </g>
+</svg>
