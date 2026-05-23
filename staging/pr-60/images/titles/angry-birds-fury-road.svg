@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">Angry Birds Fury Road Placeholder Artwork</title>
+  <desc id="desc">Temporary placeholder image for Angry Birds Fury Road title artwork.</desc>
+  <defs><linearGradient id="bg" x1="0" x2="1" y1="0" y2="1"><stop offset="0%" stop-color="#181825"/><stop offset="100%" stop-color="#313244"/></linearGradient></defs>
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <circle cx="1280" cy="220" r="240" fill="#f38ba8" fill-opacity="0.16"/>
+  <text x="120" y="680" fill="#cdd6f4" font-family="Plus Jakarta Sans, system-ui, sans-serif" font-size="80" font-weight="700">Angry Birds: Fury Road</text>
+</svg>
