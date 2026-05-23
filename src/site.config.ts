@@ -19,7 +19,7 @@ export const strengths = [
 export const experience = [
   {
     period: '2023 to present',
-    title: 'Game Programmer',
+    title: 'Lead / Senior Programmer',
     company: 'Exient',
     summary:
       'Working on production game development with a strong emphasis on engineering quality, systems work, and cross-discipline delivery.',
@@ -49,12 +49,12 @@ export const experience = [
 
 export const education = [
   {
-    period: 'Master of Science',
+    period: "Master's studies",
     title: 'Computer Science and Artificial Intelligence',
     institution: 'University of Malta',
   },
   {
-    period: 'Advanced Diploma',
+    period: "Bachelor's",
     title: 'Software Development',
     institution: 'MCAST',
   },

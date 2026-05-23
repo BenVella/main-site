@@ -5,7 +5,7 @@ import PostCard from '@/components/PostCard.astro';
 import SectionHeading from '@/components/SectionHeading.astro';
 import TitlesWorkedOnSection from '@/components/home/TitlesWorkedOnSection.astro';
 import BaseLayout from '@/layouts/BaseLayout.astro';
-import { education, experience, siteConfig, strengths } from '@/site.config';
+import { education, experience, siteConfig } from '@/site.config';
 
 const posts = (await getCollection('blog', ({ data }) => !data.draft))
   .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())
@@ -28,23 +28,6 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
     />
     <div class="grid gap-5 md:grid-cols-2">
       {posts.map((post) => <PostCard post={post} />)}
-    </div>
-  </section>
-
-  <section class="mt-20">
-    <SectionHeading
-      eyebrow="Strengths"
-      title="A portfolio shaped by shipping work, not just demo code."
-      intro="These focus areas reflect the engineering work I have spent the most time shipping across product, platform, and delivery contexts."
-    />
-    <div class="grid gap-4 md:grid-cols-2">
-      {
-        strengths.map((strength) => (
-          <div class="section-card rounded-[1.5rem] p-6">
-            <p class="leading-7">{strength}</p>
-          </div>
-        ))
-      }
     </div>
   </section>
 
