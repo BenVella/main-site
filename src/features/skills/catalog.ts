@@ -76,9 +76,9 @@ export const skillCategories: SkillCategory[] = [
         caption: 'Authentication hardening and storage reliability for user-generated content pipelines.',
       },
       {
-        src: 'images/skills/openapi-green-signal.svg',
-        alt: 'OpenAPI green signal artwork representing API contract-driven service delivery.',
-        caption: 'Contract-first backend work that keeps client and service boundaries explicit.',
+        src: 'images/projects/cloud-integrations-data-pipelines.png',
+        alt: 'Cloud integrations and pipeline visual representing API contract and backend integration delivery.',
+        caption: 'Contract-first backend and integration work that keeps service boundaries explicit.',
       },
     ],
     skillIds: ['go', 'java', 'dotnet', 'openapi'],
@@ -109,18 +109,18 @@ export const skillCategories: SkillCategory[] = [
       'Enterprise and gameplay-adjacent integration delivery focused on data movement, orchestration layers, transformation logic, and reliability.',
     collage: [
       {
-        src: 'images/skills/mulesoft-flow-workbench.svg',
-        alt: 'MuleSoft flow workbench styled diagram showcasing integration components and flow references.',
-        caption: 'Layered flow design for system, process, and application integration responsibilities.',
+        src: 'images/projects/cloud-integrations-data-pipelines.png',
+        alt: 'Cloud integration and pipeline artwork illustrating orchestration and data movement responsibilities.',
+        caption: 'Layered flow design across system, process, and application integration boundaries.',
       },
       {
-        src: 'images/skills/mulesoft-flow-tests.svg',
-        alt: 'Mule flow testing styled diagram highlighting mock, spy, and response validation behavior.',
-        caption: 'Production-minded testing around mocks, spies, and message transformations.',
+        src: 'images/projects/firebase-ugc-platform-rules.png',
+        alt: 'Rules and workflow visual reflecting validation and reliability-focused integration testing.',
+        caption: 'Production-minded validation and transformation checks across integration flows.',
       },
       {
-        src: 'images/skills/openapi-green-signal.svg',
-        alt: 'OpenAPI green logo visual emphasizing API-first integration contracts.',
+        src: 'images/projects/firebase-ugc-platform.png',
+        alt: 'Firebase platform visual emphasizing clear service contracts and downstream integration.',
         caption: 'Clear contracts that reduce ambiguity between integration points and downstream consumers.',
       },
     ],
@@ -195,9 +195,9 @@ export const skillCategories: SkillCategory[] = [
       'Git evangelist and workshop host for Git and GitHub, focused on practical workflows, repository governance, clean history, and team enablement.',
     collage: [
       {
-        src: 'images/skills/gitflow-1.png',
-        alt: 'Git flow diagram used as the backdrop for Git workflow and process guidance.',
-        caption: 'A practical branching model for explaining how feature, develop, and release flows stay understandable.',
+        src: 'images/projects/unity-package-engineering.png',
+        alt: 'Repository and package maintenance visual used for workflow and branching guidance discussions.',
+        caption: 'Practical branching and commit-hygiene coaching anchored in real release and package workflows.',
       },
     ],
     skillIds: ['git'],
