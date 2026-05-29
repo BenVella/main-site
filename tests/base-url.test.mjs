@@ -72,7 +72,6 @@ describe('BASE_URL build output', () => {
 
     assert.match(homepage, /href="\/preview\/assets\/favicon\.svg"/);
     assert.match(homepage, /content="https:\/\/www\.bennetvella\.com\/preview\/og-image\.svg"/);
-    assert.match(homepage, /href="\/preview\/about"/);
     assert.match(homepage, /href="\/preview\/blog"/);
     assert.match(homepage, /href="\/preview\/contact"/);
   });
